@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ailv-app>
+  <Screen id="1750863922604" index="0" name="main_screen" is-default="1">
+    <Normal>
+      <name>main_screen</name>
+      <scrollbar-mode>0</scrollbar-mode>
+      <flag></flag>
+    </Normal>
+    <Animate>
+      <use-anim>0</use-anim>
+    </Animate>
+    <ImgStorage>
+      <use-img-storage>0</use-img-storage>
+    </ImgStorage>
+    <FontStorage>
+      <use-font-storage>0</use-font-storage>
+    </FontStorage>
+    <Attribute/>
+    <Style>
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
+          <bg-color>#000000</bg-color>
+          <bg-opa>255</bg-opa>
+          <bg-img-src></bg-img-src>
+          <bg-img-opa>255</bg-img-opa>
+          <bg-img-recolor>#000000</bg-img-recolor>
+          <bg-img-recolor-opa>0</bg-img-recolor-opa>
+        </State>
+      </Part>
+    </Style>
+    <Event/>
+    <Widgets>
+      <Widget id="1750864389095" index="0" type="9" name="drop_line" is-hidden="0">
+        <Normal>
+          <name>drop_line</name>
+          <postion>585,13</postion>
+          <size>109,12</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute>
+          <points>
+            <point>0,0</point>
+            <point>100,0</point>
+          </points>
+          <y-invert>0</y-invert>
+        </Attribute>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <line-color>#4f4f4f</line-color>
+              <line-opa>255</line-opa>
+              <line-width>10</line-width>
+              <line-rounded>1</line-rounded>
+            </State>
+          </Part>
+        </Style>
+        <Event>
+          <Scroll eventId="11" itemIdx="-1">
+            <Object id="1750864325767">
+              <Attribute>
+                <attr-503>8</attr-503>
+                <attr-502>10</attr-502>
+              </Attribute>
+              <Style/>
+              <Animate/>
+            </Object>
+          </Scroll>
+        </Event>
+      </Widget>
+      <Widget id="1750864746720" index="1" type="28" name="container_1" is-hidden="0">
+        <Normal>
+          <name>container_1</name>
+          <postion>325,267</postion>
+          <size>641,200</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute/>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#eff8f5</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-src></bg-img-src>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>0</radius>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+        <Children/>
+      </Widget>
+      <Widget id="1750864763256" index="2" type="7" name="dropdown_2" is-hidden="0">
+        <Normal>
+          <name>dropdown_2</name>
+          <postion>260,188</postion>
+          <size>130,46</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute>
+          <options>
+            <option>option 1</option>
+            <option>option 2</option>
+            <option>option 3</option>
+          </options>
+          <is-open>0</is-open>
+        </Attribute>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <text-color>#212121</text-color>
+              <text-align>0</text-align>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>2</border-width>
+              <radius>10</radius>
+              <pad-top>11</pad-top>
+              <pad-right>11</pad-right>
+              <pad-bottom>11</pad-bottom>
+              <pad-left>11</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State value="1" name="Checked">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <text-color>#212121</text-color>
+              <text-font-edit>0</text-font-edit>
+              <text-align>0</text-align>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>2</border-width>
+              <radius>10</radius>
+              <pad-top>11</pad-top>
+              <pad-right>11</pad-right>
+              <pad-bottom>11</pad-bottom>
+              <pad-left>11</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State value="2" name="Focused">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <text-color>#212121</text-color>
+              <text-font-edit>0</text-font-edit>
+              <text-align>0</text-align>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>2</border-width>
+              <radius>10</radius>
+              <pad-top>11</pad-top>
+              <pad-right>11</pad-right>
+              <pad-bottom>11</pad-bottom>
+              <pad-left>11</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State value="128" name="Disabled">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <text-color>#212121</text-color>
+              <text-font-edit>0</text-font-edit>
+              <text-align>0</text-align>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>2</border-width>
+              <radius>10</radius>
+              <pad-top>11</pad-top>
+              <pad-right>11</pad-right>
+              <pad-bottom>11</pad-bottom>
+              <pad-left>11</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+          <Part value="262144" name="Selected">
+            <State value="1" name="Checked">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <text-color>#ffffff</text-color>
+              <text-font-edit>0</text-font-edit>
+              <text-align>0</text-align>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>0</radius>
+            </State>
+          </Part>
+          <Part value="589824" name="List">
+            <State value="0" name="Default">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <text-color>#212121</text-color>
+              <text-align>0</text-align>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>2</border-width>
+              <radius>10</radius>
+            </State>
+          </Part>
+          <Part value="65536" name="Scrollbar">
+            <State value="0" name="Default">
+              <bg-color>#9e9e9e</bg-color>
+              <bg-opa>102</bg-opa>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+    </Widgets>
+  </Screen>
+  <Screen id="1750864325767" index="1" name="drop_screen" is-default="0">
+    <Normal>
+      <name>drop_screen</name>
+      <scrollbar-mode>0</scrollbar-mode>
+      <flag></flag>
+    </Normal>
+    <Animate>
+      <use-anim>0</use-anim>
+    </Animate>
+    <ImgStorage>
+      <use-img-storage>0</use-img-storage>
+    </ImgStorage>
+    <FontStorage>
+      <use-font-storage>0</use-font-storage>
+    </FontStorage>
+    <Attribute/>
+    <Style>
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
+          <bg-color>#fcfcfc</bg-color>
+          <bg-opa>255</bg-opa>
+          <bg-img-src></bg-img-src>
+          <bg-img-opa>255</bg-img-opa>
+          <bg-img-recolor>#000000</bg-img-recolor>
+          <bg-img-recolor-opa>0</bg-img-recolor-opa>
+        </State>
+      </Part>
+    </Style>
+    <Event/>
+    <Widgets/>
+  </Screen>
+</ailv-app>

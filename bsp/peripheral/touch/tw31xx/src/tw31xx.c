@@ -494,7 +494,7 @@ static rt_size_t tw31xx_read_point(struct rt_touch_device *touch, void *buf, rt_
             aic_touch_crop(&temp_data->x_coordinate, &temp_data->y_coordinate);
              
 
-        rt_kprintf("tp:(%d, %d)\n", temp_data->x_coordinate, temp_data->y_coordinate);
+        // rt_kprintf("tp:(%d, %d)\n", temp_data->x_coordinate, temp_data->y_coordinate);
 	}
 
 	if(TW31XX_EVENT_TPPWON == gfdata_tp.tp_head.Event)

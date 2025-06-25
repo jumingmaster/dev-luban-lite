@@ -1515,7 +1515,7 @@ void indev_gesture(lv_indev_t * indev)
             else
                 indev->pointer.gesture_dir = LV_DIR_TOP;
         }
-
+        
         lv_obj_send_event(gesture_obj, LV_EVENT_GESTURE, indev_act);
         if(indev_reset_check(indev)) return;
 

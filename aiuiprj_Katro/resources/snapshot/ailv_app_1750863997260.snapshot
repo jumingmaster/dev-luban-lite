@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ailv-app>
+  <Screen id="1750863922604" index="0" name="screen" is-default="1">
+    <Normal>
+      <name>screen</name>
+      <scrollbar-mode>0</scrollbar-mode>
+      <flag></flag>
+    </Normal>
+    <Animate>
+      <use-anim>0</use-anim>
+    </Animate>
+    <ImgStorage>
+      <use-img-storage>0</use-img-storage>
+    </ImgStorage>
+    <FontStorage>
+      <use-font-storage>0</use-font-storage>
+    </FontStorage>
+    <Attribute/>
+    <Style>
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
+          <bg-color>#000000</bg-color>
+          <bg-opa>255</bg-opa>
+          <bg-img-src></bg-img-src>
+          <bg-img-opa>255</bg-img-opa>
+          <bg-img-recolor>#000000</bg-img-recolor>
+          <bg-img-recolor-opa>0</bg-img-recolor-opa>
+        </State>
+      </Part>
+    </Style>
+    <Event/>
+    <Widgets/>
+  </Screen>
+</ailv-app>

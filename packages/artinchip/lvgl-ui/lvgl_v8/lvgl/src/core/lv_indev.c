@@ -99,6 +99,7 @@ void lv_indev_read_timer_cb(lv_timer_t * timer)
 
         if(indev_act->driver->type == LV_INDEV_TYPE_POINTER) {
             indev_pointer_proc(indev_act, &data);
+            
         }
         else if(indev_act->driver->type == LV_INDEV_TYPE_KEYPAD) {
             indev_keypad_proc(indev_act, &data);
