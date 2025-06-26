@@ -12,15 +12,27 @@
 
 ui_manager_t ui_manager;
 
+lv_font_t *fs_montserratmedium_16;
+lv_font_t *fs_montserratmedium_30;
 
 void ui_init(void)
 {
+    fs_montserratmedium_16 = ui_font_init(LVGL_FONT_PATH(montserratMedium.ttf), 16);
+    fs_montserratmedium_30 = ui_font_init(LVGL_FONT_PATH(montserratMedium.ttf), 30);
+    if (!fs_montserratmedium_16) {
+    	LV_LOG_ERROR("Failed to init fs_montserratmedium_16");
+    	return;
+    }
+    if (!fs_montserratmedium_30) {
+    	LV_LOG_ERROR("Failed to init fs_montserratmedium_30");
+    	return;
+    }
 
     // auto delete screen
     ui_manager_init(&ui_manager, true);
 
-    main_screen_create(&ui_manager);
-    lv_scr_load(main_screen_get(&ui_manager)->obj);
+    logo_scr_create(&ui_manager);
+    lv_scr_load(logo_scr_get(&ui_manager)->obj);
 
     // custom code
     custom_init();

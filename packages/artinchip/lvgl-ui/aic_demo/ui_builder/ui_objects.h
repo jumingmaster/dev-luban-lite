@@ -17,7 +17,14 @@ extern "C" {
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *line_2;
+    lv_obj_t *logo_amni;
+} logo_scr_t;
+
+typedef struct {
+    lv_obj_t *obj;
+    lv_obj_t *button_1;
+    lv_obj_t *label_1;
+    lv_obj_t *dropline;
 } main_screen_t;
 
 typedef struct {
@@ -27,6 +34,7 @@ typedef struct {
 
 typedef struct {
     bool auto_del;
+    logo_scr_t logo_scr;
     main_screen_t main_screen;
     drop_screen_t drop_screen;
 
@@ -36,6 +44,11 @@ static inline void ui_manager_init(ui_manager_t *ui, bool auto_del)
 {
     memset(ui, 0 , sizeof(ui_manager_t));
     ui->auto_del = auto_del;
+}
+
+static inline logo_scr_t *logo_scr_get(ui_manager_t *ui)
+{
+    return &ui->logo_scr;
 }
 
 static inline main_screen_t *main_screen_get(ui_manager_t *ui)
@@ -49,9 +62,12 @@ static inline drop_screen_t *drop_screen_get(ui_manager_t *ui)
 }
 
 
+void logo_scr_create(ui_manager_t *ui);
 void main_screen_create(ui_manager_t *ui);
 void drop_screen_create(ui_manager_t *ui);
 
+extern lv_font_t *fs_montserratmedium_16;
+extern lv_font_t *fs_montserratmedium_30;
 
 
 extern ui_manager_t ui_manager;

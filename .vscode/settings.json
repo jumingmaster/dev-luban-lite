@@ -22,6 +22,16 @@
 		"tw31xx.h": "c",
 		"ui_init.h": "c",
 		"ui_util.h": "c",
-		"aic_ui.h": "c"
+		"aic_ui.h": "c",
+		"ui_objects.h": "c",
+		"lv_anim.h": "c",
+		"rtconfig.h": "c",
+		"lv_disp.h": "c",
+		"chrono": "c",
+		"filesystem": "c",
+		"format": "c",
+		"regex": "c",
+		"thread": "c",
+		"vector": "c"
 	}
 }

@@ -410,6 +410,7 @@ static rt_size_t tw31xx_read_point(struct rt_touch_device *touch, void *buf, rt_
     struct rt_touch_data *temp_data;
     rt_uint8_t event = RT_TOUCH_EVENT_NONE;
     static rt_uint16_t judge = 0;
+	rt_uint8_t clear_buf[3] = {0x00, 0x00, 0xFF};
 
     rt_memset(read_buf, 0, sizeof(read_buf));
 
@@ -443,6 +444,8 @@ static rt_size_t tw31xx_read_point(struct rt_touch_device *touch, void *buf, rt_
 		}
 	}while(retry--);
 
+	/* clear reg */
+	tw31xx_write_reg(&tw31xx_client, clear_buf, 3);
 
 	if(TW31XX_EVENT_ABS == gfdata_tp.tp_head.Event)
 	{

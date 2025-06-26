@@ -17,7 +17,7 @@
 #include "aic_osal.h"
 #include "../components/drivers/include/drivers/touch.h"
 
-#define THREAD_PRIORITY   25
+#define THREAD_PRIORITY   15
 #define THREAD_STACK_SIZE 4096
 #define THREAD_TIMESLICE  5
 
@@ -59,7 +59,7 @@ static void touch_entry(void *parameter) /* touch panel control entry */
 
     while (1)
     {
-        rt_sem_take(touch_sem, RT_WAITING_FOREVER);
+        // rt_sem_take(touch_sem, RT_WAITING_FOREVER);
         int num = rt_device_read(dev, 0, read_data, info.point_num);
         if (num > 0)
         {
@@ -83,8 +83,8 @@ static void touch_entry(void *parameter) /* touch panel control entry */
                 }
             }
         }
-        //aicos_msleep(10);
-        rt_device_control(dev, RT_TOUCH_CTRL_ENABLE_INT, RT_NULL);
+        aicos_msleep(1);
+        // rt_device_control(dev, RT_TOUCH_CTRL_ENABLE_INT, RT_NULL);
     }
 }
 

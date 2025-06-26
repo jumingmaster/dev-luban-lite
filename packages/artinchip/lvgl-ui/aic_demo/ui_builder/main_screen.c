@@ -9,16 +9,27 @@
 #include "aic_ui.h"
 #include "ui_util.h"
 
-static void main_screen_line_2_clicked (lv_event_t *e) {
-    lv_obj_t *act_scr = lv_scr_act();
-    if (!screen_is_loading(act_scr)) {
-        // delete child obj of act_scr
-        lv_obj_clean(act_scr);
-        // create drop_screen
-        drop_screen_create(&ui_manager);
-        // load drop_screen
-        lv_scr_load_anim(drop_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_BOTTOM, 200, 0, true);
-    }
+void __attribute__((weak)) main_screen_custom_created(void) {
+}
+
+void __attribute__((weak)) main_screen_button_1_custom_clicked(void) {
+}
+
+static void main_screen_button_1_clicked (lv_event_t *e) {
+    main_screen_button_1_custom_clicked();
+}
+
+void __attribute__((weak)) main_screen_dropline_custom_pressing(void) {
+}
+void __attribute__((weak)) main_screen_dropline_custom_released(void) {
+}
+
+static void main_screen_dropline_released (lv_event_t *e) {
+    main_screen_dropline_custom_released();
+}
+
+static void main_screen_dropline_pressing (lv_event_t *e) {
+    main_screen_dropline_custom_pressing();
 }
 
 
@@ -32,33 +43,59 @@ void main_screen_create(ui_manager_t *ui)
     // Init scr->obj
     scr->obj = lv_obj_create(NULL);
     lv_obj_set_scrollbar_mode(scr->obj, LV_SCROLLBAR_MODE_OFF);
-    lv_obj_add_flag(scr->obj, LV_OBJ_FLAG_CLICKABLE);
 
     // Set style of scr->obj
     lv_obj_set_style_bg_color(scr->obj, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    // Init scr->line_2
-    scr->line_2 = lv_line_create(scr->obj);
+    // Init scr->button_1
+    scr->button_1 = lv_btn_create(scr->obj);
+    lv_obj_t *button_1_label = lv_label_create(scr->button_1);
+    lv_label_set_text(button_1_label, "Button");
+    lv_obj_align(button_1_label, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_set_pos(scr->button_1, 544, 431);
+    lv_obj_set_size(scr->button_1, 191, 84);
+
+    // Set style of scr->button_1
+    lv_obj_set_style_text_font(scr->button_1, fs_montserratmedium_16, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(scr->button_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(scr->button_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Set event handler of scr->button_1
+    lv_obj_add_event_cb(scr->button_1, main_screen_button_1_clicked, LV_EVENT_CLICKED, NULL);
+
+    // Init scr->label_1
+    scr->label_1 = lv_label_create(scr->obj);
+    lv_label_set_text(scr->label_1, "0");
+    lv_label_set_long_mode(scr->label_1, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->label_1, 521, 336);
+    lv_obj_set_size(scr->label_1, 238, 31);
+
+    // Set style of scr->label_1
+    lv_obj_set_style_text_font(scr->label_1, fs_montserratmedium_30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->label_1, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(scr->label_1, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Init scr->dropline
+    scr->dropline = lv_line_create(scr->obj);
 #if LVGL_VERSION_MAJOR == 8
-    static lv_point_t line_2_point[] ={{0, 0}, {100, 0}};
+    static lv_point_t dropline_point[] ={{60, 20}, {240, 20}};
 #else
-    static lv_point_precise_t line_2_point[] ={{0, 0}, {100, 0}};
+    static lv_point_precise_t dropline_point[] ={{60, 20}, {240, 20}};
 #endif
-    lv_line_set_points(scr->line_2, line_2_point, 2);
-    lv_obj_set_pos(scr->line_2, 588, 13);
-    lv_obj_set_size(scr->line_2, 103, 5);
-    lv_obj_add_flag(scr->line_2, LV_OBJ_FLAG_CLICKABLE);
-    lv_obj_add_flag(scr->line_2, LV_OBJ_FLAG_GESTURE_BUBBLE);
+    lv_line_set_points(scr->dropline, dropline_point, 2);
+    lv_obj_set_pos(scr->dropline, 490, 0);
+    lv_obj_set_size(scr->dropline, 300, 40);
+    lv_obj_add_flag(scr->dropline, LV_OBJ_FLAG_CLICKABLE);
 
-    // Set style of scr->line_2
-    lv_obj_set_style_bg_color(scr->line_2, lv_color_hex(0x616161), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_line_color(scr->line_2, lv_color_hex(0x616161), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_line_width(scr->line_2, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_line_rounded(scr->line_2, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
+    // Set style of scr->dropline
+    lv_obj_set_style_line_color(scr->dropline, lv_color_hex(0x707070), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_line_width(scr->dropline, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_line_rounded(scr->dropline, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    // Set event handler of scr->line_2
-    lv_obj_add_event_cb(scr->line_2, main_screen_line_2_clicked, LV_EVENT_CLICKED, NULL);
+    // Set event handler of scr->dropline
+    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_released, LV_EVENT_RELEASED, NULL);
+    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
 
-
+    main_screen_custom_created();
 }
