@@ -8,11 +8,67 @@ CPPPATH = [cwd, ]
 
 CFLAGS = ' -c -ffunction-sections'
 
+
+
+
+# 用于跟踪已添加的文件
+added_src_files = set()
+added_header_dirs = set()
+
+def remove_prefix(path, prefix):
+    if path.startswith(prefix):
+        return path[len(prefix):]  # 返回去掉前缀后的路径
+    return path  # 如果不以 prefix 开头，返回原路径
+
+
+def convert_path_for_linux(path):
+    # 将反斜杠替换为正斜杠，并去掉盘符（如G:）
+    path = path.replace('\\', '/')  # 替换所有反斜杠为正斜杠
+    if ':' in path:
+        path = path.split(':', 1)[-1]  # 去掉盘符部分
+    return './' + path
+
+
+# 递归查找源文件和头文件
+def find_source_files(directory):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.c'):
+                full_path = os.path.join(root, file)
+                if full_path not in added_src_files:
+                    global src  # 使用全局变量 src
+                    current_directory = GetCurrentDir()
+                    new_path = remove_prefix(full_path, current_directory)
+
+                    new_pathner = new_path.strip("/")  # 去掉前后的 '/'
+                    new_pathner = convert_path_for_linux(new_pathner)
+
+                    #print("相对：",new_pathner)
+                    #print("当前：",current_directory)
+                    #src.append(full_path)
+                    src += Glob(new_pathner)
+                    added_src_files.add(full_path)  # 标记为已添加
+            elif file.endswith('.h'):
+                header_dir = root  # 头文件所在目录
+                if header_dir not in added_header_dirs:
+                    CPPPATH.append(header_dir)
+                    added_header_dirs.add(header_dir)  # 标记为已添加
+                    # print("added_header_dirs：",header_dir)
+
+
+# 调用函数以搜索源文件和头文件
+find_source_files(cwd)
+
+
 group   = DefineGroup('Applications', src, depend = [''], CPPPATH = CPPPATH, CFLAGS=CFLAGS)
 
 list = os.listdir(cwd)
 for item in list:
     if os.path.isfile(os.path.join(cwd, item, 'SConscript')):
         group = group + SConscript(os.path.join(item, 'SConscript'))
+
+
+
+
 
 Return('group')

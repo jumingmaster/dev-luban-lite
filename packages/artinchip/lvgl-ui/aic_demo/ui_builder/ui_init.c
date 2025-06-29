@@ -12,19 +12,43 @@
 
 ui_manager_t ui_manager;
 
-lv_font_t *fs_montserratmedium_16;
-lv_font_t *fs_montserratmedium_30;
+lv_font_t *fs_fzltxhjw_120;
+lv_font_t *fs_fzltxhjw_50;
+lv_font_t *fs_fzltxhjw_150;
+lv_font_t *fs_fzltxhjw_250;
+lv_font_t *fs_fzltxhjw_60;
+lv_font_t *fs_fzltxhjw_80;
 
 void ui_init(void)
 {
-    fs_montserratmedium_16 = ui_font_init(LVGL_FONT_PATH(montserratMedium.ttf), 16);
-    fs_montserratmedium_30 = ui_font_init(LVGL_FONT_PATH(montserratMedium.ttf), 30);
-    if (!fs_montserratmedium_16) {
-    	LV_LOG_ERROR("Failed to init fs_montserratmedium_16");
+    fs_fzltxhjw_120 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 120);
+    fs_fzltxhjw_50 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 50);
+    fs_fzltxhjw_150 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 150);
+    fs_fzltxhjw_250 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 250);
+    fs_fzltxhjw_60 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 60);
+    fs_fzltxhjw_80 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 80);
+    if (!fs_fzltxhjw_120) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_120");
     	return;
     }
-    if (!fs_montserratmedium_30) {
-    	LV_LOG_ERROR("Failed to init fs_montserratmedium_30");
+    if (!fs_fzltxhjw_50) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_50");
+    	return;
+    }
+    if (!fs_fzltxhjw_150) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_150");
+    	return;
+    }
+    if (!fs_fzltxhjw_250) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_250");
+    	return;
+    }
+    if (!fs_fzltxhjw_60) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_60");
+    	return;
+    }
+    if (!fs_fzltxhjw_80) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_80");
     	return;
     }
 

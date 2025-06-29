@@ -96,7 +96,7 @@ struct aic_panel *aic_find_panel(u32 connector_type)
             break;
         }
     }
-
+    
     if (i >= ARRAY_SIZE(panels))
         return NULL;
 

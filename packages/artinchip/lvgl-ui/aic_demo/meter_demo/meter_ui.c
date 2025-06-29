@@ -417,8 +417,8 @@ static void fps_callback(lv_timer_t *tmr)
     (void)tmr;
 
     /* frame rate */
-    ui_snprintf(data_str, "%2d FPS", fbdev_draw_fps());
-    lv_label_set_text(bg_fps, data_str);
+    // ui_snprintf(data_str, "%2d FPS", fbdev_draw_fps());
+    // lv_label_set_text(bg_fps, data_str);
 
 #ifdef KERNEL_RTTHREAD
     /* cpu usage */

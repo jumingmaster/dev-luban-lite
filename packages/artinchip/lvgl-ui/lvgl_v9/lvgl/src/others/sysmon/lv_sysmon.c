@@ -280,8 +280,8 @@ static void mem_observer_cb(lv_observer_t * observer, lv_subject_t * subject)
     size_t max_used_kb = mon->max_used / 1024;
     size_t max_used_kb_tenth = (mon->max_used - (max_used_kb * 1024)) / 102;
     lv_label_set_text_fmt(label,
-                          "%zu.%zu kB (%d%%)\n"
-                          "%zu.%zu kB max, %d%% frag.",
+                          "%d.%d kB (%d%%)\n"
+                          "%d.%d kB max, %d%% frag.",
                           used_kb, used_kb_tenth, mon->used_pct,
                           max_used_kb, max_used_kb_tenth,
                           mon->frag_pct);

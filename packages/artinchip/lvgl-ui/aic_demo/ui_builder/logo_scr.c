@@ -28,6 +28,7 @@ void logo_scr_create(ui_manager_t *ui)
     lv_obj_set_style_bg_color(scr->obj, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_img_src(scr->obj, LVGL_IMAGE_PATH(Logo-background.png), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_img_recolor(scr->obj, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Init scr->logo_amni
     scr->logo_amni = lv_animimg_create(scr->obj);
@@ -45,7 +46,6 @@ void logo_scr_create(ui_manager_t *ui)
     };
 
     logo_scr_custom_created();
-
     
     lv_animimg_set_src(scr->logo_amni, (const void **)logo_amni_imgs, 10);
     lv_animimg_set_duration(scr->logo_amni, 1000);

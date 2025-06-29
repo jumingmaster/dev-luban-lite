@@ -654,7 +654,7 @@ static void indev_pointer_proc(lv_indev_t * i, lv_indev_data_t * data)
         LV_LOG_WARN("Y is %d which is smaller than zero", (int)data->point.y);
     }
     if(data->point.y >= lv_display_get_vertical_resolution(i->disp)) {
-        LV_LOG_WARN("Y is %d which is greater than ver. res", (int)data->point.y);
+        LV_LOG_WARN("Y is %d which is greater than ver. res(%d)", (int)data->point.y);
     }
 
     /*Move the cursor if set and moved*/

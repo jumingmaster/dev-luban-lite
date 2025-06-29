@@ -22,21 +22,80 @@ typedef struct {
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *button_1;
-    lv_obj_t *label_1;
+    lv_obj_t *cooker2;
+    lv_obj_t *cooker2_anim;
+    lv_obj_t *cooker2_line;
+    lv_obj_t *cooker2_gear;
+    lv_obj_t *cooker2_timing;
+    lv_obj_t *cooker2_state;
+    lv_obj_t *cooker3;
+    lv_obj_t *cooker3_anim;
+    lv_obj_t *cooker3_line;
+    lv_obj_t *cooker3_state;
+    lv_obj_t *cooker3_timing;
+    lv_obj_t *cooker3_gear;
+    lv_obj_t *cooker1;
+    lv_obj_t *cooker1_anim;
+    lv_obj_t *cooker1_line;
+    lv_obj_t *cooker1_state;
+    lv_obj_t *cooker1_timing;
+    lv_obj_t *cooker1_gear;
+    lv_obj_t *cooker4;
+    lv_obj_t *cooker4_anim;
+    lv_obj_t *cooker4_line;
+    lv_obj_t *cooker4_state;
+    lv_obj_t *cooker4_timing;
+    lv_obj_t *cooker4_gear;
     lv_obj_t *dropline;
+    lv_obj_t *drop_menu;
+    lv_obj_t *container_1;
+    lv_obj_t *image_1;
+    lv_obj_t *container_7;
+    lv_obj_t *image_10;
+    lv_obj_t *container_8;
+    lv_obj_t *image_11;
+    lv_obj_t *container_9;
+    lv_obj_t *image_12;
+    lv_obj_t *container_10;
+    lv_obj_t *image_13;
 } main_screen_t;
 
 typedef struct {
     lv_obj_t *obj;
-} drop_screen_t;
+    lv_obj_t *back_cont;
+    lv_obj_t *image_3;
+    lv_obj_t *min_label;
+    lv_obj_t *max_label;
+    lv_obj_t *thermos_cont;
+    lv_obj_t *image_4;
+    lv_obj_t *max_gear_cont;
+    lv_obj_t *image_5;
+    lv_obj_t *timing_cont;
+    lv_obj_t *image_6;
+    lv_obj_t *gear_label;
+    lv_obj_t *gear_slider;
+} setting_cook_t;
+
+typedef struct {
+    lv_obj_t *obj;
+    lv_obj_t *roller_minute;
+    lv_obj_t *cancel_cont;
+    lv_obj_t *image_1;
+    lv_obj_t *label_1;
+    lv_obj_t *label_2;
+    lv_obj_t *confirm_cont;
+    lv_obj_t *image_2;
+    lv_obj_t *label_3;
+    lv_obj_t *roller_hour;
+} setting_timing_t;
 
 
 typedef struct {
     bool auto_del;
     logo_scr_t logo_scr;
     main_screen_t main_screen;
-    drop_screen_t drop_screen;
+    setting_cook_t setting_cook;
+    setting_timing_t setting_timing;
 
 } ui_manager_t;
 
@@ -56,18 +115,28 @@ static inline main_screen_t *main_screen_get(ui_manager_t *ui)
     return &ui->main_screen;
 }
 
-static inline drop_screen_t *drop_screen_get(ui_manager_t *ui)
+static inline setting_cook_t *setting_cook_get(ui_manager_t *ui)
 {
-    return &ui->drop_screen;
+    return &ui->setting_cook;
+}
+
+static inline setting_timing_t *setting_timing_get(ui_manager_t *ui)
+{
+    return &ui->setting_timing;
 }
 
 
 void logo_scr_create(ui_manager_t *ui);
 void main_screen_create(ui_manager_t *ui);
-void drop_screen_create(ui_manager_t *ui);
+void setting_cook_create(ui_manager_t *ui);
+void setting_timing_create(ui_manager_t *ui);
 
-extern lv_font_t *fs_montserratmedium_16;
-extern lv_font_t *fs_montserratmedium_30;
+extern lv_font_t *fs_fzltxhjw_120;
+extern lv_font_t *fs_fzltxhjw_50;
+extern lv_font_t *fs_fzltxhjw_150;
+extern lv_font_t *fs_fzltxhjw_250;
+extern lv_font_t *fs_fzltxhjw_60;
+extern lv_font_t *fs_fzltxhjw_80;
 
 
 extern ui_manager_t ui_manager;

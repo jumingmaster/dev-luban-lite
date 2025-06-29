@@ -337,7 +337,7 @@ static rt_err_t tw31xx_write_reg(struct rt_i2c_client *dev, rt_uint8_t *data,
     if (rt_i2c_transfer(dev->bus, &msgs, 1) == 1) {
         return RT_EOK;
     } else {
-        rt_kprintf("i2c write tw31xx fail!\n");
+        // rt_kprintf("i2c write tw31xx fail!\n");
         return -RT_ERROR;
     }
 }
@@ -360,7 +360,7 @@ static rt_err_t tw31xx_read_regs(struct rt_i2c_client *dev, rt_uint8_t *reg,
     if (rt_i2c_transfer(dev->bus, msgs, 2) == 2) {
         return RT_EOK;
     } else {
-        rt_kprintf("i2c read tw31xx fail!\n");
+        // rt_kprintf("i2c read tw31xx fail!\n");
         return -RT_ERROR;
     }
 }
@@ -426,7 +426,7 @@ static rt_size_t tw31xx_read_point(struct rt_touch_device *touch, void *buf, rt_
 		ret = tw31xx_read_regs(&tw31xx_client, reg, (rt_uint8_t*)(&gfdata_tp.tp_head), 16);
 		if(ret)
 		{	
-			LOG_E("ERROR, i2c read head error\n");
+			// LOG_E("ERROR, i2c read head error\n");
 			continue;
 		}
 		
@@ -455,7 +455,7 @@ static rt_size_t tw31xx_read_point(struct rt_touch_device *touch, void *buf, rt_
 	        ret = tw31xx_read_regs(&tw31xx_client, reg, (u8*)(&gfdata_tp.tp_data), gfdata_tp.tp_head.Length);
 			if(ret)
 			{
-				LOG_E("ERROR, i2c read data error\n");
+				// LOG_E("ERROR, i2c read data error\n");
 				continue;
 			}
 	

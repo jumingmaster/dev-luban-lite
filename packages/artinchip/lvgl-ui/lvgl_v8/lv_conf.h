@@ -124,4 +124,6 @@
 #include "lv_conf_custom.h"
 #endif
 
+#define LV_MEM_SIZE     (1024 * 1024)
+
 #endif // LV_CONF_H

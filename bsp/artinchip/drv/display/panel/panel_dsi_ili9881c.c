@@ -478,7 +478,7 @@ static struct aic_panel_funcs ili9881c_default_funcs = {
 };
 
 static struct display_timing ili9881c_default_timing = {
-    .pixelclock = 60000000,
+    .pixelclock = 99000000,
     .hactive = 720,
     .hfront_porch = 60,
     .hback_porch = 60,

@@ -74,7 +74,7 @@ void * lv_malloc(size_t size)
 #if LV_LOG_LEVEL <= LV_LOG_LEVEL_INFO
         lv_mem_monitor_t mon;
         lv_mem_monitor(&mon);
-        LV_LOG_INFO("used: %zu (%3d %%), frag: %3d %%, biggest free: %zu",
+        LV_LOG_INFO("used: %d (%3d %%), frag: %3d %%, biggest free: %d",
                     mon.total_size - mon.free_size, mon.used_pct, mon.frag_pct,
                     mon.free_biggest_size);
 #endif
@@ -103,7 +103,7 @@ void * lv_malloc_zeroed(size_t size)
 #if LV_LOG_LEVEL <= LV_LOG_LEVEL_INFO
         lv_mem_monitor_t mon;
         lv_mem_monitor(&mon);
-        LV_LOG_INFO("used: %zu (%3d %%), frag: %3d %%, biggest free: %zu",
+        LV_LOG_INFO("used: %d (%3d %%), frag: %3d %%, biggest free: %d",
                     mon.total_size - mon.free_size, mon.used_pct, mon.frag_pct,
                     mon.free_biggest_size);
 #endif

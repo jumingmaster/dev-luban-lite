@@ -11,10 +11,13 @@
 #include <ulog.h>
 #endif
 
+
 int main(void)
 {
 #ifdef ULOG_USING_FILTER
     ulog_global_filter_lvl_set(ULOG_OUTPUT_LVL);
 #endif
+    
+
     return 0;
 }
