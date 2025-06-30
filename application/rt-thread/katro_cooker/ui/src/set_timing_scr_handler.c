@@ -52,7 +52,7 @@ void setting_timing_cancel_cont_custom_clicked(void)
 
     setting_cooker_channel_set(cur_channel);
 
-    cooker_ui_state_set(&cur_state, cur_channel);
+    update_main_scr_ui_data(&cur_state, cur_channel);
 
     lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_OVER_LEFT, 100, 0, false);
 }
@@ -81,7 +81,7 @@ void setting_timing_confirm_cont_custom_clicked(void)
     // rt_kprintf("Selected Hour:%d, Minute:%d\r\n", hour, min);
     setting_cooker_channel_set(cur_channel);
 
-    cooker_ui_state_set(&cur_state, cur_channel);
+    update_main_scr_ui_data(&cur_state, cur_channel);
 
     lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_OVER_RIGHT, 100, 0, false);
 }

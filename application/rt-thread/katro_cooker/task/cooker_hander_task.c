@@ -14,6 +14,13 @@ static rt_sem_t ui_sem = RT_NULL;
 
 static ui_cooker_state_t cooker_ui_state[UI_COOKER_NUM] = {0};
 
+static const char mtx_name[UI_COOKER_NUM][16] = {
+    {"cooker_mtx1"},
+    {"cooker_mtx2"},
+    {"cooker_mtx3"},
+    {"cooker_mtx4"},
+};
+
 typedef struct
 {
     int onoff;
@@ -35,7 +42,7 @@ struct
     cooker_t    cooker[4];
 } cooker_inst;
 
-
+static uint8_t tx_buffer[4] = {0};
 
 
 void cooker_recv_handler(uint8_t * data)
@@ -47,6 +54,7 @@ static void cooker_get_ui_msg(void)
 {
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
+        // rt_kprintf("%s cooker_ui_state_get[%d]\r\n", rt_thread_self()->name, i);
         cooker_ui_state_get(&cooker_ui_state[i], i);
     }
 }
@@ -57,11 +65,13 @@ static void cook_ui_msg_send(void)
 
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
-        resp->serial = i + 1;
-        resp->gear = cooker_ui_state[i].gear;
-        resp->onoff = cooker_ui_state[i].gear ? 1 : 0;
-
-        cooker_msg_send(&resp[i]);
+        resp[i].serial = i;
+        resp[i].gear = cooker_ui_state[i].gear;
+        resp[i].onoff = cooker_ui_state[i].gear ? 1 : 0;
+        memset(tx_buffer, 0x00, sizeof(tx_buffer));
+        memcpy(tx_buffer, &resp[i], 1);
+        // cooker_send_bytes(tx_buffer, sizeof(tx_buffer));
+        rt_thread_mdelay(100);
     }
 }
 
@@ -71,12 +81,9 @@ static void cook_handler_thread_entry(void *param)
 {
     while (1)
     {
-        rt_thread_delay(10);
-
-        if (rt_sem_take(ui_sem, RT_WAITING_NO) == RT_EOK)
+        if (rt_sem_take(ui_sem, RT_WAITING_FOREVER) == RT_EOK)
         {
             cooker_get_ui_msg();
-
             cook_ui_msg_send();
         }
     }
@@ -86,10 +93,11 @@ static void cook_handler_thread_entry(void *param)
 static int cook_handler_thread_init(void)
 {
     cooker_inst.mutex = rt_mutex_create("cooker_inst_mtx", RT_IPC_FLAG_PRIO);
+    ui_sem = rt_sem_create("ui_sem", 0, RT_IPC_FLAG_PRIO);
 
     for (int i = 0; i < 4; i++)
     {
-        cooker_inst.cooker_mutex[i] = rt_mutex_create("cooker_mtx", RT_IPC_FLAG_PRIO);
+        cooker_inst.cooker_mutex[i] = rt_mutex_create(mtx_name[i], RT_IPC_FLAG_PRIO);
     }
 
 
@@ -104,7 +112,7 @@ static int cook_handler_thread_init(void)
     
     return 0;
 }
-INIT_APP_EXPORT(cook_handler_thread_init);
+INIT_ENV_EXPORT(cook_handler_thread_init);
 
 
 

@@ -37,7 +37,7 @@ typedef struct
 
 extern ui_manager_t ui_manager;
 
-int cooker_ui_manager_init(void);
+// int cooker_ui_manager_init(void);
 
 void cooker_ui_state_get(ui_cooker_state_t * state, int num);
 
@@ -48,5 +48,7 @@ void setting_cooker_channel_set(int ch);
 void setting_timing_channel_set(int ch);
 
 void cooker_ui_data_notify(void);
+
+void update_main_scr_ui_data(const ui_cooker_state_t * state, int num);
 
 #endif

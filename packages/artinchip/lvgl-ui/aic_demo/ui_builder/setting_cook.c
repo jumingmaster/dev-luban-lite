@@ -14,12 +14,12 @@ void __attribute__((weak)) setting_cook_custom_load_start(void) {
 void __attribute__((weak)) setting_cook_custom_unload_start(void) {
 }
 
-static void setting_cook_load_start (lv_event_t *e) {
-    setting_cook_custom_load_start();
-}
-
 static void setting_cook_unload_start (lv_event_t *e) {
     setting_cook_custom_unload_start();
+}
+
+static void setting_cook_load_start (lv_event_t *e) {
+    setting_cook_custom_load_start();
 }
 
 void __attribute__((weak)) setting_cook_back_cont_custom_clicked(void) {
@@ -66,6 +66,12 @@ static void setting_cook_timing_cont_clicked (lv_event_t *e) {
 
 void __attribute__((weak)) setting_cook_gear_slider_custom_value_changed(void) {
 }
+void __attribute__((weak)) setting_cook_gear_slider_custom_released(void) {
+}
+
+static void setting_cook_gear_slider_released (lv_event_t *e) {
+    setting_cook_gear_slider_custom_released();
+}
 
 static void setting_cook_gear_slider_value_changed (lv_event_t *e) {
     setting_cook_gear_slider_custom_value_changed();
@@ -88,8 +94,8 @@ void setting_cook_create(ui_manager_t *ui)
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Set event handler of scr->obj
-    lv_obj_add_event_cb(scr->obj, setting_cook_load_start, LV_EVENT_SCREEN_LOAD_START, NULL);
     lv_obj_add_event_cb(scr->obj, setting_cook_unload_start, LV_EVENT_SCREEN_UNLOAD_START, NULL);
+    lv_obj_add_event_cb(scr->obj, setting_cook_load_start, LV_EVENT_SCREEN_LOAD_START, NULL);
 
     // Init scr->back_cont
     scr->back_cont = lv_obj_create(scr->obj);
@@ -264,7 +270,59 @@ void setting_cook_create(ui_manager_t *ui)
     lv_obj_set_style_bg_opa(scr->gear_slider, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
 
     // Set event handler of scr->gear_slider
+    lv_obj_add_event_cb(scr->gear_slider, setting_cook_gear_slider_released, LV_EVENT_RELEASED, NULL);
     lv_obj_add_event_cb(scr->gear_slider, setting_cook_gear_slider_value_changed, LV_EVENT_VALUE_CHANGED, NULL);
+
+    // Init scr->func_label
+    scr->func_label = lv_label_create(scr->obj);
+    lv_label_set_text(scr->func_label, "Heating Temperature\nStill");
+    lv_label_set_long_mode(scr->func_label, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->func_label, 0, 540);
+    lv_obj_set_size(scr->func_label, 1280, 150);
+    lv_obj_add_flag(scr->func_label, LV_OBJ_FLAG_HIDDEN);
+
+    // Set style of scr->func_label
+    lv_obj_set_style_text_font(scr->func_label, fs_fzltxhjw_75, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->func_label, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(scr->func_label, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Init scr->window_2
+#if LVGL_VERSION_MAJOR == 8
+    scr->window_2 = lv_win_create(scr->obj, 40);
+    lv_obj_t *window_2_header = lv_win_get_header(scr->window_2);
+#else
+    scr->window_2 = lv_win_create(scr->obj);
+    lv_obj_t *window_2_header = lv_win_get_header(scr->window_2);
+    lv_obj_set_height(window_2_header, 40);
+#endif
+    lv_obj_t *window_2_content = lv_win_get_content(scr->window_2);
+    lv_win_add_title(scr->window_2, "");
+#if LVGL_VERSION_MAJOR == 8
+#else
+#endif
+    lv_obj_set_pos(scr->window_2, 390, 210);
+    lv_obj_set_size(scr->window_2, 500, 300);
+    lv_obj_add_flag(scr->window_2, LV_OBJ_FLAG_HIDDEN);
+
+    // Set style of scr->window_2
+    lv_obj_set_style_bg_color(scr->window_2, lv_color_hex(0xf5f5f5), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(window_2_header, lv_color_hex(0xf5f5f5), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(window_2_header, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(window_2_header, fs_fzltxhjw_50, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(window_2_content, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_all(window_2_content, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Init scr->label_2
+    scr->label_2 = lv_label_create(window_2_content);
+    lv_label_set_text(scr->label_2, "Confirm back to  normal heating?");
+    lv_label_set_long_mode(scr->label_2, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->label_2, 25, 0);
+    lv_obj_set_size(scr->label_2, 450, 250);
+
+    // Set style of scr->label_2
+    lv_obj_set_style_text_font(scr->label_2, fs_fzltxhjw_60, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->label_2, lv_color_hex(0x434343), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(scr->label_2, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 
 }

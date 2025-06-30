@@ -7,7 +7,7 @@
 #define DROPPED_MAX     (LV_VER_RES / 2 + 100)
 #define ROLLBACK_MAX    (LV_VER_RES / 2 + 100)
 
-#define DROP_MENU_ANIM_TIME     (100)
+#define DROP_MENU_ANIM_TIME     (50)
 
 void drop_menu_start(lv_obj_t * line, lv_obj_t * menu);
 

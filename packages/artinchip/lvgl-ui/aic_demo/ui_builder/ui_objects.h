@@ -74,6 +74,9 @@ typedef struct {
     lv_obj_t *image_6;
     lv_obj_t *gear_label;
     lv_obj_t *gear_slider;
+    lv_obj_t *func_label;
+    lv_obj_t *window_2;
+    lv_obj_t *label_2;
 } setting_cook_t;
 
 typedef struct {
@@ -135,6 +138,7 @@ extern lv_font_t *fs_fzltxhjw_120;
 extern lv_font_t *fs_fzltxhjw_50;
 extern lv_font_t *fs_fzltxhjw_150;
 extern lv_font_t *fs_fzltxhjw_250;
+extern lv_font_t *fs_fzltxhjw_75;
 extern lv_font_t *fs_fzltxhjw_60;
 extern lv_font_t *fs_fzltxhjw_80;
 

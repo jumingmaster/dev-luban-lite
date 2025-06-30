@@ -16,6 +16,7 @@ lv_font_t *fs_fzltxhjw_120;
 lv_font_t *fs_fzltxhjw_50;
 lv_font_t *fs_fzltxhjw_150;
 lv_font_t *fs_fzltxhjw_250;
+lv_font_t *fs_fzltxhjw_75;
 lv_font_t *fs_fzltxhjw_60;
 lv_font_t *fs_fzltxhjw_80;
 
@@ -25,6 +26,7 @@ void ui_init(void)
     fs_fzltxhjw_50 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 50);
     fs_fzltxhjw_150 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 150);
     fs_fzltxhjw_250 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 250);
+    fs_fzltxhjw_75 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 75);
     fs_fzltxhjw_60 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 60);
     fs_fzltxhjw_80 = ui_font_init(LVGL_FONT_PATH(FZLTXHJW.TTF), 80);
     if (!fs_fzltxhjw_120) {
@@ -41,6 +43,10 @@ void ui_init(void)
     }
     if (!fs_fzltxhjw_250) {
     	LV_LOG_ERROR("Failed to init fs_fzltxhjw_250");
+    	return;
+    }
+    if (!fs_fzltxhjw_75) {
+    	LV_LOG_ERROR("Failed to init fs_fzltxhjw_75");
     	return;
     }
     if (!fs_fzltxhjw_60) {

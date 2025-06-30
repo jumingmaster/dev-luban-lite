@@ -16,12 +16,12 @@ void __attribute__((weak)) main_screen_custom_created(void) {
 void __attribute__((weak)) main_screen_custom_unload_start(void) {
 }
 
-static void main_screen_load_start (lv_event_t *e) {
-    main_screen_custom_load_start();
-}
-
 static void main_screen_unload_start (lv_event_t *e) {
     main_screen_custom_unload_start();
+}
+
+static void main_screen_load_start (lv_event_t *e) {
+    main_screen_custom_load_start();
 }
 
 void __attribute__((weak)) main_screen_cooker2_custom_clicked(void) {
@@ -63,12 +63,12 @@ static void main_screen_dropline_released (lv_event_t *e) {
     main_screen_dropline_custom_released();
 }
 
-static void main_screen_dropline_pressing (lv_event_t *e) {
-    main_screen_dropline_custom_pressing();
-}
-
 static void main_screen_dropline_pressed (lv_event_t *e) {
     main_screen_dropline_custom_pressed();
+}
+
+static void main_screen_dropline_pressing (lv_event_t *e) {
+    main_screen_dropline_custom_pressing();
 }
 
 
@@ -88,8 +88,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Set event handler of scr->obj
-    lv_obj_add_event_cb(scr->obj, main_screen_load_start, LV_EVENT_SCREEN_LOAD_START, NULL);
     lv_obj_add_event_cb(scr->obj, main_screen_unload_start, LV_EVENT_SCREEN_UNLOAD_START, NULL);
+    lv_obj_add_event_cb(scr->obj, main_screen_load_start, LV_EVENT_SCREEN_LOAD_START, NULL);
 
     // Init scr->cooker2
     scr->cooker2 = lv_obj_create(scr->obj);
@@ -164,6 +164,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker2_gear, 150, 115);
     lv_obj_set_size(scr->cooker2_gear, 100, 120);
     lv_obj_add_flag(scr->cooker2_gear, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker2_gear, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker2_gear, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker2_gear
     lv_obj_set_style_text_font(scr->cooker2_gear, fs_fzltxhjw_120, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -177,6 +179,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker2_timing, 125, 260);
     lv_obj_set_size(scr->cooker2_timing, 150, 50);
     lv_obj_add_flag(scr->cooker2_timing, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker2_timing, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker2_timing, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker2_timing
     lv_obj_set_style_text_font(scr->cooker2_timing, fs_fzltxhjw_50, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -190,6 +194,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_img_opa(scr->cooker2_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->cooker2_state, 100, 50);
     lv_obj_add_flag(scr->cooker2_state, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker2_state, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker2_state, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Init scr->cooker3
     scr->cooker3 = lv_obj_create(scr->obj);
@@ -264,6 +270,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_img_opa(scr->cooker3_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->cooker3_state, 100, 50);
     lv_obj_add_flag(scr->cooker3_state, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker3_state, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker3_state, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Init scr->cooker3_timing
     scr->cooker3_timing = lv_label_create(scr->cooker3);
@@ -272,6 +280,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker3_timing, 125, 260);
     lv_obj_set_size(scr->cooker3_timing, 150, 50);
     lv_obj_add_flag(scr->cooker3_timing, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker3_timing, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker3_timing, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker3_timing
     lv_obj_set_style_text_font(scr->cooker3_timing, fs_fzltxhjw_50, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -285,6 +295,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker3_gear, 150, 115);
     lv_obj_set_size(scr->cooker3_gear, 100, 120);
     lv_obj_add_flag(scr->cooker3_gear, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker3_gear, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker3_gear, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker3_gear
     lv_obj_set_style_text_font(scr->cooker3_gear, fs_fzltxhjw_120, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -364,6 +376,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_img_opa(scr->cooker1_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->cooker1_state, 100, 50);
     lv_obj_add_flag(scr->cooker1_state, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker1_state, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker1_state, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Init scr->cooker1_timing
     scr->cooker1_timing = lv_label_create(scr->cooker1);
@@ -372,6 +386,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker1_timing, 125, 260);
     lv_obj_set_size(scr->cooker1_timing, 150, 50);
     lv_obj_add_flag(scr->cooker1_timing, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker1_timing, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker1_timing, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker1_timing
     lv_obj_set_style_text_font(scr->cooker1_timing, fs_fzltxhjw_50, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -385,6 +401,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker1_gear, 150, 115);
     lv_obj_set_size(scr->cooker1_gear, 100, 120);
     lv_obj_add_flag(scr->cooker1_gear, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker1_gear, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker1_gear, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker1_gear
     lv_obj_set_style_text_font(scr->cooker1_gear, fs_fzltxhjw_120, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -464,6 +482,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_img_opa(scr->cooker4_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->cooker4_state, 100, 50);
     lv_obj_add_flag(scr->cooker4_state, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker4_state, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker4_state, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Init scr->cooker4_timing
     scr->cooker4_timing = lv_label_create(scr->cooker4);
@@ -472,6 +492,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker4_timing, 125, 260);
     lv_obj_set_size(scr->cooker4_timing, 150, 50);
     lv_obj_add_flag(scr->cooker4_timing, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker4_timing, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker4_timing, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker4_timing
     lv_obj_set_style_text_font(scr->cooker4_timing, fs_fzltxhjw_50, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -485,6 +507,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->cooker4_gear, 150, 115);
     lv_obj_set_size(scr->cooker4_gear, 100, 120);
     lv_obj_add_flag(scr->cooker4_gear, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->cooker4_gear, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cooker4_gear, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Set style of scr->cooker4_gear
     lv_obj_set_style_text_font(scr->cooker4_gear, fs_fzltxhjw_120, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -510,8 +534,8 @@ void main_screen_create(ui_manager_t *ui)
 
     // Set event handler of scr->dropline
     lv_obj_add_event_cb(scr->dropline, main_screen_dropline_released, LV_EVENT_RELEASED, NULL);
-    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
     lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressed, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
 
     // Init scr->drop_menu
     scr->drop_menu = lv_obj_create(scr->obj);

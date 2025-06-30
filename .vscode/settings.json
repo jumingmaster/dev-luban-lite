@@ -58,6 +58,19 @@
 		"fps_test.h": "c",
 		"mutex": "c",
 		"shared_mutex": "c",
-		"cooker_protocol.h": "c"
+		"cooker_protocol.h": "c",
+		"touch_common.h": "c",
+		"future": "c",
+		"system_error": "c",
+		"typeindex": "c",
+		"xlocale": "c",
+		"typeinfo": "c",
+		"drv_hrtimer.h": "c",
+		"lvgl.h": "c",
+		"lv_refr.h": "c",
+		"mpp_fb.h": "c",
+		"sstream": "c",
+		"strstream": "c",
+		"xiosbase": "c"
 	}
 }

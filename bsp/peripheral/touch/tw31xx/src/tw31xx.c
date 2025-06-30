@@ -314,6 +314,7 @@
 #define DBG_TAG "tw31xx"
 #define DBG_LVL DBG_INFO
 #include <rtdbg.h>
+#include "touch_common.h"
 
 static struct rt_i2c_client tw31xx_client;
 struct fdata gfdata_tp;
@@ -405,7 +406,7 @@ static rt_size_t tw31xx_read_point(struct rt_touch_device *touch, void *buf, rt_
 	int ret = 0;
 	int retry = 0;
     rt_uint8_t reg[2];
-    rt_uint32_t tp_buf;
+    // rt_uint32_t tp_buf;
     rt_uint8_t read_buf[40] = {0};
     struct rt_touch_data *temp_data;
     rt_uint8_t event = RT_TOUCH_EVENT_NONE;
@@ -526,7 +527,7 @@ void techwin_esd_work(void *parameter)
 
 	while(1)
 	{
-		rt_thread_sleep(2000);
+		rt_thread_delay(2000);
 		
 		/* Read Time Tick Register */
 		for(i=0; i<30; i++)

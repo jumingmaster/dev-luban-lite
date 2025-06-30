@@ -1,26 +1,27 @@
 #include "cooker_drv.h"
 
+
 static void tx_set_high() { rt_pin_write(drv_pin_get("PA.4"), PIN_HIGH); }
 static void tx_set_low() { rt_pin_write(drv_pin_get("PA.4"), PIN_LOW); }
 static int rx_read_level() { return rt_pin_read(drv_pin_get("PA.5")); }
 
 
 
+
+
 static void send_bit(uint8_t bit) 
 {
-    tx_set_high();
-    aic_udelay(bit ? BIT1_HIGH : BIT0_HIGH);
     tx_set_low();
-    aic_udelay(LOW_MIN);
-
-    
+    aic_udelay(bit ? BIT1_HIGH : BIT0_HIGH);
+    tx_set_high();
+    aic_udelay(bit ? BIT0_HIGH : BIT1_HIGH);
 }
 
 static void send_byte(uint8_t data) 
 {
     for(int i = 0; i < 8; i++) 
     {
-        send_bit(data & (1 << (7 - i)));
+        send_bit(data & (1 << i));
     }
 }
 
@@ -46,6 +47,7 @@ static uint8_t receive_byte(void)
     {
         byte |= receive_bit() << (7 - i);
     }
+    return byte;
 }
 
 
@@ -73,12 +75,12 @@ int cooker_read_bytes(uint8_t * data, uint8_t length)
         ret = -1;
         goto __exit;
     } 
-
+    rt_enter_critical();
     for(int i = 0; i < length; i++) 
     {
         data[i] = receive_byte();
     }
-
+    rt_exit_critical();
     for (int i = 0; i < length - 1; i++)
     {
         chksum += data[i];
@@ -100,18 +102,57 @@ __exit:
 
 int cooker_send_bytes(uint8_t * data, uint8_t length)
 {
+    uint8_t sum = 0;
+
     // Calculate check sum;
     for (int i = 0; i < length; i++)
     {
-        data[length - 1] = data[i]++;
+        sum += data[i];
     }
-    data[length - 1] = ~data[length - 1];
+   sum = ~sum;
 
+   data[length - 1] = sum;
+    
+    rt_enter_critical();
+    tx_set_low();
+    aic_udelay(START_MIN);
+    tx_set_high();
+    aic_udelay(1050);
+    
     for (int i = 0; i < length; i++)
     {
         send_byte(data[i]);
     }
+    
+    tx_set_high();
+    rt_exit_critical();
+
+    // rt_kprintf("send_byte :\r\n");
+    // for (int i = 0; i < length; i++)
+    // {
+    //     rt_kprintf("%02X ", data[i]);
+    // }
+    // rt_kprintf("\r\n");
+    
+
+    return length;
 }
+
+
+
+
+// uint8_t cooker_drv_gen_sum(const uint8_t * data, uint8_t length)
+// {
+//     uint8_t sum = 0;
+//     for (int i = 0; i < length; i++)
+//     {
+//         sum = data[i]++;
+//     }
+//    sum = ~sum;
+
+//    data[length - 1] = sum;
+// }
+
 
 
 
