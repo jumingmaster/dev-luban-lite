@@ -71,7 +71,7 @@ void lv_draw_ge2d_deinit(void)
     lv_ge2d_deinit();
 }
 
-void lv_draw_ge2d_rotate(const void *src_buf, void *dest_buf, int32_t src_width, int32_t src_height,
+TCM_CODE_DEFINE void lv_draw_ge2d_rotate(const void *src_buf, void *dest_buf, int32_t src_width, int32_t src_height,
                          int32_t src_stride, int32_t dest_stride, lv_display_rotation_t rotation,
                          lv_color_format_t cf)
 {
@@ -138,7 +138,7 @@ void lv_draw_ge2d_rotate(const void *src_buf, void *dest_buf, int32_t src_width,
     return;
 }
 
-static bool ge2d_draw_img_supported(const lv_draw_image_dsc_t *draw_dsc)
+TCM_CODE_DEFINE static bool ge2d_draw_img_supported(const lv_draw_image_dsc_t *draw_dsc)
 {
     bool recolor = (draw_dsc->recolor_opa > LV_OPA_MIN);
     bool scale = draw_dsc->scale_x != LV_SCALE_NONE || draw_dsc->scale_y != LV_SCALE_NONE;
@@ -176,7 +176,7 @@ static bool ge2d_draw_img_supported(const lv_draw_image_dsc_t *draw_dsc)
     return true;
 }
 
-static int32_t ge2d_evaluate(lv_draw_unit_t *u, lv_draw_task_t *t)
+TCM_CODE_DEFINE static int32_t ge2d_evaluate(lv_draw_unit_t *u, lv_draw_task_t *t)
 {
     LV_UNUSED(u);
 
@@ -247,7 +247,7 @@ static int32_t ge2d_evaluate(lv_draw_unit_t *u, lv_draw_task_t *t)
     return 0;
 }
 
-static inline void execute_drawing_unit(lv_draw_sw_unit_t *u)
+TCM_CODE_DEFINE static inline void execute_drawing_unit(lv_draw_sw_unit_t *u)
 {
     ge2d_execute_drawing(u);
 
@@ -258,7 +258,7 @@ static inline void execute_drawing_unit(lv_draw_sw_unit_t *u)
     lv_draw_dispatch_request();
 }
 
-static int32_t ge2d_dispatch(lv_draw_unit_t *draw_unit, lv_layer_t *layer)
+TCM_CODE_DEFINE static int32_t ge2d_dispatch(lv_draw_unit_t *draw_unit, lv_layer_t *layer)
 {
     LV_PROFILER_BEGIN;
     lv_draw_ge2d_unit_t * draw_ge2d_unit = (lv_draw_ge2d_unit_t *) draw_unit;
@@ -318,7 +318,7 @@ static int32_t ge2d_delete(lv_draw_unit_t *draw_unit)
 #endif
 }
 
-static inline void lv_invalid_nomal_area(lv_draw_unit_t *draw_unit,
+TCM_CODE_DEFINE static inline void lv_invalid_nomal_area(lv_draw_unit_t *draw_unit,
                                          const lv_area_t *draw_area,
                                          lv_layer_t *layer)
 {
@@ -330,7 +330,7 @@ static inline void lv_invalid_nomal_area(lv_draw_unit_t *draw_unit,
     lv_draw_buf_invalidate_cache(layer->draw_buf, &clipped_area);
 }
 
-static inline void lv_invalid_clip_area(lv_draw_unit_t *draw_unit, lv_layer_t *layer)
+TCM_CODE_DEFINE static inline void lv_invalid_clip_area(lv_draw_unit_t *draw_unit, lv_layer_t *layer)
 {
     lv_area_t clipped_area;
     lv_area_copy(&clipped_area, draw_unit->clip_area);
@@ -339,7 +339,7 @@ static inline void lv_invalid_clip_area(lv_draw_unit_t *draw_unit, lv_layer_t *l
     return;
 }
 
-static inline void lv_invalid_image_area(lv_draw_unit_t *draw_unit,
+TCM_CODE_DEFINE static inline void lv_invalid_image_area(lv_draw_unit_t *draw_unit,
                                          const lv_draw_image_dsc_t *draw_dsc,
                                          const lv_area_t *draw_area,
                                          lv_layer_t *layer)
@@ -350,7 +350,7 @@ static inline void lv_invalid_image_area(lv_draw_unit_t *draw_unit,
         lv_invalid_nomal_area(draw_unit, draw_area, layer);
 }
 
-static void ge2d_execute_drawing(lv_draw_ge2d_unit_t *u)
+TCM_CODE_DEFINE static void ge2d_execute_drawing(lv_draw_ge2d_unit_t *u)
 {
     lv_draw_task_t *t = u->task_act;
     lv_draw_unit_t *draw_unit = (lv_draw_unit_t *)u;

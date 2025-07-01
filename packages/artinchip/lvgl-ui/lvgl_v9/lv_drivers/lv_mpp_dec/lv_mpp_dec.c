@@ -29,7 +29,7 @@
 #define JPEG_SOF 0xFFC0
 #define ALIGN_16B(x) (((x) + (15)) & ~(15))
 
-lv_color_format_t mpp_fmt_to_lv_fmt(enum mpp_pixel_format cf)
+TCM_CODE_DEFINE lv_color_format_t mpp_fmt_to_lv_fmt(enum mpp_pixel_format cf)
 {
     lv_color_format_t fmt = LV_COLOR_FORMAT_ARGB8888;
 
@@ -66,7 +66,7 @@ lv_color_format_t mpp_fmt_to_lv_fmt(enum mpp_pixel_format cf)
     return fmt;
 }
 
-static int mpp_get_rgb_stride(int width, enum mpp_pixel_format fmt)
+TCM_CODE_DEFINE static int mpp_get_rgb_stride(int width, enum mpp_pixel_format fmt)
 {
     int stride;
 
@@ -262,7 +262,7 @@ lv_result_t lv_jpeg_decoder_info(const char *src, lv_image_header_t *header, uin
     return LV_RESULT_OK;
 }
 
-static inline lv_result_t check_png_sig(lv_stream_t *stream)
+TCM_CODE_DEFINE static inline lv_result_t check_png_sig(lv_stream_t *stream)
 {
     uint32_t read_num;
     unsigned char buf[64];
@@ -277,7 +277,7 @@ static inline lv_result_t check_png_sig(lv_stream_t *stream)
     return LV_RESULT_OK;
 }
 
-lv_result_t lv_png_decoder_info(const char *src, lv_image_header_t *header, uint32_t size, bool is_file)
+TCM_CODE_DEFINE lv_result_t lv_png_decoder_info(const char *src, lv_image_header_t *header, uint32_t size, bool is_file)
 {
     lv_fs_res_t res;
     uint32_t read_num;
@@ -329,7 +329,7 @@ lv_result_t lv_png_decoder_info(const char *src, lv_image_header_t *header, uint
     return LV_RESULT_OK;
 }
 
-static lv_res_t fake_decoder_info(const void *src, lv_image_header_t *header)
+TCM_CODE_DEFINE static lv_res_t fake_decoder_info(const void *src, lv_image_header_t *header)
 {
     int width;
     int height;
@@ -343,7 +343,7 @@ static lv_res_t fake_decoder_info(const void *src, lv_image_header_t *header)
     return LV_RES_OK;
 }
 
-static lv_result_t lv_mpp_dec_info(lv_image_decoder_t *decoder, const void *src, lv_image_header_t *header)
+TCM_CODE_DEFINE static lv_result_t lv_mpp_dec_info(lv_image_decoder_t *decoder, const void *src, lv_image_header_t *header)
 {
     char* ptr = NULL;
     lv_result_t res = LV_RESULT_INVALID;
@@ -393,7 +393,7 @@ struct ext_frame_allocator {
     struct mpp_frame* frame;
 };
 
-static int alloc_frame_buffer(struct frame_allocator *p, struct mpp_frame* frame,
+TCM_CODE_DEFINE static int alloc_frame_buffer(struct frame_allocator *p, struct mpp_frame* frame,
                               int width, int height, enum mpp_pixel_format format)
 {
     struct ext_frame_allocator* impl = (struct ext_frame_allocator*)p;
@@ -402,12 +402,12 @@ static int alloc_frame_buffer(struct frame_allocator *p, struct mpp_frame* frame
     return 0;
 }
 
-static int free_frame_buffer(struct frame_allocator *p, struct mpp_frame *frame)
+TCM_CODE_DEFINE static int free_frame_buffer(struct frame_allocator *p, struct mpp_frame *frame)
 {
     return 0;
 }
 
-static int close_allocator(struct frame_allocator *p)
+TCM_CODE_DEFINE static int close_allocator(struct frame_allocator *p)
 {
     struct ext_frame_allocator* impl = (struct ext_frame_allocator*)p;
 
@@ -422,7 +422,7 @@ static struct alloc_ops def_ops = {
     .close_allocator = close_allocator,
 };
 
-struct frame_allocator* lv_open_allocator(struct mpp_frame* frame)
+TCM_CODE_DEFINE struct frame_allocator* lv_open_allocator(struct mpp_frame* frame)
 {
     struct ext_frame_allocator* impl = (struct ext_frame_allocator*)malloc(sizeof(struct ext_frame_allocator));
 
@@ -437,7 +437,7 @@ struct frame_allocator* lv_open_allocator(struct mpp_frame* frame)
     return &impl->base;
 }
 
-void lv_frame_buf_free(mpp_decoder_data_t *mpp_data)
+TCM_CODE_DEFINE void lv_frame_buf_free(mpp_decoder_data_t *mpp_data)
 {
     int i;
     for (i = 0; i < 3; i++) {
@@ -448,7 +448,7 @@ void lv_frame_buf_free(mpp_decoder_data_t *mpp_data)
     }
 }
 
-lv_result_t lv_frame_buf_alloc(mpp_decoder_data_t *mpp_data, struct mpp_buf *alloc_buf,
+TCM_CODE_DEFINE lv_result_t lv_frame_buf_alloc(mpp_decoder_data_t *mpp_data, struct mpp_buf *alloc_buf,
                               int *size, uint32_t cf)
 {
     int i;
@@ -489,7 +489,7 @@ alloc_error:
     return LV_RESULT_INVALID;
 }
 
-void lv_set_frame_buf_size(struct mpp_frame *frame, int *buf_size, int size_shift)
+TCM_CODE_DEFINE void lv_set_frame_buf_size(struct mpp_frame *frame, int *buf_size, int size_shift)
 {
     int height_align;
     int width = frame->buf.size.width;
@@ -571,7 +571,7 @@ void lv_set_frame_buf_size(struct mpp_frame *frame, int *buf_size, int size_shif
     }
 }
 
-static lv_result_t lv_mpp_dec_open(lv_image_decoder_t *decoder, lv_image_decoder_dsc_t *dsc)
+TCM_CODE_DEFINE static lv_result_t lv_mpp_dec_open(lv_image_decoder_t *decoder, lv_image_decoder_dsc_t *dsc)
 {
     lv_result_t res = LV_RESULT_OK;
     uint32_t file_len = 0;
@@ -719,7 +719,7 @@ out:
     return res;
 }
 
-static void mpp_dec_data_release(mpp_decoder_data_t *decoder_data)
+TCM_CODE_DEFINE static void mpp_dec_data_release(mpp_decoder_data_t *decoder_data)
 {
     if (decoder_data == NULL)
         return;
@@ -730,7 +730,7 @@ static void mpp_dec_data_release(mpp_decoder_data_t *decoder_data)
     }
 }
 
-static void lv_mpp_dec_close(lv_image_decoder_t *decoder, lv_image_decoder_dsc_t *dsc)
+TCM_CODE_DEFINE static void lv_mpp_dec_close(lv_image_decoder_t *decoder, lv_image_decoder_dsc_t *dsc)
 {
     mpp_decoder_data_t *mpp_data =  (mpp_decoder_data_t *)dsc->decoded;
     LV_UNUSED(decoder);
@@ -744,7 +744,7 @@ static void lv_mpp_dec_close(lv_image_decoder_t *decoder, lv_image_decoder_dsc_t
     return;
 }
 
-static void mpp_dec_cache_free_cb(void *node, void *user_data)
+TCM_CODE_DEFINE static void mpp_dec_cache_free_cb(void *node, void *user_data)
 {
     lv_image_cache_data_t *entry = (lv_image_cache_data_t *)node;
     mpp_cache_t *mpp_cache = (mpp_cache_t *)entry->decoder->user_data;
@@ -795,7 +795,7 @@ void lv_mpp_dec_deinit(void)
 }
 
 #if LV_CACHE_DEF_SIZE > 0
-bool lv_drop_one_cached_image()
+TCM_CODE_DEFINE bool lv_drop_one_cached_image()
 {
     #define img_cache_p (LV_GLOBAL_DEFAULT()->img_cache)
     #define lv_initialized  (LV_GLOBAL_DEFAULT()->inited)
@@ -805,7 +805,7 @@ bool lv_drop_one_cached_image()
         return false;
 }
 
-bool lv_image_cache_check(mpp_cache_t *mpp_cache)
+TCM_CODE_DEFINE bool lv_image_cache_check(mpp_cache_t *mpp_cache)
 {
 #if LV_CACHE_IMG_NUM_LIMIT == 0
     return true;

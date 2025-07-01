@@ -85,7 +85,7 @@ static void lv_fb_dump(int argc, char **argv)
 MSH_CMD_EXPORT_ALIAS(lv_fb_dump, lv_dump, lvgl dump display buffer);
 #endif
 
-static void display_cal_frame_rate(aic_disp_t *aic_disp)
+TCM_CODE_DEFINE static void display_cal_frame_rate(aic_disp_t *aic_disp)
 {
 #if DISP_SHOW_FPS == 1
     static int start_cal = 0;
@@ -114,7 +114,7 @@ static void display_cal_frame_rate(aic_disp_t *aic_disp)
     return;
 }
 
-static inline void *get_fb_buf_by_id(aic_disp_t *aic_disp, int id)
+TCM_CODE_DEFINE static inline void *get_fb_buf_by_id(aic_disp_t *aic_disp, int id)
 {
     if (id == 1)
         return (void *)(aic_disp->info.framebuffer + aic_disp->fb_size);
@@ -134,7 +134,7 @@ static inline void wait_sync_ready(aic_disp_t *aic_disp)
 }
 #endif
 
-static inline void disp_do_blit(aic_disp_t *aic_disp, lv_display_t *disp, lv_draw_buf_t *disp_buf)
+TCM_CODE_DEFINE static inline void disp_do_blit(aic_disp_t *aic_disp, lv_display_t *disp, lv_draw_buf_t *disp_buf)
 {
     void *dest_buf = get_fb_buf_by_id(aic_disp, aic_disp->buf_id);
     int32_t hor_res = lv_display_get_horizontal_resolution(disp);
@@ -153,7 +153,7 @@ static inline void disp_do_blit(aic_disp_t *aic_disp, lv_display_t *disp, lv_dra
 #endif
 }
 
-static inline void display_power_on(aic_disp_t *aic_disp)
+TCM_CODE_DEFINE static inline void display_power_on(aic_disp_t *aic_disp)
 {
 #ifndef AIC_DISP_COLOR_BLOCK
     static bool first_frame = true;
@@ -166,7 +166,7 @@ static inline void display_power_on(aic_disp_t *aic_disp)
 #endif
 }
 
-static inline void disp_draw_buf_flush(aic_disp_t *aic_disp, lv_display_t *disp, lv_draw_buf_t *disp_buf)
+TCM_CODE_DEFINE static inline void disp_draw_buf_flush(aic_disp_t *aic_disp, lv_display_t *disp, lv_draw_buf_t *disp_buf)
 {
 #if LV_USE_OS && defined(AIC_PAN_DISPLAY)
     wait_sync_ready(aic_disp);
@@ -192,7 +192,8 @@ static inline void disp_draw_buf_flush(aic_disp_t *aic_disp, lv_display_t *disp,
 #endif
 }
 
-static void disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
+
+TCM_CODE_DEFINE static void disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
 {
     aic_disp_t *aic_disp = (aic_disp_t *)lv_display_get_user_data(disp);
 
@@ -238,7 +239,7 @@ static void disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_ma
     lv_display_flush_ready(disp);
 }
 
-static lv_color_format_t lv_display_fmt(enum mpp_pixel_format cf)
+TCM_CODE_DEFINE static lv_color_format_t lv_display_fmt(enum mpp_pixel_format cf)
 {
     lv_color_format_t fmt = LV_COLOR_FORMAT_ARGB8888;
     switch(cf) {
@@ -292,7 +293,7 @@ static void aic_display_thread(void *ptr)
 #endif
 
 #if defined(LV_DISPLAY_ROTATE_EN)
-static uint8_t *create_draw_buf(aic_disp_t *aic_disp, int w, int h, lv_color_format_t cf)
+TCM_CODE_DEFINE static uint8_t *create_draw_buf(aic_disp_t *aic_disp, int w, int h, lv_color_format_t cf)
 {
     int bpp = lv_color_format_get_bpp(cf) / 8;
     int buf_size = ALIGN_UP(w, 8) * ALIGN_UP(h, 8) * bpp;

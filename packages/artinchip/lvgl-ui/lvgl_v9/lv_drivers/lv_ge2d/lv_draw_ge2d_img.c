@@ -40,7 +40,7 @@ static void ge2d_img_draw_core(lv_draw_unit_t *draw_unit, const lv_draw_image_ds
 
 #define _draw_info LV_GLOBAL_DEFAULT()->draw_info
 
-void lv_draw_ge2d_layer(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw_dsc, const lv_area_t *coords)
+TCM_CODE_DEFINE void lv_draw_ge2d_layer(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw_dsc, const lv_area_t *coords)
 {
     lv_layer_t *layer_to_draw = (lv_layer_t *)draw_dsc->src;
 
@@ -130,7 +130,7 @@ void lv_draw_ge2d_layer(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *dr
 #endif
 }
 
-static inline void ge2d_sync(struct mpp_ge *ge2d_dev)
+TCM_CODE_DEFINE static inline void ge2d_sync(struct mpp_ge *ge2d_dev)
 {
     int ret;
 
@@ -149,7 +149,7 @@ static inline void ge2d_sync(struct mpp_ge *ge2d_dev)
     return;
 }
 
-void lv_draw_ge2d_img(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw_dsc,
+TCM_CODE_DEFINE void lv_draw_ge2d_img(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw_dsc,
                       const lv_area_t *coords)
 {
 
@@ -190,7 +190,7 @@ void lv_draw_ge2d_img(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw
     }
 }
 
-static inline bool yuv_size_is_invalid(int32_t src_w, int32_t src_h, int32_t dst_w, int32_t dst_h)
+TCM_CODE_DEFINE static inline bool yuv_size_is_invalid(int32_t src_w, int32_t src_h, int32_t dst_w, int32_t dst_h)
 {
     if (src_w < 8 || src_h < 8 || dst_w < 8 || dst_h < 8) {
         return true;
@@ -199,7 +199,7 @@ static inline bool yuv_size_is_invalid(int32_t src_w, int32_t src_h, int32_t dst
     return false;
 }
 
-static inline bool rgb_size_is_invalid(int32_t src_w, int32_t src_h, int32_t dst_w, int32_t dst_h)
+TCM_CODE_DEFINE static inline bool rgb_size_is_invalid(int32_t src_w, int32_t src_h, int32_t dst_w, int32_t dst_h)
 {
     if (src_w < 4 || src_h < 4 || dst_w < 4 || dst_h < 4) {
         return true;
@@ -208,7 +208,7 @@ static inline bool rgb_size_is_invalid(int32_t src_w, int32_t src_h, int32_t dst
     return false;
 }
 
-void lv_draw_ge2d_blit(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *blend_dsc)
+TCM_CODE_DEFINE void lv_draw_ge2d_blit(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *blend_dsc)
 {
     if (blend_dsc->opa <= LV_OPA_MIN)
         return;
@@ -330,7 +330,7 @@ void lv_draw_ge2d_blit(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *
     ge2d_sync(ge2d_dev);
 }
 
-static void transform_point_inverse(point_transform_t *t, int32_t xin, int32_t yin, int32_t *xout,
+TCM_CODE_DEFINE static void transform_point_inverse(point_transform_t *t, int32_t xin, int32_t yin, int32_t *xout,
                                     int32_t *yout, int32_t src_w, int32_t src_h)
 {
     if(t->angle == 0 && t->scale_x == LV_SCALE_NONE && t->scale_y == LV_SCALE_NONE) {
@@ -357,7 +357,7 @@ static void transform_point_inverse(point_transform_t *t, int32_t xin, int32_t y
     *yout = LV_CLAMP(0, (*yout + 128) >> 8,  src_h);
 }
 
-static void image_buf_get_inverse_transform(lv_area_t *in_area, lv_area_t *out_area, int32_t rotation,
+TCM_CODE_DEFINE static void image_buf_get_inverse_transform(lv_area_t *in_area, lv_area_t *out_area, int32_t rotation,
                                             uint16_t scale_x, uint16_t scale_y, const lv_point_t *pivot,
                                             int32_t src_w, int32_t src_h)
 {
@@ -402,7 +402,7 @@ static void image_buf_get_inverse_transform(lv_area_t *in_area, lv_area_t *out_a
     out_area->y2 = LV_MAX4(out_p[0].y, out_p[1].y, out_p[2].y, out_p[3].y) - 1;
 }
 
-void lv_draw_ge2d_transform(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *blend_dsc,
+TCM_CODE_DEFINE void lv_draw_ge2d_transform(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *blend_dsc,
                             const lv_draw_image_dsc_t *draw_dsc, const lv_area_t *clipped_area)
 {
     int32_t src_w;
@@ -526,7 +526,7 @@ void lv_draw_ge2d_transform(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_ds
     ge2d_sync(ge2d_dev);
 }
 
-void lv_draw_ge2d_rotate_any_degree(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *blend_dsc,
+TCM_CODE_DEFINE void lv_draw_ge2d_rotate_any_degree(lv_draw_unit_t *draw_unit, const lv_draw_sw_blend_dsc_t *blend_dsc,
                                     const lv_draw_image_dsc_t *draw_dsc, const lv_area_t *clipped_area)
 {
     int32_t src_w;
@@ -617,7 +617,7 @@ void lv_draw_ge2d_rotate_any_degree(lv_draw_unit_t *draw_unit, const lv_draw_sw_
     ge2d_sync(ge2d_dev);
 }
 
-static void ge2d_img_draw_core(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw_dsc,
+TCM_CODE_DEFINE static void ge2d_img_draw_core(lv_draw_unit_t *draw_unit, const lv_draw_image_dsc_t *draw_dsc,
                                const lv_image_decoder_dsc_t *decoder_dsc, lv_draw_image_sup_t *sup,
                                const lv_area_t *img_coords, const lv_area_t *clipped_img_area)
 {

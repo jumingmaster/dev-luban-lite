@@ -47,7 +47,7 @@ static void touch_panel_gt911_read_info(void)
 }
 #endif
 
-static void touch_entry(void *parameter) /* touch panel control entry */
+TCM_CODE_DEFINE static void touch_entry(void *parameter) /* touch panel control entry */
 {
 #ifdef AIC_USING_RTP /* by default, only one point is supported */
     info.point_num = 1;
@@ -100,7 +100,7 @@ static rt_err_t rx_callback(rt_device_t dev, rt_size_t size)
     return 0;
 }
 
-int tpc_run(const char *name, rt_uint16_t x, rt_uint16_t y)
+TCM_CODE_DEFINE  int tpc_run(const char *name, rt_uint16_t x, rt_uint16_t y)
 {
     dev = rt_device_find(name);
     if (dev == RT_NULL)
@@ -148,7 +148,7 @@ int tpc_run(const char *name, rt_uint16_t x, rt_uint16_t y)
 
 static rt_err_t (*bak_callback)(rt_device_t, rt_size_t);
 
-void lvgl_get_tp(void)
+TCM_CODE_DEFINE void lvgl_get_tp(void)
 {
     if (bak_callback == NULL) {
         bak_callback = dev->rx_indicate;
@@ -160,7 +160,7 @@ void lvgl_get_tp(void)
     }
 }
 
-void lvgl_put_tp(void)
+TCM_CODE_DEFINE void lvgl_put_tp(void)
 {
     rt_uint8_t flag = 0;
     if (bak_callback != NULL) {

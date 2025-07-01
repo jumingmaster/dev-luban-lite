@@ -19,7 +19,7 @@
 
 #if LV_USE_AIC_IMG_DSC && LV_USE_DRAW_GE2D
 
-void lv_aic_dec_free(struct mpp_buf *mpp_buf)
+TCM_CODE_DEFINE void lv_aic_dec_free(struct mpp_buf *mpp_buf)
 {
     int i;
     for (i = 0; i < 3; i++) {
@@ -30,7 +30,7 @@ void lv_aic_dec_free(struct mpp_buf *mpp_buf)
     }
 }
 
-lv_result_t lv_aic_dec_alloc(struct mpp_buf *mpp_buf, int *size)
+TCM_CODE_DEFINE lv_result_t lv_aic_dec_alloc(struct mpp_buf *mpp_buf, int *size)
 {
     int i;
     for (i = 0; i < 3; i++) {
@@ -52,7 +52,7 @@ alloc_error:
     return LV_RESULT_INVALID;
 }
 
-static lv_result_t lv_mpp_dec_frame(struct mpp_buf *buf, const char *src, uint32_t size, bool is_file)
+TCM_CODE_DEFINE static lv_result_t lv_mpp_dec_frame(struct mpp_buf *buf, const char *src, uint32_t size, bool is_file)
 {
     lv_stream_t stream;
     char *ptr;
@@ -175,7 +175,7 @@ out:
         return LV_RESULT_INVALID;
 }
 
-static inline bool mpp_fmt_is_yuv(enum mpp_pixel_format fmt)
+TCM_CODE_DEFINE static inline bool mpp_fmt_is_yuv(enum mpp_pixel_format fmt)
 {
     if (fmt >= MPP_FMT_YUV420P)
         return true;
@@ -183,7 +183,7 @@ static inline bool mpp_fmt_is_yuv(enum mpp_pixel_format fmt)
         return false;
 }
 
-static int mpp_buf_yuv_to_rgb(struct mpp_buf *buf)
+TCM_CODE_DEFINE static int mpp_buf_yuv_to_rgb(struct mpp_buf *buf)
 {
     int ret;
     enum mpp_pixel_format out_fmt = MPP_FMT_ARGB_8888;
@@ -272,7 +272,7 @@ failed:
     return -1;
 }
 
-static lv_image_dsc_t *lv_aic_img_dsc_create_base(const char *src,  uint32_t size, bool is_file)
+TCM_CODE_DEFINE static lv_image_dsc_t *lv_aic_img_dsc_create_base(const char *src,  uint32_t size, bool is_file)
 {
     lv_image_dsc_t *img_dsc;
     struct mpp_buf buf;
@@ -336,7 +336,7 @@ lv_image_dsc_t *lv_aic_img_dsc_create_from_buf(const char *buf, uint32_t size)
     return lv_aic_img_dsc_create_base(buf, size, false);
 }
 
-void lv_aic_img_dsc_destory(lv_image_dsc_t *img_dsc)
+TCM_CODE_DEFINE void lv_aic_img_dsc_destory(lv_image_dsc_t *img_dsc)
 {
     if (img_dsc) {
         if (img_dsc->data) {

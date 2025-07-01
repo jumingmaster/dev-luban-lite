@@ -29,7 +29,7 @@
 
     /*Enable/disable LV_LOG_TRACE in modules that produces a huge number of logs*/
 
-    #define LV_LOG_LEVEL            LV_LOG_LEVEL_WARN
+    #define LV_LOG_LEVEL            LV_LOG_LEVEL_ERROR
     #define LV_LOG_TRACE_MEM        0
     #define LV_LOG_TRACE_TIMER      0
     #define LV_LOG_TRACE_INDEV      0
@@ -48,7 +48,7 @@
 #define LV_USE_MEM_MONITOR 0
 #define LV_USE_PERF_MONITOR 1
 #define LV_USE_SYSMON   1
-#define LV_INDEV_DEF_READ_PERIOD 10
+#define LV_INDEV_DEF_READ_PERIOD 5
 
 #if defined(KERNEL_BAREMETAL)|| defined(KERNEL_FREERTOS)
 #define LV_USE_STDLIB_MALLOC    LV_STDLIB_CLIB
@@ -60,7 +60,7 @@
 #define LV_TICK_CUSTOM 1
 #define LV_TICK_CUSTOM_INCLUDE <aic_common.h>
 #define LV_TICK_CUSTOM_SYS_TIME_EXPR (aic_get_time_ms())    /*Expression evaluating to current system time in ms*/
-#define LV_DISP_DEF_REFR_PERIOD 10
+#define LV_DISP_DEF_REFR_PERIOD 5
 #endif
 
 #define LV_USE_FS_POSIX 1

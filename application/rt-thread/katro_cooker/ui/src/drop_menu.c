@@ -1,18 +1,18 @@
 #include "drop_menu.h"
+#include "aic_core.h"
 
 
+TCM_DATA_DEFINE static volatile int dropped = 0;
 
-static volatile int dropped = 0;
-
-static lv_obj_t * parent = NULL;
+TCM_DATA_DEFINE static lv_obj_t * parent = NULL;
 
 
-static void anim_y_cb(void * var, int32_t v)
+TCM_CODE_DEFINE static void anim_y_cb(void * var, int32_t v)
 {
     lv_obj_set_y(var, v);
 }
 
-static void anim_line_completed_cb(lv_anim_t * a)
+TCM_CODE_DEFINE static void anim_line_completed_cb(lv_anim_t * a)
 {
     // rt_kprintf("Dropline animate completed, dropped=%d\r\n", dropped);
     if (parent)
@@ -22,20 +22,20 @@ static void anim_line_completed_cb(lv_anim_t * a)
     }
 }
 
-static void anim_menu_completed_cb(lv_anim_t * a)
+TCM_CODE_DEFINE static void anim_menu_completed_cb(lv_anim_t * a)
 {
     lv_obj_add_flag(a->var, LV_OBJ_FLAG_HIDDEN);
 }
 
 
-void drop_menu_start(lv_obj_t * line, lv_obj_t * menu)
+TCM_CODE_DEFINE void drop_menu_start(lv_obj_t * line, lv_obj_t * menu)
 {
     dropped = (lv_obj_get_y2(line) >= LV_VER_RES) ? 1 : 0; 
 
     lv_obj_clear_flag(menu, LV_OBJ_FLAG_HIDDEN);
 }
 
-void drop_menu_dropping_handler(lv_obj_t * line, lv_obj_t * menu)
+TCM_CODE_DEFINE void drop_menu_dropping_handler(lv_obj_t * line, lv_obj_t * menu)
 {
     lv_point_t point = {0};
     lv_indev_get_point(lv_indev_get_act(), &point);
@@ -52,7 +52,7 @@ void drop_menu_dropping_handler(lv_obj_t * line, lv_obj_t * menu)
 }
 
 
-void drop_menu_released_handler(lv_obj_t * main_scr, lv_obj_t * line, lv_obj_t * menu)
+TCM_CODE_DEFINE void drop_menu_released_handler(lv_obj_t * main_scr, lv_obj_t * line, lv_obj_t * menu)
 {
     lv_point_t point = {0};
     lv_anim_t roll_back_menu = {0};

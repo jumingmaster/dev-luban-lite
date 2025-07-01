@@ -3,9 +3,9 @@
 
 static lv_timer_t * main_scr_tmr = NULL;
 
-static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
+TCM_DATA_DEFINE static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
 
-static ui_cooker_ctx_t cooker_ui[UI_COOKER_NUM] = {0};
+TCM_DATA_DEFINE static ui_cooker_ctx_t cooker_ui[UI_COOKER_NUM] = {0};
 
 static rt_mutex_t cur_state_mtx[UI_COOKER_NUM] = {0};
 
@@ -17,7 +17,7 @@ static const char main_ui_mtx_name[UI_COOKER_NUM][16] = {
 };
 
 
-static void main_scr_timer_handler(lv_timer_t * tmr)
+TCM_CODE_DEFINE static void main_scr_timer_handler(lv_timer_t * tmr)
 {
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
@@ -33,25 +33,25 @@ static void main_scr_timer_handler(lv_timer_t * tmr)
 }
 
 
-void update_main_scr_ui_data(const ui_cooker_state_t * state, int num)
+TCM_CODE_DEFINE void update_main_scr_ui_data(const ui_cooker_state_t * state, int num)
 {
-    if (rt_mutex_take(cur_state_mtx[num], 10) == RT_EOK)
+    if (rt_mutex_take(cur_state_mtx[num], 100) == RT_EOK)
     {
         memcpy(&cur_cooker_state[num], state, sizeof(ui_cooker_state_t));
         rt_mutex_release(cur_state_mtx[num]);
-        // rt_kprintf("Update main screen cooker%d ui state\r\n", num);
+        // rt_kprintf("Selected Hour:%d, Minute:%d\r\n", cur_cooker_state[num].hour, cur_cooker_state[num].minute);
     }
 }
 
 
 
-void main_screen_custom_unload_start(void) 
+TCM_CODE_DEFINE void main_screen_custom_unload_start(void) 
 {
     // lv_timer_pause(main_scr_tmr);
 }
 
 
-void main_screen_custom_created(void) 
+TCM_CODE_DEFINE void main_screen_custom_created(void) 
 {
     // cooker_ui_manager_init();
 
@@ -90,7 +90,7 @@ void main_screen_custom_created(void)
 }
 
 
-void main_screen_custom_load_start(void) 
+TCM_CODE_DEFINE void main_screen_custom_load_start(void) 
 {
     char str[16] = {0};
 
@@ -120,11 +120,13 @@ void main_screen_custom_load_start(void)
                 if (cur_cooker_state[i].on_max_gear)
                 {
                     lv_obj_add_flag(cooker_ui[i].gear, LV_OBJ_FLAG_HIDDEN);
+                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(max_gear_150x150.png));
                     lv_obj_clear_flag(cooker_ui[i].state, LV_OBJ_FLAG_HIDDEN);
                 }
                 else if (cur_cooker_state[i].thermos)
                 {
                     lv_obj_add_flag(cooker_ui[i].gear, LV_OBJ_FLAG_HIDDEN);
+                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(thermos_150x150.png));
                     lv_obj_clear_flag(cooker_ui[i].state, LV_OBJ_FLAG_HIDDEN);
                 }
                 else if (cur_cooker_state[i].gear > 0)
@@ -160,9 +162,13 @@ void main_screen_custom_load_start(void)
 }
 
 
+TCM_CODE_DEFINE void main_screen_global_pause_custom_clicked(void) 
+{
+    
+}
 
 
-void main_screen_dropline_custom_pressed(void)
+TCM_CODE_DEFINE void main_screen_dropline_custom_pressed(void)
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
@@ -174,7 +180,7 @@ void main_screen_dropline_custom_pressed(void)
     drop_menu_start(scr->dropline, scr->drop_menu);
 }
 
-void main_screen_dropline_custom_pressing(void) 
+TCM_CODE_DEFINE void main_screen_dropline_custom_pressing(void) 
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
@@ -187,7 +193,7 @@ void main_screen_dropline_custom_pressing(void)
 }
 
 
-void main_screen_dropline_custom_released(void) 
+TCM_CODE_DEFINE void main_screen_dropline_custom_released(void) 
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
@@ -200,7 +206,7 @@ void main_screen_dropline_custom_released(void)
 }
 
 
-void main_screen_cooker1_custom_clicked(void) 
+TCM_CODE_DEFINE void main_screen_cooker1_custom_clicked(void) 
 {
     // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
 
@@ -217,7 +223,7 @@ void main_screen_cooker1_custom_clicked(void)
     // }
 }
 
-void main_screen_cooker2_custom_clicked(void) 
+TCM_CODE_DEFINE void main_screen_cooker2_custom_clicked(void) 
 {
     // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
 
@@ -234,7 +240,7 @@ void main_screen_cooker2_custom_clicked(void)
     // }
 }
 
-void main_screen_cooker3_custom_clicked(void) 
+TCM_CODE_DEFINE void main_screen_cooker3_custom_clicked(void) 
 {
     // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
 
@@ -250,7 +256,7 @@ void main_screen_cooker3_custom_clicked(void)
     // }
 }
 
-void main_screen_cooker4_custom_clicked(void) 
+TCM_CODE_DEFINE void main_screen_cooker4_custom_clicked(void) 
 {
     // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
 

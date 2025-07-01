@@ -7,6 +7,7 @@
  */
 
 #include <rtconfig.h>
+#include "aic_common.h"
 #ifdef KERNEL_RTTHREAD
 #include <lvgl.h>
 #include <stdbool.h>
@@ -28,7 +29,7 @@ static rt_int16_t last_x = 0;
 static rt_int16_t last_y = 0;
 static lv_indev_t *indev_touchpad;
 
-static void input_read(lv_indev_t *indev_drv, lv_indev_data_t *data)
+TCM_CODE_DEFINE static void input_read(lv_indev_t *indev_drv, lv_indev_data_t *data)
 {
     data->point.x = last_x;
     data->point.y = last_y;
@@ -37,7 +38,7 @@ static void input_read(lv_indev_t *indev_drv, lv_indev_data_t *data)
 
 
 
-void aic_touch_inputevent_cb(rt_int16_t x, rt_int16_t y, rt_uint8_t state)
+TCM_CODE_DEFINE void aic_touch_inputevent_cb(rt_int16_t x, rt_int16_t y, rt_uint8_t state)
 {
 #ifdef AIC_BT_BT8858A
 	extern int bt_hid_set_touch_event(int, unsigned short, unsigned short);

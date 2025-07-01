@@ -11,7 +11,7 @@
 #if LV_USE_DRAW_GE2D
 #include "lv_draw_ge2d_utils.h"
 
-void lv_draw_ge2d_fill_with_blend(lv_draw_unit_t *draw_unit, const lv_draw_fill_dsc_t *dsc,
+TCM_CODE_DEFINE void lv_draw_ge2d_fill_with_blend(lv_draw_unit_t *draw_unit, const lv_draw_fill_dsc_t *dsc,
                                   const lv_area_t *coords, int32_t alpha_en)
 {
     lv_area_t blend_area;
@@ -78,7 +78,7 @@ void lv_draw_ge2d_fill_with_blend(lv_draw_unit_t *draw_unit, const lv_draw_fill_
     }
 }
 
-void lv_draw_ge2d_fill(lv_draw_unit_t *draw_unit, const lv_draw_fill_dsc_t *dsc,
+TCM_CODE_DEFINE void lv_draw_ge2d_fill(lv_draw_unit_t *draw_unit, const lv_draw_fill_dsc_t *dsc,
                        const lv_area_t *coords)
 {
     int32_t alpha_en;

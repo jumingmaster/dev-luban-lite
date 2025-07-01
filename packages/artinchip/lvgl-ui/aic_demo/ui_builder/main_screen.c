@@ -71,6 +71,13 @@ static void main_screen_dropline_pressing (lv_event_t *e) {
     main_screen_dropline_custom_pressing();
 }
 
+void __attribute__((weak)) main_screen_global_pause_custom_clicked(void) {
+}
+
+static void main_screen_global_pause_clicked (lv_event_t *e) {
+    main_screen_global_pause_custom_clicked();
+}
+
 
 void main_screen_create(ui_manager_t *ui)
 {
@@ -93,7 +100,7 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker2
     scr->cooker2 = lv_obj_create(scr->obj);
-    lv_obj_set_pos(scr->cooker2, 5, 4);
+    lv_obj_set_pos(scr->cooker2, 5, 366);
     lv_obj_set_size(scr->cooker2, 400, 350);
     lv_obj_set_scrollbar_mode(scr->cooker2, LV_SCROLLBAR_MODE_OFF);
     lv_obj_add_flag(scr->cooker2, LV_OBJ_FLAG_CLICKABLE);
@@ -131,7 +138,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker2_anim, (const void **)cooker2_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker2_anim, 1500);
+    lv_animimg_set_duration(scr->cooker2_anim, 2000);
     lv_animimg_set_repeat_count(scr->cooker2_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker2_anim);
     lv_obj_set_pos(scr->cooker2_anim, 0, 0);
@@ -189,17 +196,18 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker2_state
     scr->cooker2_state = lv_img_create(scr->cooker2);
+    lv_img_set_src(scr->cooker2_state, LVGL_IMAGE_PATH(thermos_150x150.png));
     lv_img_set_pivot(scr->cooker2_state, 50, 50);
     lv_img_set_angle(scr->cooker2_state, 0);
     lv_obj_set_style_img_opa(scr->cooker2_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->cooker2_state, 100, 50);
+    lv_obj_set_pos(scr->cooker2_state, 125, 100);
     lv_obj_add_flag(scr->cooker2_state, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(scr->cooker2_state, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->cooker2_state, LV_OBJ_FLAG_EVENT_BUBBLE);
 
     // Init scr->cooker3
     scr->cooker3 = lv_obj_create(scr->obj);
-    lv_obj_set_pos(scr->cooker3, 875, 366);
+    lv_obj_set_pos(scr->cooker3, 875, 4);
     lv_obj_set_size(scr->cooker3, 400, 350);
     lv_obj_set_scrollbar_mode(scr->cooker3, LV_SCROLLBAR_MODE_OFF);
     lv_obj_add_flag(scr->cooker3, LV_OBJ_FLAG_CLICKABLE);
@@ -237,7 +245,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker3_anim, (const void **)cooker3_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker3_anim, 1500);
+    lv_animimg_set_duration(scr->cooker3_anim, 2000);
     lv_animimg_set_repeat_count(scr->cooker3_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker3_anim);
     lv_obj_set_pos(scr->cooker3_anim, 0, 5);
@@ -265,10 +273,11 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker3_state
     scr->cooker3_state = lv_img_create(scr->cooker3);
+    lv_img_set_src(scr->cooker3_state, LVGL_IMAGE_PATH(thermos_150x150.png));
     lv_img_set_pivot(scr->cooker3_state, 50, 50);
     lv_img_set_angle(scr->cooker3_state, 0);
     lv_obj_set_style_img_opa(scr->cooker3_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->cooker3_state, 100, 50);
+    lv_obj_set_pos(scr->cooker3_state, 125, 100);
     lv_obj_add_flag(scr->cooker3_state, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(scr->cooker3_state, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->cooker3_state, LV_OBJ_FLAG_EVENT_BUBBLE);
@@ -305,7 +314,7 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker1
     scr->cooker1 = lv_obj_create(scr->obj);
-    lv_obj_set_pos(scr->cooker1, 5, 366);
+    lv_obj_set_pos(scr->cooker1, 5, 4);
     lv_obj_set_size(scr->cooker1, 400, 350);
     lv_obj_set_scrollbar_mode(scr->cooker1, LV_SCROLLBAR_MODE_OFF);
     lv_obj_add_flag(scr->cooker1, LV_OBJ_FLAG_CLICKABLE);
@@ -371,10 +380,11 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker1_state
     scr->cooker1_state = lv_img_create(scr->cooker1);
+    lv_img_set_src(scr->cooker1_state, LVGL_IMAGE_PATH(max_gear_150x150.png));
     lv_img_set_pivot(scr->cooker1_state, 50, 50);
     lv_img_set_angle(scr->cooker1_state, 0);
     lv_obj_set_style_img_opa(scr->cooker1_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->cooker1_state, 100, 50);
+    lv_obj_set_pos(scr->cooker1_state, 125, 100);
     lv_obj_add_flag(scr->cooker1_state, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(scr->cooker1_state, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->cooker1_state, LV_OBJ_FLAG_EVENT_BUBBLE);
@@ -411,7 +421,7 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker4
     scr->cooker4 = lv_obj_create(scr->obj);
-    lv_obj_set_pos(scr->cooker4, 875, 4);
+    lv_obj_set_pos(scr->cooker4, 875, 366);
     lv_obj_set_size(scr->cooker4, 400, 350);
     lv_obj_set_scrollbar_mode(scr->cooker4, LV_SCROLLBAR_MODE_OFF);
     lv_obj_add_flag(scr->cooker4, LV_OBJ_FLAG_CLICKABLE);
@@ -449,7 +459,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker4_anim, (const void **)cooker4_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker4_anim, 1500);
+    lv_animimg_set_duration(scr->cooker4_anim, 2000);
     lv_animimg_set_repeat_count(scr->cooker4_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker4_anim);
     lv_obj_set_pos(scr->cooker4_anim, 0, 5);
@@ -477,10 +487,11 @@ void main_screen_create(ui_manager_t *ui)
 
     // Init scr->cooker4_state
     scr->cooker4_state = lv_img_create(scr->cooker4);
+    lv_img_set_src(scr->cooker4_state, LVGL_IMAGE_PATH(thermos_150x150.png));
     lv_img_set_pivot(scr->cooker4_state, 50, 50);
     lv_img_set_angle(scr->cooker4_state, 0);
     lv_obj_set_style_img_opa(scr->cooker4_state, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->cooker4_state, 100, 50);
+    lv_obj_set_pos(scr->cooker4_state, 125, 100);
     lv_obj_add_flag(scr->cooker4_state, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(scr->cooker4_state, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->cooker4_state, LV_OBJ_FLAG_EVENT_BUBBLE);
@@ -553,120 +564,63 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_pad_bottom(scr->drop_menu, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(scr->drop_menu, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    // Init scr->container_1
-    scr->container_1 = lv_obj_create(scr->drop_menu);
-    lv_obj_set_pos(scr->container_1, 7, 5);
-    lv_obj_set_size(scr->container_1, 240, 360);
-    lv_obj_set_scrollbar_mode(scr->container_1, LV_SCROLLBAR_MODE_OFF);
+    // Init scr->drop_merge
+    scr->drop_merge = lv_img_create(scr->drop_menu);
+    lv_img_set_src(scr->drop_merge, LVGL_IMAGE_PATH(merge.png));
+    lv_img_set_pivot(scr->drop_merge, 50, 50);
+    lv_img_set_angle(scr->drop_merge, 0);
+    lv_obj_set_style_img_opa(scr->drop_merge, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->drop_merge, 21, 24);
+    lv_obj_add_flag(scr->drop_merge, LV_OBJ_FLAG_CLICKABLE);
 
-    // Set style of scr->container_1
-    lv_obj_set_style_bg_color(scr->container_1, lv_color_hex(0x2e3235), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_border_width(scr->container_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(scr->container_1, 110, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(scr->container_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(scr->container_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(scr->container_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(scr->container_1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    // Init scr->drop_cook
+    scr->drop_cook = lv_img_create(scr->drop_menu);
+    lv_img_set_src(scr->drop_cook, LVGL_IMAGE_PATH(cook.png));
+    lv_img_set_pivot(scr->drop_cook, 50, 50);
+    lv_img_set_angle(scr->drop_cook, 0);
+    lv_obj_set_style_img_opa(scr->drop_cook, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->drop_cook, 273, 24);
+    lv_obj_add_flag(scr->drop_cook, LV_OBJ_FLAG_CLICKABLE);
 
-    // Init scr->image_1
-    scr->image_1 = lv_img_create(scr->container_1);
-    lv_img_set_src(scr->image_1, LVGL_IMAGE_PATH(merge.png));
-    lv_img_set_pivot(scr->image_1, 50, 50);
-    lv_img_set_angle(scr->image_1, 0);
-    lv_obj_set_style_img_opa(scr->image_1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_1, 73, 133);
+    // Init scr->drop_lang
+    scr->drop_lang = lv_img_create(scr->drop_menu);
+    lv_img_set_src(scr->drop_lang, LVGL_IMAGE_PATH(lang.png));
+    lv_img_set_pivot(scr->drop_lang, 50, 50);
+    lv_img_set_angle(scr->drop_lang, 0);
+    lv_obj_set_style_img_opa(scr->drop_lang, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->drop_lang, 525, 24);
+    lv_obj_add_flag(scr->drop_lang, LV_OBJ_FLAG_CLICKABLE);
 
-    // Init scr->container_7
-    scr->container_7 = lv_obj_create(scr->drop_menu);
-    lv_obj_set_pos(scr->container_7, 262, 5);
-    lv_obj_set_size(scr->container_7, 240, 360);
-    lv_obj_set_scrollbar_mode(scr->container_7, LV_SCROLLBAR_MODE_OFF);
+    // Init scr->drop_qrcode
+    scr->drop_qrcode = lv_img_create(scr->drop_menu);
+    lv_img_set_src(scr->drop_qrcode, LVGL_IMAGE_PATH(qrcode.png));
+    lv_img_set_pivot(scr->drop_qrcode, 50, 50);
+    lv_img_set_angle(scr->drop_qrcode, 0);
+    lv_obj_set_style_img_opa(scr->drop_qrcode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->drop_qrcode, 777, 24);
+    lv_obj_add_flag(scr->drop_qrcode, LV_OBJ_FLAG_CLICKABLE);
 
-    // Set style of scr->container_7
-    lv_obj_set_style_bg_color(scr->container_7, lv_color_hex(0x2e3235), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_border_width(scr->container_7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(scr->container_7, 110, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(scr->container_7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(scr->container_7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(scr->container_7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(scr->container_7, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    // Init scr->drop_about
+    scr->drop_about = lv_img_create(scr->drop_menu);
+    lv_img_set_src(scr->drop_about, LVGL_IMAGE_PATH(about.png));
+    lv_img_set_pivot(scr->drop_about, 50, 50);
+    lv_img_set_angle(scr->drop_about, 0);
+    lv_obj_set_style_img_opa(scr->drop_about, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->drop_about, 1029, 24);
+    lv_obj_add_flag(scr->drop_about, LV_OBJ_FLAG_CLICKABLE);
 
-    // Init scr->image_10
-    scr->image_10 = lv_img_create(scr->container_7);
-    lv_img_set_src(scr->image_10, LVGL_IMAGE_PATH(cook.png));
-    lv_img_set_pivot(scr->image_10, 50, 50);
-    lv_img_set_angle(scr->image_10, 0);
-    lv_obj_set_style_img_opa(scr->image_10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_10, 73, 133);
+    // Init scr->global_pause
+    scr->global_pause = lv_img_create(scr->obj);
+    lv_img_set_src(scr->global_pause, LVGL_IMAGE_PATH(start_300x300.png));
+    lv_img_set_pivot(scr->global_pause, 50, 50);
+    lv_img_set_angle(scr->global_pause, 0);
+    lv_obj_set_style_img_opa(scr->global_pause, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->global_pause, 490, 210);
+    lv_obj_add_flag(scr->global_pause, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->global_pause, LV_OBJ_FLAG_CLICKABLE);
 
-    // Init scr->container_8
-    scr->container_8 = lv_obj_create(scr->drop_menu);
-    lv_obj_set_pos(scr->container_8, 519, 5);
-    lv_obj_set_size(scr->container_8, 240, 360);
-    lv_obj_set_scrollbar_mode(scr->container_8, LV_SCROLLBAR_MODE_OFF);
-
-    // Set style of scr->container_8
-    lv_obj_set_style_bg_color(scr->container_8, lv_color_hex(0x2e3235), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_border_width(scr->container_8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(scr->container_8, 110, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(scr->container_8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(scr->container_8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(scr->container_8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(scr->container_8, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    // Init scr->image_11
-    scr->image_11 = lv_img_create(scr->container_8);
-    lv_img_set_src(scr->image_11, LVGL_IMAGE_PATH(language.png));
-    lv_img_set_pivot(scr->image_11, 50, 50);
-    lv_img_set_angle(scr->image_11, 0);
-    lv_obj_set_style_img_opa(scr->image_11, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_11, 73, 133);
-
-    // Init scr->container_9
-    scr->container_9 = lv_obj_create(scr->drop_menu);
-    lv_obj_set_pos(scr->container_9, 776, 5);
-    lv_obj_set_size(scr->container_9, 240, 360);
-    lv_obj_set_scrollbar_mode(scr->container_9, LV_SCROLLBAR_MODE_OFF);
-
-    // Set style of scr->container_9
-    lv_obj_set_style_bg_color(scr->container_9, lv_color_hex(0x2e3235), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_border_width(scr->container_9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(scr->container_9, 110, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(scr->container_9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(scr->container_9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(scr->container_9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(scr->container_9, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    // Init scr->image_12
-    scr->image_12 = lv_img_create(scr->container_9);
-    lv_img_set_src(scr->image_12, LVGL_IMAGE_PATH(qrcode.png));
-    lv_img_set_pivot(scr->image_12, 50, 50);
-    lv_img_set_angle(scr->image_12, 0);
-    lv_obj_set_style_img_opa(scr->image_12, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_12, 73, 133);
-
-    // Init scr->container_10
-    scr->container_10 = lv_obj_create(scr->drop_menu);
-    lv_obj_set_pos(scr->container_10, 1033, 5);
-    lv_obj_set_size(scr->container_10, 240, 360);
-    lv_obj_set_scrollbar_mode(scr->container_10, LV_SCROLLBAR_MODE_OFF);
-
-    // Set style of scr->container_10
-    lv_obj_set_style_bg_color(scr->container_10, lv_color_hex(0x2e3235), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_border_width(scr->container_10, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(scr->container_10, 110, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(scr->container_10, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(scr->container_10, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(scr->container_10, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(scr->container_10, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    // Init scr->image_13
-    scr->image_13 = lv_img_create(scr->container_10);
-    lv_img_set_src(scr->image_13, LVGL_IMAGE_PATH(about.png));
-    lv_img_set_pivot(scr->image_13, 50, 50);
-    lv_img_set_angle(scr->image_13, 0);
-    lv_obj_set_style_img_opa(scr->image_13, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_13, 73, 133);
+    // Set event handler of scr->global_pause
+    lv_obj_add_event_cb(scr->global_pause, main_screen_global_pause_clicked, LV_EVENT_CLICKED, NULL);
 
     main_screen_custom_created();
 }

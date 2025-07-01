@@ -9,7 +9,7 @@
 #include "lv_draw_ge2d_utils.h"
 #include "lv_draw_ge2d.h"
 
-enum mpp_pixel_format lv_fmt_to_mpp_fmt(lv_color_format_t cf)
+TCM_CODE_DEFINE enum mpp_pixel_format lv_fmt_to_mpp_fmt(lv_color_format_t cf)
 {
     enum mpp_pixel_format fmt = LV_COLOR_FORMAT_RGB565;
 

@@ -48,16 +48,12 @@ typedef struct {
     lv_obj_t *cooker4_gear;
     lv_obj_t *dropline;
     lv_obj_t *drop_menu;
-    lv_obj_t *container_1;
-    lv_obj_t *image_1;
-    lv_obj_t *container_7;
-    lv_obj_t *image_10;
-    lv_obj_t *container_8;
-    lv_obj_t *image_11;
-    lv_obj_t *container_9;
-    lv_obj_t *image_12;
-    lv_obj_t *container_10;
-    lv_obj_t *image_13;
+    lv_obj_t *drop_merge;
+    lv_obj_t *drop_cook;
+    lv_obj_t *drop_lang;
+    lv_obj_t *drop_qrcode;
+    lv_obj_t *drop_about;
+    lv_obj_t *global_pause;
 } main_screen_t;
 
 typedef struct {
@@ -75,8 +71,6 @@ typedef struct {
     lv_obj_t *gear_label;
     lv_obj_t *gear_slider;
     lv_obj_t *func_label;
-    lv_obj_t *window_2;
-    lv_obj_t *label_2;
 } setting_cook_t;
 
 typedef struct {

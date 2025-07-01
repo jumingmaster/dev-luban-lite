@@ -35,7 +35,7 @@
 #define AIC_POINTERCAL_PATH             "/data/config/rtp_pointercal"
 
 
-#define THREAD_PRIORITY   25
+#define THREAD_PRIORITY   15
 #define THREAD_STACK_SIZE 4096
 #define THREAD_TIMESLICE  5
 

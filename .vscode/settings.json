@@ -71,6 +71,7 @@
 		"mpp_fb.h": "c",
 		"sstream": "c",
 		"strstream": "c",
-		"xiosbase": "c"
+		"xiosbase": "c",
+		"hal_pwm.h": "c"
 	}
 }

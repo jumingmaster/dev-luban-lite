@@ -7,6 +7,7 @@
 #include "rtthread.h"
 #include "lv_anim.h"
 #include "drop_menu.h"
+#include "aic_core.h"
 
 #define LV_ANIM_REF(obj)    (&((lv_animimg_t *)scr->logo_amni)->anim)
 

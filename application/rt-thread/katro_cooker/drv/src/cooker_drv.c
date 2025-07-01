@@ -27,17 +27,51 @@ static void send_byte(uint8_t data)
 
 static uint8_t receive_bit(void)
 {
+    u64 timemout = 0;
     u64  start = 0, end = 0;
     u64  duration = 0;
 
-    while(rx_read_level() == 0) __NOP();
+    timemout = aic_get_time_us();
+
+    while(rx_read_level() == 0)
+    {
+        if (aic_get_time_us() - timemout > 3500)
+        {
+            return 0;
+        }
+    }
+    
     start = aic_get_time_us();
-    while(rx_read_level() == 1) __NOP();
+    timemout = aic_get_time_us();
+
+    while(rx_read_level() == 1)
+    {
+        if (aic_get_time_us() - timemout > 3500)
+        {
+            return 0;
+        }
+    }
+
     end = aic_get_time_us();
     duration = end - start;
 
     return duration > (BIT1_HIGH + BIT0_HIGH)/2;
 }
+
+
+
+// static uint8_t receive_bit(void)
+// {
+//     if(rx_read_level() == 0)
+//     {
+
+//     }
+
+    
+
+//     return 0;
+// }
+
 
 static uint8_t receive_byte(void)
 {
@@ -45,7 +79,7 @@ static uint8_t receive_byte(void)
 
     for(int i = 0; i < 8; i++)
     {
-        byte |= receive_bit() << (7 - i);
+        byte |= receive_bit() << i;
     }
     return byte;
 }
@@ -54,29 +88,48 @@ static uint8_t receive_byte(void)
 void cooker_drv_init(void (*rx_irq)(void *args))
 {
     rt_pin_mode(drv_pin_get("PA.4"), PIN_MODE_OUTPUT);
-    rt_pin_mode(drv_pin_get("PA.5"), PIN_MODE_INPUT_PULLDOWN);
-    rt_pin_attach_irq(drv_pin_get("PA.5"), PIN_IRQ_MODE_RISING, rx_irq, RT_NULL);
-    rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_ENABLE);
+    rt_pin_mode(drv_pin_get("PA.5"), PIN_MODE_INPUT);
+    // rt_pin_attach_irq(drv_pin_get("PA.5"), PIN_IRQ_MODE_FALLING, rx_irq, RT_NULL);
+    // rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_ENABLE);
 
     tx_set_low();
 }
 
 int cooker_read_bytes(uint8_t * data, uint8_t length)
 {
-    int ret = 0;
+    // int ret = 0;
     uint8_t chksum = 0;
+    u64 timeout = 0;
 
-    rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_DISABLE);
-
-    aic_udelay(START_MIN/2);
-
-    if(rx_read_level() == 0) 
-    {
-        ret = -1;
-        goto __exit;
-    } 
     rt_enter_critical();
-    for(int i = 0; i < length; i++) 
+
+    while (rx_read_level() == 0) 
+    {
+        aic_udelay(100);
+        timeout += 100;
+    }
+
+    if (timeout < 2500)
+    {
+        rt_exit_critical();
+        return -1;
+    }
+
+    timeout = 0;
+
+    while (rx_read_level() == 1)
+    {
+        aic_udelay(100);
+        timeout += 100;
+    }
+
+    if (timeout < 1000)
+    {
+        rt_exit_critical();
+        return -1;
+    }
+    
+    for(int i = length - 1; i > 0; i--) 
     {
         data[i] = receive_byte();
     }
@@ -90,13 +143,13 @@ int cooker_read_bytes(uint8_t * data, uint8_t length)
 
     if (chksum != data[3])
     {
-        ret = -1;
+        // ret = -1;
+        rt_kprintf("%02X %02X %02X %02X chksum error\r\n", data[0], data[1], data[2], data[3]);
+        return -1;
     }
 
-__exit:
-    rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_ENABLE);
-
-    return ret;
+// __exit:
+    return 0;
 }
 
 
@@ -124,6 +177,7 @@ int cooker_send_bytes(uint8_t * data, uint8_t length)
         send_byte(data[i]);
     }
     
+
     tx_set_high();
     rt_exit_critical();
 
