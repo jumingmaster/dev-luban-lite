@@ -46,7 +46,7 @@ void logo_scr_create(ui_manager_t *ui)
     };
     lv_animimg_set_src(scr->logo_amni, (const void **)logo_amni_imgs, 10);
     lv_animimg_set_duration(scr->logo_amni, 1000);
-    lv_animimg_set_repeat_count(scr->logo_amni, 5);
+    lv_animimg_set_repeat_count(scr->logo_amni, 1);
     lv_animimg_start(scr->logo_amni);
     lv_obj_set_pos(scr->logo_amni, 430, 295);
     lv_obj_set_size(scr->logo_amni, 420, 124);

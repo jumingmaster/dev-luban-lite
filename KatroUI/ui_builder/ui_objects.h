@@ -97,6 +97,38 @@ typedef struct {
 
 typedef struct {
     lv_obj_t *obj;
+    lv_obj_t *image_5;
+    lv_obj_t *line_1;
+    lv_obj_t *container_2;
+    lv_obj_t *image_11;
+    lv_obj_t *image_12;
+    lv_obj_t *image_13;
+    lv_obj_t *image_14;
+    lv_obj_t *image_15;
+    lv_obj_t *container_3;
+    lv_obj_t *animImg_6;
+    lv_obj_t *line_2;
+    lv_obj_t *image_16;
+    lv_obj_t *label_9;
+    lv_obj_t *label_10;
+    lv_obj_t *container_5;
+    lv_obj_t *animImg_9;
+    lv_obj_t *line_4;
+    lv_obj_t *image_18;
+    lv_obj_t *label_13;
+    lv_obj_t *label_14;
+    lv_obj_t *container_6;
+    lv_obj_t *animImg_11;
+    lv_obj_t *line_5;
+    lv_obj_t *image_19;
+    lv_obj_t *label_15;
+    lv_obj_t *label_16;
+    lv_obj_t *container_7;
+    lv_obj_t *animImg_12;
+    lv_obj_t *line_6;
+    lv_obj_t *image_20;
+    lv_obj_t *label_17;
+    lv_obj_t *label_18;
 } screen_2_t;
 
 

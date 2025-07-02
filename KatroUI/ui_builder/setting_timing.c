@@ -14,12 +14,12 @@ void __attribute__((weak)) setting_timing_custom_load_start(void) {
 void __attribute__((weak)) setting_timing_custom_unload_start(void) {
 }
 
-static void setting_timing_unload_start (lv_event_t *e) {
-    setting_timing_custom_unload_start();
-}
-
 static void setting_timing_load_start (lv_event_t *e) {
     setting_timing_custom_load_start();
+}
+
+static void setting_timing_unload_start (lv_event_t *e) {
+    setting_timing_custom_unload_start();
 }
 
 void __attribute__((weak)) setting_timing_cancel_cont_custom_clicked(void) {
@@ -53,8 +53,8 @@ void setting_timing_create(ui_manager_t *ui)
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Set event handler of scr->obj
-    lv_obj_add_event_cb(scr->obj, setting_timing_unload_start, LV_EVENT_SCREEN_UNLOAD_START, NULL);
     lv_obj_add_event_cb(scr->obj, setting_timing_load_start, LV_EVENT_SCREEN_LOAD_START, NULL);
+    lv_obj_add_event_cb(scr->obj, setting_timing_unload_start, LV_EVENT_SCREEN_UNLOAD_START, NULL);
 
     // Init scr->roller_minute
     scr->roller_minute = lv_roller_create(scr->obj);

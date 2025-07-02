@@ -64,4 +64,6 @@ void update_main_scr_ui_data(const ui_cooker_state_t * state, int num);
 
 void reset_cooker_timer(int ch);
 
+void pause_cooker_timer(int ch, int pause);
+
 #endif

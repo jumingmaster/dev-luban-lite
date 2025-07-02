@@ -16,12 +16,12 @@ void __attribute__((weak)) main_screen_custom_created(void) {
 void __attribute__((weak)) main_screen_custom_unload_start(void) {
 }
 
-static void main_screen_unload_start (lv_event_t *e) {
-    main_screen_custom_unload_start();
-}
-
 static void main_screen_load_start (lv_event_t *e) {
     main_screen_custom_load_start();
+}
+
+static void main_screen_unload_start (lv_event_t *e) {
+    main_screen_custom_unload_start();
 }
 
 void __attribute__((weak)) main_screen_cooker2_custom_clicked(void) {
@@ -66,16 +66,51 @@ void __attribute__((weak)) main_screen_dropline_custom_released(void) {
 void __attribute__((weak)) main_screen_dropline_custom_pressed(void) {
 }
 
-static void main_screen_dropline_pressed (lv_event_t *e) {
-    main_screen_dropline_custom_pressed();
+static void main_screen_dropline_released (lv_event_t *e) {
+    main_screen_dropline_custom_released();
 }
 
 static void main_screen_dropline_pressing (lv_event_t *e) {
     main_screen_dropline_custom_pressing();
 }
 
-static void main_screen_dropline_released (lv_event_t *e) {
-    main_screen_dropline_custom_released();
+static void main_screen_dropline_pressed (lv_event_t *e) {
+    main_screen_dropline_custom_pressed();
+}
+
+void __attribute__((weak)) main_screen_drop_merge_custom_clicked(void) {
+}
+
+static void main_screen_drop_merge_clicked (lv_event_t *e) {
+    main_screen_drop_merge_custom_clicked();
+}
+
+void __attribute__((weak)) main_screen_drop_cook_custom_clicked(void) {
+}
+
+static void main_screen_drop_cook_clicked (lv_event_t *e) {
+    main_screen_drop_cook_custom_clicked();
+}
+
+void __attribute__((weak)) main_screen_drop_lang_custom_clicked(void) {
+}
+
+static void main_screen_drop_lang_clicked (lv_event_t *e) {
+    main_screen_drop_lang_custom_clicked();
+}
+
+void __attribute__((weak)) main_screen_drop_qrcode_custom_clicked(void) {
+}
+
+static void main_screen_drop_qrcode_clicked (lv_event_t *e) {
+    main_screen_drop_qrcode_custom_clicked();
+}
+
+void __attribute__((weak)) main_screen_drop_about_custom_clicked(void) {
+}
+
+static void main_screen_drop_about_clicked (lv_event_t *e) {
+    main_screen_drop_about_custom_clicked();
 }
 
 
@@ -95,8 +130,8 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Set event handler of scr->obj
-    lv_obj_add_event_cb(scr->obj, main_screen_unload_start, LV_EVENT_SCREEN_UNLOAD_START, NULL);
     lv_obj_add_event_cb(scr->obj, main_screen_load_start, LV_EVENT_SCREEN_LOAD_START, NULL);
+    lv_obj_add_event_cb(scr->obj, main_screen_unload_start, LV_EVENT_SCREEN_UNLOAD_START, NULL);
 
     // Init scr->cooker2
     scr->cooker2 = lv_obj_create(scr->obj);
@@ -557,9 +592,9 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_line_rounded(scr->dropline, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Set event handler of scr->dropline
-    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressed, LV_EVENT_PRESSED, NULL);
-    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
     lv_obj_add_event_cb(scr->dropline, main_screen_dropline_released, LV_EVENT_RELEASED, NULL);
+    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
+    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressed, LV_EVENT_PRESSED, NULL);
 
     // Init scr->drop_menu
     scr->drop_menu = lv_obj_create(scr->obj);
@@ -586,6 +621,9 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->drop_merge, 21, 24);
     lv_obj_add_flag(scr->drop_merge, LV_OBJ_FLAG_CLICKABLE);
 
+    // Set event handler of scr->drop_merge
+    lv_obj_add_event_cb(scr->drop_merge, main_screen_drop_merge_clicked, LV_EVENT_CLICKED, NULL);
+
     // Init scr->drop_cook
     scr->drop_cook = lv_img_create(scr->drop_menu);
     lv_img_set_src(scr->drop_cook, LVGL_IMAGE_PATH(cook.png));
@@ -594,6 +632,9 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_img_opa(scr->drop_cook, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->drop_cook, 273, 24);
     lv_obj_add_flag(scr->drop_cook, LV_OBJ_FLAG_CLICKABLE);
+
+    // Set event handler of scr->drop_cook
+    lv_obj_add_event_cb(scr->drop_cook, main_screen_drop_cook_clicked, LV_EVENT_CLICKED, NULL);
 
     // Init scr->drop_lang
     scr->drop_lang = lv_img_create(scr->drop_menu);
@@ -604,6 +645,9 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->drop_lang, 525, 24);
     lv_obj_add_flag(scr->drop_lang, LV_OBJ_FLAG_CLICKABLE);
 
+    // Set event handler of scr->drop_lang
+    lv_obj_add_event_cb(scr->drop_lang, main_screen_drop_lang_clicked, LV_EVENT_CLICKED, NULL);
+
     // Init scr->drop_qrcode
     scr->drop_qrcode = lv_img_create(scr->drop_menu);
     lv_img_set_src(scr->drop_qrcode, LVGL_IMAGE_PATH(qrcode.png));
@@ -613,6 +657,9 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_pos(scr->drop_qrcode, 777, 24);
     lv_obj_add_flag(scr->drop_qrcode, LV_OBJ_FLAG_CLICKABLE);
 
+    // Set event handler of scr->drop_qrcode
+    lv_obj_add_event_cb(scr->drop_qrcode, main_screen_drop_qrcode_clicked, LV_EVENT_CLICKED, NULL);
+
     // Init scr->drop_about
     scr->drop_about = lv_img_create(scr->drop_menu);
     lv_img_set_src(scr->drop_about, LVGL_IMAGE_PATH(about.png));
@@ -621,6 +668,9 @@ void main_screen_create(ui_manager_t *ui)
     lv_obj_set_style_img_opa(scr->drop_about, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->drop_about, 1029, 24);
     lv_obj_add_flag(scr->drop_about, LV_OBJ_FLAG_CLICKABLE);
+
+    // Set event handler of scr->drop_about
+    lv_obj_add_event_cb(scr->drop_about, main_screen_drop_about_clicked, LV_EVENT_CLICKED, NULL);
 
     // Init scr->merge_cooker1
     scr->merge_cooker1 = lv_obj_create(scr->obj);

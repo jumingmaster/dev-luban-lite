@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ailv-app>
-  <Screen name="logo_scr" is-default="1" index="0" id="1750908475779">
+  <Screen is-default="1" id="1750908475779" index="0" name="logo_scr">
     <Normal>
       <name>logo_scr</name>
       <scrollbar-mode>0</scrollbar-mode>
@@ -17,8 +17,8 @@
     </FontStorage>
     <Attribute/>
     <Style>
-      <Part name="Main" value="0">
-        <State name="Default" value="0">
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
           <bg-color>#ffffff</bg-color>
           <bg-opa>255</bg-opa>
           <bg-img-src>Logo-background.png</bg-img-src>
@@ -34,7 +34,7 @@
       </Created>
     </Event>
     <Widgets>
-      <Widget name="logo_amni" type="17" index="0" id="1750908569326" is-hidden="0">
+      <Widget id="1750908569326" type="17" is-hidden="0" index="0" name="logo_amni">
         <Normal>
           <name>logo_amni</name>
           <postion>430,295</postion>
@@ -65,11 +65,11 @@
             <image>LOGO (10).png</image>
           </images>
           <duration>1000</duration>
-          <repeat>5</repeat>
+          <repeat>1</repeat>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <border-color>#000000</border-color>
               <border-opa>255</border-opa>
               <border-width>0</border-width>
@@ -81,7 +81,7 @@
       </Widget>
     </Widgets>
   </Screen>
-  <Screen name="main_screen" is-default="0" index="1" id="1750916631970">
+  <Screen is-default="0" id="1750916631970" index="1" name="main_screen">
     <Normal>
       <name>main_screen</name>
       <scrollbar-mode>0</scrollbar-mode>
@@ -98,8 +98,8 @@
     </FontStorage>
     <Attribute/>
     <Style>
-      <Part name="Main" value="0">
-        <State name="Default" value="0">
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
           <bg-color>#000000</bg-color>
           <bg-opa>255</bg-opa>
           <bg-img-src></bg-img-src>
@@ -121,7 +121,7 @@
       </UnloadStart>
     </Event>
     <Widgets>
-      <Widget name="cooker2" type="28" index="0" id="1751087969311" is-hidden="0">
+      <Widget id="1751087969311" type="28" is-hidden="0" index="0" name="cooker2">
         <Normal>
           <name>cooker2</name>
           <postion>5,366</postion>
@@ -140,8 +140,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -171,7 +171,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="cooker2_anim" type="17" group-id="-1" parent-id="1751087969311" index="0" id="1751093125392" is-hidden="0">
+          <Widget parent-id="1751087969311" id="1751093125392" type="17" is-hidden="0" index="0" name="cooker2_anim" group-id="-1">
             <Normal>
               <name>cooker2_anim</name>
               <postion>0,0</postion>
@@ -211,8 +211,8 @@
               <repeat>-1</repeat>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <border-color>#000000</border-color>
                   <border-opa>255</border-opa>
                   <border-width>0</border-width>
@@ -222,7 +222,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker2_line" type="9" group-id="-1" parent-id="1751087969311" index="1" id="1751090484398" is-hidden="0">
+          <Widget parent-id="1751087969311" id="1751090484398" type="9" is-hidden="0" index="1" name="cooker2_line" group-id="-1">
             <Normal>
               <name>cooker2_line</name>
               <postion>120,170</postion>
@@ -247,8 +247,8 @@
               <y-invert>0</y-invert>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <line-color>#dddddd</line-color>
@@ -260,7 +260,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker2_gear" type="1" group-id="-1" parent-id="1751087969311" index="2" id="1751102658039" is-hidden="0">
+          <Widget parent-id="1751087969311" id="1751102658039" type="1" is-hidden="0" index="2" name="cooker2_gear" group-id="-1">
             <Normal>
               <name>cooker2_gear</name>
               <postion>150,115</postion>
@@ -282,8 +282,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -311,7 +311,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -342,7 +342,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker2_timing" type="1" group-id="-1" parent-id="1751087969311" index="3" id="1751102721317" is-hidden="0">
+          <Widget parent-id="1751087969311" id="1751102721317" type="1" is-hidden="0" index="3" name="cooker2_timing" group-id="-1">
             <Normal>
               <name>cooker2_timing</name>
               <postion>125,260</postion>
@@ -364,8 +364,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -393,7 +393,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -424,7 +424,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker2_state" type="5" group-id="-1" parent-id="1751087969311" index="4" id="1751191052024" is-hidden="0">
+          <Widget parent-id="1751087969311" id="1751191052024" type="5" is-hidden="0" index="4" name="cooker2_state" group-id="-1">
             <Normal>
               <name>cooker2_state</name>
               <postion>125,100</postion>
@@ -450,8 +450,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -461,7 +461,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="cooker3" type="28" index="1" id="1751088251920" is-hidden="0">
+      <Widget id="1751088251920" type="28" is-hidden="0" index="1" name="cooker3">
         <Normal>
           <name>cooker3</name>
           <postion>875,4</postion>
@@ -480,8 +480,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -511,7 +511,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="cooker3_anim" type="17" group-id="-1" parent-id="1751088251920" index="0" id="1751093383997" is-hidden="0">
+          <Widget parent-id="1751088251920" id="1751093383997" type="17" is-hidden="0" index="0" name="cooker3_anim" group-id="-1">
             <Normal>
               <name>cooker3_anim</name>
               <postion>0,5</postion>
@@ -551,8 +551,8 @@
               <repeat>-1</repeat>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <border-color>#000000</border-color>
                   <border-opa>255</border-opa>
                   <border-width>0</border-width>
@@ -562,7 +562,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker3_line" type="9" group-id="-1" parent-id="1751088251920" index="1" id="1751090582628" is-hidden="0">
+          <Widget parent-id="1751088251920" id="1751090582628" type="9" is-hidden="0" index="1" name="cooker3_line" group-id="-1">
             <Normal>
               <name>cooker3_line</name>
               <postion>120,170</postion>
@@ -587,8 +587,8 @@
               <y-invert>0</y-invert>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <line-color>#dddddd</line-color>
@@ -600,7 +600,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker3_state" type="5" group-id="-1" parent-id="1751088251920" index="2" id="1751191145108" is-hidden="0">
+          <Widget parent-id="1751088251920" id="1751191145108" type="5" is-hidden="0" index="2" name="cooker3_state" group-id="-1">
             <Normal>
               <name>cooker3_state</name>
               <postion>125,100</postion>
@@ -626,8 +626,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -635,7 +635,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker3_timing" type="1" group-id="-1" parent-id="1751088251920" index="3" id="1751191258079" is-hidden="0">
+          <Widget parent-id="1751088251920" id="1751191258079" type="1" is-hidden="0" index="3" name="cooker3_timing" group-id="-1">
             <Normal>
               <name>cooker3_timing</name>
               <postion>125,260</postion>
@@ -657,8 +657,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -686,7 +686,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -717,7 +717,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker3_gear" type="1" group-id="-1" parent-id="1751088251920" index="4" id="1751191326541" is-hidden="0">
+          <Widget parent-id="1751088251920" id="1751191326541" type="1" is-hidden="0" index="4" name="cooker3_gear" group-id="-1">
             <Normal>
               <name>cooker3_gear</name>
               <postion>150,115</postion>
@@ -739,8 +739,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -768,7 +768,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -801,7 +801,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="cooker1" type="28" index="2" id="1751088159512" is-hidden="0">
+      <Widget id="1751088159512" type="28" is-hidden="0" index="2" name="cooker1">
         <Normal>
           <name>cooker1</name>
           <postion>5,4</postion>
@@ -820,8 +820,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -851,7 +851,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="cooker1_anim" type="17" group-id="-1" parent-id="1751088159512" index="0" id="1751093380036" is-hidden="0">
+          <Widget parent-id="1751088159512" id="1751093380036" type="17" is-hidden="0" index="0" name="cooker1_anim" group-id="-1">
             <Normal>
               <name>cooker1_anim</name>
               <postion>0,5</postion>
@@ -891,8 +891,8 @@
               <repeat>-1</repeat>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <border-color>#000000</border-color>
                   <border-opa>255</border-opa>
                   <border-width>0</border-width>
@@ -902,7 +902,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker1_line" type="9" group-id="-1" parent-id="1751088159512" index="1" id="1751090579749" is-hidden="0">
+          <Widget parent-id="1751088159512" id="1751090579749" type="9" is-hidden="0" index="1" name="cooker1_line" group-id="-1">
             <Normal>
               <name>cooker1_line</name>
               <postion>123,170</postion>
@@ -927,8 +927,8 @@
               <y-invert>0</y-invert>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <line-color>#dddddd</line-color>
@@ -940,7 +940,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker1_state" type="5" group-id="-1" parent-id="1751088159512" index="2" id="1751191148280" is-hidden="0">
+          <Widget parent-id="1751088159512" id="1751191148280" type="5" is-hidden="0" index="2" name="cooker1_state" group-id="-1">
             <Normal>
               <name>cooker1_state</name>
               <postion>125,100</postion>
@@ -966,8 +966,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -975,7 +975,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker1_timing" type="1" group-id="-1" parent-id="1751088159512" index="3" id="1751191255907" is-hidden="0">
+          <Widget parent-id="1751088159512" id="1751191255907" type="1" is-hidden="0" index="3" name="cooker1_timing" group-id="-1">
             <Normal>
               <name>cooker1_timing</name>
               <postion>125,260</postion>
@@ -997,8 +997,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1026,7 +1026,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1057,7 +1057,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker1_gear" type="1" group-id="-1" parent-id="1751088159512" index="4" id="1751191324240" is-hidden="0">
+          <Widget parent-id="1751088159512" id="1751191324240" type="1" is-hidden="0" index="4" name="cooker1_gear" group-id="-1">
             <Normal>
               <name>cooker1_gear</name>
               <postion>150,115</postion>
@@ -1079,8 +1079,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1108,7 +1108,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1141,7 +1141,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="cooker4" type="28" index="3" id="1751088249807" is-hidden="0">
+      <Widget id="1751088249807" type="28" is-hidden="0" index="3" name="cooker4">
         <Normal>
           <name>cooker4</name>
           <postion>875,366</postion>
@@ -1160,8 +1160,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -1191,7 +1191,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="cooker4_anim" type="17" group-id="-1" parent-id="1751088249807" index="0" id="1751093373983" is-hidden="0">
+          <Widget parent-id="1751088249807" id="1751093373983" type="17" is-hidden="0" index="0" name="cooker4_anim" group-id="-1">
             <Normal>
               <name>cooker4_anim</name>
               <postion>0,5</postion>
@@ -1231,8 +1231,8 @@
               <repeat>-1</repeat>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <border-color>#000000</border-color>
                   <border-opa>255</border-opa>
                   <border-width>0</border-width>
@@ -1242,7 +1242,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker4_line" type="9" group-id="-1" parent-id="1751088249807" index="1" id="1751090581752" is-hidden="0">
+          <Widget parent-id="1751088249807" id="1751090581752" type="9" is-hidden="0" index="1" name="cooker4_line" group-id="-1">
             <Normal>
               <name>cooker4_line</name>
               <postion>120,170</postion>
@@ -1267,8 +1267,8 @@
               <y-invert>0</y-invert>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <line-color>#dddddd</line-color>
@@ -1280,7 +1280,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker4_state" type="5" group-id="-1" parent-id="1751088249807" index="2" id="1751191141046" is-hidden="0">
+          <Widget parent-id="1751088249807" id="1751191141046" type="5" is-hidden="0" index="2" name="cooker4_state" group-id="-1">
             <Normal>
               <name>cooker4_state</name>
               <postion>125,100</postion>
@@ -1306,8 +1306,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -1315,7 +1315,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker4_timing" type="1" group-id="-1" parent-id="1751088249807" index="3" id="1751191252860" is-hidden="0">
+          <Widget parent-id="1751088249807" id="1751191252860" type="1" is-hidden="0" index="3" name="cooker4_timing" group-id="-1">
             <Normal>
               <name>cooker4_timing</name>
               <postion>125,260</postion>
@@ -1337,8 +1337,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1366,7 +1366,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1397,7 +1397,7 @@
             </Style>
             <Event/>
           </Widget>
-          <Widget name="cooker4_gear" type="1" group-id="-1" parent-id="1751088249807" index="4" id="1751191320873" is-hidden="0">
+          <Widget parent-id="1751088249807" id="1751191320873" type="1" is-hidden="0" index="4" name="cooker4_gear" group-id="-1">
             <Normal>
               <name>cooker4_gear</name>
               <postion>150,115</postion>
@@ -1419,8 +1419,8 @@
               <long-mode>0</long-mode>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1448,7 +1448,7 @@
                   <shadow-spread>0</shadow-spread>
                   <shadow-width>0</shadow-width>
                 </State>
-                <State name="Disabled" value="128">
+                <State value="128" name="Disabled">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <bg-img-src></bg-img-src>
@@ -1481,7 +1481,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="global_pause" type="5" index="4" id="1751353634808" is-hidden="0">
+      <Widget id="1751353634808" type="5" is-hidden="0" index="4" name="global_pause">
         <Normal>
           <name>global_pause</name>
           <postion>490,210</postion>
@@ -1507,8 +1507,8 @@
           <opacity>255</opacity>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <img-recolor>#000000</img-recolor>
               <img-recolor-opa>0</img-recolor-opa>
             </State>
@@ -1520,7 +1520,7 @@
           </Clicked>
         </Event>
       </Widget>
-      <Widget name="dropline" type="9" index="5" id="1750926192391" is-hidden="0">
+      <Widget id="1750926192391" type="9" is-hidden="0" index="5" name="dropline">
         <Normal>
           <name>dropline</name>
           <postion>490,0</postion>
@@ -1545,8 +1545,8 @@
           <y-invert>0</y-invert>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <line-color>#707070</line-color>
@@ -1568,7 +1568,7 @@
           </Pressed>
         </Event>
       </Widget>
-      <Widget name="drop_menu" type="28" index="6" id="1750933276871" is-hidden="0">
+      <Widget id="1750933276871" type="28" is-hidden="0" index="6" name="drop_menu">
         <Normal>
           <name>drop_menu</name>
           <postion>0,-720</postion>
@@ -1587,8 +1587,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#000000</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -1614,7 +1614,7 @@
         </Style>
         <Event/>
         <Children>
-          <Widget name="drop_merge" type="5" group-id="-1" parent-id="1750933276871" index="0" id="1751334460149" is-hidden="0">
+          <Widget parent-id="1750933276871" id="1751334460149" type="5" is-hidden="0" index="0" name="drop_merge" group-id="-1">
             <Normal>
               <name>drop_merge</name>
               <postion>21,24</postion>
@@ -1640,16 +1640,20 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
               </Part>
             </Style>
-            <Event/>
+            <Event>
+              <Clicked itemIdx="-1" eventId="7">
+                <custom-fun>main_screen_drop_merge_custom_clicked</custom-fun>
+              </Clicked>
+            </Event>
           </Widget>
-          <Widget name="drop_cook" type="5" group-id="-1" parent-id="1750933276871" index="1" id="1751339978243" is-hidden="0">
+          <Widget parent-id="1750933276871" id="1751339978243" type="5" is-hidden="0" index="1" name="drop_cook" group-id="-1">
             <Normal>
               <name>drop_cook</name>
               <postion>273,24</postion>
@@ -1675,16 +1679,20 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
               </Part>
             </Style>
-            <Event/>
+            <Event>
+              <Clicked itemIdx="-1" eventId="7">
+                <custom-fun>main_screen_drop_cook_custom_clicked</custom-fun>
+              </Clicked>
+            </Event>
           </Widget>
-          <Widget name="drop_lang" type="5" group-id="-1" parent-id="1750933276871" index="2" id="1751339979639" is-hidden="0">
+          <Widget parent-id="1750933276871" id="1751339979639" type="5" is-hidden="0" index="2" name="drop_lang" group-id="-1">
             <Normal>
               <name>drop_lang</name>
               <postion>525,24</postion>
@@ -1710,16 +1718,20 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
               </Part>
             </Style>
-            <Event/>
+            <Event>
+              <Clicked itemIdx="-1" eventId="7">
+                <custom-fun>main_screen_drop_lang_custom_clicked</custom-fun>
+              </Clicked>
+            </Event>
           </Widget>
-          <Widget name="drop_qrcode" type="5" group-id="-1" parent-id="1750933276871" index="3" id="1751339976511" is-hidden="0">
+          <Widget parent-id="1750933276871" id="1751339976511" type="5" is-hidden="0" index="3" name="drop_qrcode" group-id="-1">
             <Normal>
               <name>drop_qrcode</name>
               <postion>777,24</postion>
@@ -1745,16 +1757,20 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
               </Part>
             </Style>
-            <Event/>
+            <Event>
+              <Clicked itemIdx="-1" eventId="7">
+                <custom-fun>main_screen_drop_qrcode_custom_clicked</custom-fun>
+              </Clicked>
+            </Event>
           </Widget>
-          <Widget name="drop_about" type="5" group-id="-1" parent-id="1750933276871" index="4" id="1751339976983" is-hidden="0">
+          <Widget parent-id="1750933276871" id="1751339976983" type="5" is-hidden="0" index="4" name="drop_about" group-id="-1">
             <Normal>
               <name>drop_about</name>
               <postion>1029,24</postion>
@@ -1780,18 +1796,22 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
               </Part>
             </Style>
-            <Event/>
+            <Event>
+              <Clicked itemIdx="-1" eventId="7">
+                <custom-fun>main_screen_drop_about_custom_clicked</custom-fun>
+              </Clicked>
+            </Event>
           </Widget>
         </Children>
       </Widget>
-      <Widget name="merge_cooker1" type="28" index="7" id="1751436789198" is-hidden="1">
+      <Widget id="1751436789198" type="28" is-hidden="1" index="7" name="merge_cooker1">
         <Normal>
           <name>merge_cooker1</name>
           <postion>5,4</postion>
@@ -1810,8 +1830,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -1837,7 +1857,7 @@
         </Style>
         <Event/>
         <Children>
-          <Widget name="line_2" type="9" group-id="-1" parent-id="1751436789198" index="0" id="1751437077467" is-hidden="1">
+          <Widget parent-id="1751436789198" id="1751437077467" type="9" is-hidden="1" index="0" name="line_2" group-id="-1">
             <Normal>
               <name>line_2</name>
               <postion>120,351</postion>
@@ -1862,8 +1882,8 @@
               <y-invert>0</y-invert>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <line-color>#dddddd</line-color>
@@ -1877,7 +1897,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="container_2" type="28" index="8" id="1751437037171" is-hidden="1">
+      <Widget id="1751437037171" type="28" is-hidden="1" index="8" name="container_2">
         <Normal>
           <name>container_2</name>
           <postion>875,4</postion>
@@ -1896,8 +1916,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -1923,7 +1943,7 @@
         </Style>
         <Event/>
         <Children>
-          <Widget name="line_1" type="9" group-id="-1" parent-id="1751437037171" index="0" id="1751437073846" is-hidden="1">
+          <Widget parent-id="1751437037171" id="1751437073846" type="9" is-hidden="1" index="0" name="line_1" group-id="-1">
             <Normal>
               <name>line_1</name>
               <postion>120,351</postion>
@@ -1948,8 +1968,8 @@
               <y-invert>0</y-invert>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <bg-color>#ffffff</bg-color>
                   <bg-opa>0</bg-opa>
                   <line-color>#dddddd</line-color>
@@ -1965,7 +1985,7 @@
       </Widget>
     </Widgets>
   </Screen>
-  <Screen name="setting_cook" is-default="0" index="2" id="1751091198887">
+  <Screen is-default="0" id="1751091198887" index="2" name="setting_cook">
     <Normal>
       <name>setting_cook</name>
       <scrollbar-mode>0</scrollbar-mode>
@@ -1982,8 +2002,8 @@
     </FontStorage>
     <Attribute/>
     <Style>
-      <Part name="Main" value="0">
-        <State name="Default" value="0">
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
           <bg-color>#000000</bg-color>
           <bg-opa>255</bg-opa>
           <bg-img-src></bg-img-src>
@@ -2002,7 +2022,7 @@
       </UnloadStart>
     </Event>
     <Widgets>
-      <Widget name="back_cont" type="28" index="0" id="1751091252775" is-hidden="0">
+      <Widget id="1751091252775" type="28" is-hidden="0" index="0" name="back_cont">
         <Normal>
           <name>back_cont</name>
           <postion>5,5</postion>
@@ -2021,8 +2041,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2052,7 +2072,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="image_3" type="5" group-id="-1" parent-id="1751091252775" index="0" id="1751091252779" is-hidden="0">
+          <Widget parent-id="1751091252775" id="1751091252779" type="5" is-hidden="0" index="0" name="image_3" group-id="-1">
             <Normal>
               <name>image_3</name>
               <postion>70,190</postion>
@@ -2078,8 +2098,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -2089,7 +2109,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="min_label" type="1" index="1" id="1751091317050" is-hidden="0">
+      <Widget id="1751091317050" type="1" is-hidden="0" index="1" name="min_label">
         <Normal>
           <name>min_label</name>
           <postion>30,525</postion>
@@ -2111,8 +2131,8 @@
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2140,7 +2160,7 @@
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2175,7 +2195,7 @@
           </Clicked>
         </Event>
       </Widget>
-      <Widget name="max_label" type="1" index="2" id="1751091518187" is-hidden="0">
+      <Widget id="1751091518187" type="1" is-hidden="0" index="2" name="max_label">
         <Normal>
           <name>max_label</name>
           <postion>1100,525</postion>
@@ -2197,8 +2217,8 @@
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2226,7 +2246,7 @@
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2261,7 +2281,7 @@
           </Clicked>
         </Event>
       </Widget>
-      <Widget name="thermos_cont" type="28" index="3" id="1751091631341" is-hidden="0">
+      <Widget id="1751091631341" type="28" is-hidden="0" index="3" name="thermos_cont">
         <Normal>
           <name>thermos_cont</name>
           <postion>260,5</postion>
@@ -2280,8 +2300,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2311,7 +2331,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="image_4" type="5" group-id="-1" parent-id="1751091631341" index="0" id="1751091631355" is-hidden="0">
+          <Widget parent-id="1751091631341" id="1751091631355" type="5" is-hidden="0" index="0" name="image_4" group-id="-1">
             <Normal>
               <name>image_4</name>
               <postion>60,190</postion>
@@ -2337,8 +2357,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -2348,7 +2368,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="max_gear_cont" type="28" index="4" id="1751091633186" is-hidden="0">
+      <Widget id="1751091633186" type="28" is-hidden="0" index="4" name="max_gear_cont">
         <Normal>
           <name>max_gear_cont</name>
           <postion>780,5</postion>
@@ -2367,8 +2387,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2398,7 +2418,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="image_5" type="5" group-id="-1" parent-id="1751091633186" index="0" id="1751091633198" is-hidden="0">
+          <Widget parent-id="1751091633186" id="1751091633198" type="5" is-hidden="0" index="0" name="image_5" group-id="-1">
             <Normal>
               <name>image_5</name>
               <postion>60,190</postion>
@@ -2424,8 +2444,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -2435,7 +2455,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="timing_cont" type="28" index="5" id="1751091634897" is-hidden="0">
+      <Widget id="1751091634897" type="28" is-hidden="0" index="5" name="timing_cont">
         <Normal>
           <name>timing_cont</name>
           <postion>1035,5</postion>
@@ -2454,8 +2474,8 @@
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2485,7 +2505,7 @@
           </Clicked>
         </Event>
         <Children>
-          <Widget name="image_6" type="5" group-id="-1" parent-id="1751091634897" index="0" id="1751091634910" is-hidden="0">
+          <Widget parent-id="1751091634897" id="1751091634910" type="5" is-hidden="0" index="0" name="image_6" group-id="-1">
             <Normal>
               <name>image_6</name>
               <postion>60,185</postion>
@@ -2511,8 +2531,8 @@
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -2522,7 +2542,7 @@
           </Widget>
         </Children>
       </Widget>
-      <Widget name="gear_label" type="1" index="6" id="1751091749715" is-hidden="0">
+      <Widget id="1751091749715" type="1" is-hidden="0" index="6" name="gear_label">
         <Normal>
           <name>gear_label</name>
           <postion>565,135</postion>
@@ -2544,8 +2564,8 @@
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2573,7 +2593,7 @@
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2604,7 +2624,7 @@
         </Style>
         <Event/>
       </Widget>
-      <Widget name="gear_slider" type="8" index="7" id="1751091902469" is-hidden="0">
+      <Widget id="1751091902469" type="8" is-hidden="0" index="7" name="gear_slider">
         <Normal>
           <name>gear_slider</name>
           <postion>215,540</postion>
@@ -2627,8 +2647,8 @@
           <value>0</value>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#808080</bg-color>
               <bg-opa>51</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2642,7 +2662,7 @@
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#2196f3</bg-color>
               <bg-opa>51</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2656,7 +2676,7 @@
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#2196f3</bg-color>
               <bg-opa>51</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2671,8 +2691,8 @@
               <shadow-width>0</shadow-width>
             </State>
           </Part>
-          <Part name="Indicator" value="131072">
-            <State name="Default" value="0">
+          <Part value="131072" name="Indicator">
+            <State value="0" name="Default">
               <bg-color>#ff7900</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2680,7 +2700,7 @@
               <bg-img-recolor>#000000</bg-img-recolor>
               <bg-img-recolor-opa>0</bg-img-recolor-opa>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2688,7 +2708,7 @@
               <bg-img-recolor>#000000</bg-img-recolor>
               <bg-img-recolor-opa>0</bg-img-recolor-opa>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2697,8 +2717,8 @@
               <bg-img-recolor-opa>0</bg-img-recolor-opa>
             </State>
           </Part>
-          <Part name="Knob" value="196608">
-            <State name="Default" value="0">
+          <Part value="196608" name="Knob">
+            <State value="0" name="Default">
               <bg-color>#2196f3</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2706,7 +2726,7 @@
               <bg-img-recolor>#000000</bg-img-recolor>
               <bg-img-recolor-opa>0</bg-img-recolor-opa>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2714,7 +2734,7 @@
               <bg-img-recolor>#000000</bg-img-recolor>
               <bg-img-recolor-opa>0</bg-img-recolor-opa>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2733,7 +2753,7 @@
           </Released>
         </Event>
       </Widget>
-      <Widget name="func_label" type="1" index="8" id="1751292395655" is-hidden="0">
+      <Widget id="1751292395655" type="1" is-hidden="0" index="8" name="func_label">
         <Normal>
           <name>func_label</name>
           <postion>0,540</postion>
@@ -2756,8 +2776,8 @@ Still</text>
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2785,7 +2805,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -2818,7 +2838,7 @@ Still</text>
       </Widget>
     </Widgets>
   </Screen>
-  <Screen name="setting_timing" is-default="0" index="3" id="1751104073315">
+  <Screen is-default="0" id="1751104073315" index="3" name="setting_timing">
     <Normal>
       <name>setting_timing</name>
       <scrollbar-mode>0</scrollbar-mode>
@@ -2835,8 +2855,8 @@ Still</text>
     </FontStorage>
     <Attribute/>
     <Style>
-      <Part name="Main" value="0">
-        <State name="Default" value="0">
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
           <bg-color>#000000</bg-color>
           <bg-opa>255</bg-opa>
           <bg-img-src></bg-img-src>
@@ -2855,7 +2875,7 @@ Still</text>
       </UnloadStart>
     </Event>
     <Widgets>
-      <Widget name="roller_minute" type="10" index="0" id="1751105594486" is-hidden="0">
+      <Widget id="1751105594486" type="10" is-hidden="0" index="0" name="roller_minute">
         <Normal>
           <name>roller_minute</name>
           <postion>683,0</postion>
@@ -2940,8 +2960,8 @@ Still</text>
           <row-count>10</row-count>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <text-color>#565656</text-color>
@@ -2959,7 +2979,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#ffffff</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#212121</text-color>
@@ -2976,7 +2996,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#212121</text-color>
@@ -2994,8 +3014,8 @@ Still</text>
               <shadow-width>0</shadow-width>
             </State>
           </Part>
-          <Part name="Selected" value="262144">
-            <State name="Default" value="0">
+          <Part value="262144" name="Selected">
+            <State value="0" name="Default">
               <bg-color>#2196f3</bg-color>
               <bg-opa>0</bg-opa>
               <text-color>#ffffff</text-color>
@@ -3003,14 +3023,14 @@ Still</text>
               <text-font-size>80</text-font-size>
               <text-align>2</text-align>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#ffffff</text-color>
               <text-font-edit>0</text-font-edit>
               <text-align>2</text-align>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#ffffff</text-color>
@@ -3021,7 +3041,7 @@ Still</text>
         </Style>
         <Event/>
       </Widget>
-      <Widget name="cancel_cont" type="28" index="1" id="1751105697561" is-hidden="0">
+      <Widget id="1751105697561" type="28" is-hidden="0" index="1" name="cancel_cont">
         <Normal>
           <name>cancel_cont</name>
           <postion>0,0</postion>
@@ -3040,8 +3060,8 @@ Still</text>
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3071,7 +3091,7 @@ Still</text>
           </Clicked>
         </Event>
         <Children>
-          <Widget name="image_1" type="5" group-id="-1" parent-id="1751105697561" index="0" id="1751105913045" is-hidden="0">
+          <Widget parent-id="1751105697561" id="1751105913045" type="5" is-hidden="0" index="0" name="image_1" group-id="-1">
             <Normal>
               <name>image_1</name>
               <postion>46,310</postion>
@@ -3097,8 +3117,8 @@ Still</text>
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -3108,7 +3128,7 @@ Still</text>
           </Widget>
         </Children>
       </Widget>
-      <Widget name="label_1" type="1" index="2" id="1751105738826" is-hidden="0">
+      <Widget id="1751105738826" type="1" is-hidden="0" index="2" name="label_1">
         <Normal>
           <name>label_1</name>
           <postion>218,335</postion>
@@ -3130,8 +3150,8 @@ Still</text>
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3159,7 +3179,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3190,7 +3210,7 @@ Still</text>
         </Style>
         <Event/>
       </Widget>
-      <Widget name="label_2" type="1" index="3" id="1751106042842" is-hidden="0">
+      <Widget id="1751106042842" type="1" is-hidden="0" index="3" name="label_2">
         <Normal>
           <name>label_2</name>
           <postion>615,320</postion>
@@ -3212,8 +3232,8 @@ Still</text>
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3241,7 +3261,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3272,7 +3292,7 @@ Still</text>
         </Style>
         <Event/>
       </Widget>
-      <Widget name="confirm_cont" type="28" index="4" id="1751106074410" is-hidden="0">
+      <Widget id="1751106074410" type="28" is-hidden="0" index="4" name="confirm_cont">
         <Normal>
           <name>confirm_cont</name>
           <postion>1080,0</postion>
@@ -3291,8 +3311,8 @@ Still</text>
         </FontStorage>
         <Attribute/>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#2e3235</bg-color>
               <bg-opa>255</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3322,7 +3342,7 @@ Still</text>
           </Clicked>
         </Event>
         <Children>
-          <Widget name="image_2" type="5" group-id="-1" parent-id="1751106074410" index="0" id="1751106074415" is-hidden="0">
+          <Widget parent-id="1751106074410" id="1751106074415" type="5" is-hidden="0" index="0" name="image_2" group-id="-1">
             <Normal>
               <name>image_2</name>
               <postion>46,310</postion>
@@ -3348,8 +3368,8 @@ Still</text>
               <opacity>255</opacity>
             </Attribute>
             <Style>
-              <Part name="Main" value="0">
-                <State name="Default" value="0">
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
                   <img-recolor>#000000</img-recolor>
                   <img-recolor-opa>0</img-recolor-opa>
                 </State>
@@ -3359,7 +3379,7 @@ Still</text>
           </Widget>
         </Children>
       </Widget>
-      <Widget name="label_3" type="1" index="5" id="1751106134261" is-hidden="0">
+      <Widget id="1751106134261" type="1" is-hidden="0" index="5" name="label_3">
         <Normal>
           <name>label_3</name>
           <postion>1008,335</postion>
@@ -3381,8 +3401,8 @@ Still</text>
           <long-mode>0</long-mode>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3410,7 +3430,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <bg-img-src></bg-img-src>
@@ -3441,7 +3461,7 @@ Still</text>
         </Style>
         <Event/>
       </Widget>
-      <Widget name="roller_hour" type="10" index="6" id="1751106842388" is-hidden="0">
+      <Widget id="1751106842388" type="10" is-hidden="0" index="6" name="roller_hour">
         <Normal>
           <name>roller_hour</name>
           <postion>304,0</postion>
@@ -3565,8 +3585,8 @@ Still</text>
           <row-count>10</row-count>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <bg-color>#ffffff</bg-color>
               <bg-opa>0</bg-opa>
               <text-color>#565656</text-color>
@@ -3584,7 +3604,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#ffffff</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#212121</text-color>
@@ -3601,7 +3621,7 @@ Still</text>
               <shadow-spread>0</shadow-spread>
               <shadow-width>0</shadow-width>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#ffffff</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#212121</text-color>
@@ -3619,8 +3639,8 @@ Still</text>
               <shadow-width>0</shadow-width>
             </State>
           </Part>
-          <Part name="Selected" value="262144">
-            <State name="Default" value="0">
+          <Part value="262144" name="Selected">
+            <State value="0" name="Default">
               <bg-color>#2196f3</bg-color>
               <bg-opa>0</bg-opa>
               <text-color>#ffffff</text-color>
@@ -3628,14 +3648,14 @@ Still</text>
               <text-font-size>80</text-font-size>
               <text-align>2</text-align>
             </State>
-            <State name="Focused" value="2">
+            <State value="2" name="Focused">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#ffffff</text-color>
               <text-font-edit>0</text-font-edit>
               <text-align>2</text-align>
             </State>
-            <State name="Disabled" value="128">
+            <State value="128" name="Disabled">
               <bg-color>#2196f3</bg-color>
               <bg-opa>255</bg-opa>
               <text-color>#ffffff</text-color>
@@ -3648,7 +3668,7 @@ Still</text>
       </Widget>
     </Widgets>
   </Screen>
-  <Screen name="test_screen" is-default="0" index="4" id="1751421475051">
+  <Screen is-default="0" id="1751421475051" index="4" name="test_screen">
     <Normal>
       <name>test_screen</name>
       <scrollbar-mode>0</scrollbar-mode>
@@ -3665,8 +3685,8 @@ Still</text>
     </FontStorage>
     <Attribute/>
     <Style>
-      <Part name="Main" value="0">
-        <State name="Default" value="0">
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
           <bg-color>#000000</bg-color>
           <bg-opa>255</bg-opa>
           <bg-img-src></bg-img-src>
@@ -3678,7 +3698,7 @@ Still</text>
     </Style>
     <Event/>
     <Widgets>
-      <Widget name="image_1" type="5" index="0" id="1751421497152" is-hidden="0">
+      <Widget id="1751421497152" type="5" is-hidden="0" index="0" name="image_1">
         <Normal>
           <name>image_1</name>
           <postion>182,226</postion>
@@ -3704,8 +3724,8 @@ Still</text>
           <opacity>255</opacity>
         </Attribute>
         <Style>
-          <Part name="Main" value="0">
-            <State name="Default" value="0">
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
               <img-recolor>#000000</img-recolor>
               <img-recolor-opa>0</img-recolor-opa>
             </State>
@@ -3715,7 +3735,7 @@ Still</text>
       </Widget>
     </Widgets>
   </Screen>
-  <Screen name="screen_2" is-default="0" index="5" id="1751440699788">
+  <Screen is-default="0" id="1751440699788" index="5" name="screen_2">
     <Normal>
       <name>screen_2</name>
       <scrollbar-mode>0</scrollbar-mode>
@@ -3732,8 +3752,8 @@ Still</text>
     </FontStorage>
     <Attribute/>
     <Style>
-      <Part name="Main" value="0">
-        <State name="Default" value="0">
+      <Part value="0" name="Main">
+        <State value="0" name="Default">
           <bg-color>#000000</bg-color>
           <bg-opa>255</bg-opa>
           <bg-img-src></bg-img-src>
@@ -3744,6 +3764,1647 @@ Still</text>
       </Part>
     </Style>
     <Event/>
-    <Widgets/>
+    <Widgets>
+      <Widget id="1751470132871" type="5" is-hidden="0" index="0" name="image_5">
+        <Normal>
+          <name>image_5</name>
+          <postion>490,210</postion>
+          <size>300,300</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>2_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute>
+          <src>suspend.png</src>
+          <center-x>50</center-x>
+          <center-y>50</center-y>
+          <rotate>0</rotate>
+          <format>2</format>
+          <opacity>255</opacity>
+        </Attribute>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <img-recolor>#000000</img-recolor>
+              <img-recolor-opa>0</img-recolor-opa>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+      <Widget id="1751470141551" type="9" is-hidden="0" index="1" name="line_1">
+        <Normal>
+          <name>line_1</name>
+          <postion>490,9</postion>
+          <size>300,40</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>2_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute>
+          <points>
+            <point>60,20</point>
+            <point>240,20</point>
+          </points>
+          <y-invert>0</y-invert>
+        </Attribute>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <line-color>#707070</line-color>
+              <line-opa>255</line-opa>
+              <line-width>10</line-width>
+              <line-rounded>1</line-rounded>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+      <Widget id="1751470160584" type="28" is-hidden="0" index="2" name="container_2">
+        <Normal>
+          <name>container_2</name>
+          <postion>0,-720</postion>
+          <size>1280,720</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>1_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute/>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#000000</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-src></bg-img-src>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#ffffff</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>0</radius>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+        <Children>
+          <Widget parent-id="1751470160584" id="1751470160598" type="5" is-hidden="0" index="0" name="image_11" group-id="-1">
+            <Normal>
+              <name>image_11</name>
+              <postion>21,24</postion>
+              <size>230,376</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>merge.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>2</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470160584" id="1751470160599" type="5" is-hidden="0" index="1" name="image_12" group-id="-1">
+            <Normal>
+              <name>image_12</name>
+              <postion>273,24</postion>
+              <size>230,376</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>cook.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>2</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470160584" id="1751470160600" type="5" is-hidden="0" index="2" name="image_13" group-id="-1">
+            <Normal>
+              <name>image_13</name>
+              <postion>525,24</postion>
+              <size>230,376</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>lang.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>2</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470160584" id="1751470160601" type="5" is-hidden="0" index="3" name="image_14" group-id="-1">
+            <Normal>
+              <name>image_14</name>
+              <postion>777,24</postion>
+              <size>230,376</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>qrcode.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>2</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470160584" id="1751470160602" type="5" is-hidden="0" index="4" name="image_15" group-id="-1">
+            <Normal>
+              <name>image_15</name>
+              <postion>1029,24</postion>
+              <size>230,376</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>about.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>2</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+        </Children>
+      </Widget>
+      <Widget id="1751470586868" type="28" is-hidden="0" index="3" name="container_3">
+        <Normal>
+          <name>container_3</name>
+          <postion>875,366</postion>
+          <size>400,350</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>2_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute/>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#2e3235</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-src></bg-img-src>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>100</radius>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+        <Children>
+          <Widget parent-id="1751470586868" id="1751470586876" type="17" is-hidden="0" index="0" name="animImg_6" group-id="-1">
+            <Normal>
+              <name>animImg_6</name>
+              <postion>0,5</postion>
+              <size>400,345</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <images>
+                <image>1.png</image>
+                <image>2.png</image>
+                <image>3.png</image>
+                <image>4.png</image>
+                <image>5.png</image>
+                <image>6.png</image>
+                <image>7.png</image>
+                <image>8.png</image>
+                <image>9.png</image>
+                <image>10.png</image>
+                <image>11.png</image>
+                <image>12.png</image>
+                <image>13.png</image>
+                <image>14.png</image>
+                <image>15.png</image>
+                <image>16.png</image>
+              </images>
+              <duration>2000</duration>
+              <repeat>-1</repeat>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470586868" id="1751470586879" type="9" is-hidden="0" index="1" name="line_2" group-id="-1">
+            <Normal>
+              <name>line_2</name>
+              <postion>120,170</postion>
+              <size>160,10</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <points>
+                <point>0,0</point>
+                <point>160,0</point>
+              </points>
+              <y-invert>0</y-invert>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <line-color>#dddddd</line-color>
+                  <line-opa>255</line-opa>
+                  <line-width>10</line-width>
+                  <line-rounded>0</line-rounded>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470586868" id="1751470586892" type="5" is-hidden="0" index="2" name="image_16" group-id="-1">
+            <Normal>
+              <name>image_16</name>
+              <postion>125,100</postion>
+              <size>150,150</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>thermos.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>1</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470586868" id="1751470586895" type="1" is-hidden="0" index="3" name="label_9" group-id="-1">
+            <Normal>
+              <name>label_9</name>
+              <postion>125,260</postion>
+              <size>150,50</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>4:00</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>50</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470586868" id="1751470586902" type="1" is-hidden="0" index="4" name="label_10" group-id="-1">
+            <Normal>
+              <name>label_10</name>
+              <postion>150,115</postion>
+              <size>100,120</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>1_1,2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>0</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>120</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+        </Children>
+      </Widget>
+      <Widget id="1751470655118" type="28" is-hidden="0" index="4" name="container_5">
+        <Normal>
+          <name>container_5</name>
+          <postion>5,366</postion>
+          <size>400,350</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>2_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute/>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#2e3235</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-src></bg-img-src>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>100</radius>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+        <Children>
+          <Widget parent-id="1751470655118" id="1751470655133" type="17" is-hidden="0" index="0" name="animImg_9" group-id="-1">
+            <Normal>
+              <name>animImg_9</name>
+              <postion>0,5</postion>
+              <size>400,345</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <images>
+                <image>1.png</image>
+                <image>2.png</image>
+                <image>3.png</image>
+                <image>4.png</image>
+                <image>5.png</image>
+                <image>6.png</image>
+                <image>7.png</image>
+                <image>8.png</image>
+                <image>9.png</image>
+                <image>10.png</image>
+                <image>11.png</image>
+                <image>12.png</image>
+                <image>13.png</image>
+                <image>14.png</image>
+                <image>15.png</image>
+                <image>16.png</image>
+              </images>
+              <duration>2000</duration>
+              <repeat>-1</repeat>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470655118" id="1751470655136" type="9" is-hidden="0" index="1" name="line_4" group-id="-1">
+            <Normal>
+              <name>line_4</name>
+              <postion>120,170</postion>
+              <size>160,10</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <points>
+                <point>0,0</point>
+                <point>160,0</point>
+              </points>
+              <y-invert>0</y-invert>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <line-color>#dddddd</line-color>
+                  <line-opa>255</line-opa>
+                  <line-width>10</line-width>
+                  <line-rounded>0</line-rounded>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470655118" id="1751470655149" type="5" is-hidden="0" index="2" name="image_18" group-id="-1">
+            <Normal>
+              <name>image_18</name>
+              <postion>125,100</postion>
+              <size>150,150</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>thermos.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>1</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470655118" id="1751470655152" type="1" is-hidden="0" index="3" name="label_13" group-id="-1">
+            <Normal>
+              <name>label_13</name>
+              <postion>125,260</postion>
+              <size>150,50</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>4:00</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>50</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470655118" id="1751470655153" type="1" is-hidden="0" index="4" name="label_14" group-id="-1">
+            <Normal>
+              <name>label_14</name>
+              <postion>150,115</postion>
+              <size>100,120</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>1_1,2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>0</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>120</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+        </Children>
+      </Widget>
+      <Widget id="1751470696383" type="28" is-hidden="0" index="5" name="container_6">
+        <Normal>
+          <name>container_6</name>
+          <postion>5,4</postion>
+          <size>400,350</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>2_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute/>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#2e3235</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-src></bg-img-src>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>100</radius>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+        <Children>
+          <Widget parent-id="1751470696383" id="1751470696394" type="17" is-hidden="0" index="0" name="animImg_11" group-id="-1">
+            <Normal>
+              <name>animImg_11</name>
+              <postion>0,5</postion>
+              <size>400,345</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <images>
+                <image>1.png</image>
+                <image>2.png</image>
+                <image>3.png</image>
+                <image>4.png</image>
+                <image>5.png</image>
+                <image>6.png</image>
+                <image>7.png</image>
+                <image>8.png</image>
+                <image>9.png</image>
+                <image>10.png</image>
+                <image>11.png</image>
+                <image>12.png</image>
+                <image>13.png</image>
+                <image>14.png</image>
+                <image>15.png</image>
+                <image>16.png</image>
+              </images>
+              <duration>2000</duration>
+              <repeat>-1</repeat>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470696383" id="1751470696397" type="9" is-hidden="0" index="1" name="line_5" group-id="-1">
+            <Normal>
+              <name>line_5</name>
+              <postion>120,170</postion>
+              <size>160,10</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <points>
+                <point>0,0</point>
+                <point>160,0</point>
+              </points>
+              <y-invert>0</y-invert>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <line-color>#dddddd</line-color>
+                  <line-opa>255</line-opa>
+                  <line-width>10</line-width>
+                  <line-rounded>0</line-rounded>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470696383" id="1751470696410" type="5" is-hidden="0" index="2" name="image_19" group-id="-1">
+            <Normal>
+              <name>image_19</name>
+              <postion>125,100</postion>
+              <size>150,150</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>thermos.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>1</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470696383" id="1751470696413" type="1" is-hidden="0" index="3" name="label_15" group-id="-1">
+            <Normal>
+              <name>label_15</name>
+              <postion>125,260</postion>
+              <size>150,50</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>4:00</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>50</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470696383" id="1751470696414" type="1" is-hidden="0" index="4" name="label_16" group-id="-1">
+            <Normal>
+              <name>label_16</name>
+              <postion>150,115</postion>
+              <size>100,120</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>1_1,2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>0</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>120</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+        </Children>
+      </Widget>
+      <Widget id="1751470706511" type="28" is-hidden="0" index="6" name="container_7">
+        <Normal>
+          <name>container_7</name>
+          <postion>875,5</postion>
+          <size>400,350</size>
+          <scrollbar-mode>0</scrollbar-mode>
+          <flag>2_1</flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <ImgStorage>
+          <use-img-storage>0</use-img-storage>
+        </ImgStorage>
+        <FontStorage>
+          <use-font-storage>0</use-font-storage>
+        </FontStorage>
+        <Attribute/>
+        <Style>
+          <Part value="0" name="Main">
+            <State value="0" name="Default">
+              <bg-color>#2e3235</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-src></bg-img-src>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#e0e0e0</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>100</radius>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+        <Children>
+          <Widget parent-id="1751470706511" id="1751470706514" type="17" is-hidden="0" index="0" name="animImg_12" group-id="-1">
+            <Normal>
+              <name>animImg_12</name>
+              <postion>0,5</postion>
+              <size>400,345</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <images>
+                <image>1.png</image>
+                <image>2.png</image>
+                <image>3.png</image>
+                <image>4.png</image>
+                <image>5.png</image>
+                <image>6.png</image>
+                <image>7.png</image>
+                <image>8.png</image>
+                <image>9.png</image>
+                <image>10.png</image>
+                <image>11.png</image>
+                <image>12.png</image>
+                <image>13.png</image>
+                <image>14.png</image>
+                <image>15.png</image>
+                <image>16.png</image>
+              </images>
+              <duration>2000</duration>
+              <repeat>-1</repeat>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470706511" id="1751470706516" type="9" is-hidden="0" index="1" name="line_6" group-id="-1">
+            <Normal>
+              <name>line_6</name>
+              <postion>120,170</postion>
+              <size>160,10</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <points>
+                <point>0,0</point>
+                <point>160,0</point>
+              </points>
+              <y-invert>0</y-invert>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <line-color>#dddddd</line-color>
+                  <line-opa>255</line-opa>
+                  <line-width>10</line-width>
+                  <line-rounded>0</line-rounded>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470706511" id="1751470706530" type="5" is-hidden="0" index="2" name="image_20" group-id="-1">
+            <Normal>
+              <name>image_20</name>
+              <postion>125,100</postion>
+              <size>150,150</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <src>thermos.png</src>
+              <center-x>50</center-x>
+              <center-y>50</center-y>
+              <rotate>0</rotate>
+              <format>1</format>
+              <opacity>255</opacity>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <img-recolor>#000000</img-recolor>
+                  <img-recolor-opa>0</img-recolor-opa>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470706511" id="1751470706534" type="1" is-hidden="0" index="3" name="label_17" group-id="-1">
+            <Normal>
+              <name>label_17</name>
+              <postion>125,260</postion>
+              <size>150,50</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>4:00</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>50</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+          <Widget parent-id="1751470706511" id="1751470706545" type="1" is-hidden="0" index="4" name="label_18" group-id="-1">
+            <Normal>
+              <name>label_18</name>
+              <postion>150,115</postion>
+              <size>100,120</size>
+              <scrollbar-mode>0</scrollbar-mode>
+              <flag>1_1,2_1,16384_1</flag>
+            </Normal>
+            <Animate>
+              <use-anim>0</use-anim>
+            </Animate>
+            <ImgStorage>
+              <use-img-storage>0</use-img-storage>
+            </ImgStorage>
+            <FontStorage>
+              <use-font-storage>0</use-font-storage>
+            </FontStorage>
+            <Attribute>
+              <text>0</text>
+              <long-mode>0</long-mode>
+            </Attribute>
+            <Style>
+              <Part value="0" name="Main">
+                <State value="0" name="Default">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#ffffff</text-color>
+                  <text-font-path>FZLTXHJW.TTF</text-font-path>
+                  <text-font-size>120</text-font-size>
+                  <text-align>2</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+                <State value="128" name="Disabled">
+                  <bg-color>#ffffff</bg-color>
+                  <bg-opa>0</bg-opa>
+                  <bg-img-src></bg-img-src>
+                  <bg-img-opa>255</bg-img-opa>
+                  <bg-img-recolor>#000000</bg-img-recolor>
+                  <bg-img-recolor-opa>0</bg-img-recolor-opa>
+                  <text-color>#212121</text-color>
+                  <text-font-edit>0</text-font-edit>
+                  <text-align>0</text-align>
+                  <border-color>#000000</border-color>
+                  <border-opa>255</border-opa>
+                  <border-width>0</border-width>
+                  <radius>0</radius>
+                  <text-line-space>0</text-line-space>
+                  <text-letter-space>0</text-letter-space>
+                  <pad-top>0</pad-top>
+                  <pad-right>0</pad-right>
+                  <pad-bottom>0</pad-bottom>
+                  <pad-left>0</pad-left>
+                  <shadow-color>#000000</shadow-color>
+                  <shadow-opa>255</shadow-opa>
+                  <shadow-ofs-x>0</shadow-ofs-x>
+                  <shadow-ofs-y>0</shadow-ofs-y>
+                  <shadow-spread>0</shadow-spread>
+                  <shadow-width>0</shadow-width>
+                </State>
+              </Part>
+            </Style>
+            <Event/>
+          </Widget>
+        </Children>
+      </Widget>
+    </Widgets>
   </Screen>
 </ailv-app>

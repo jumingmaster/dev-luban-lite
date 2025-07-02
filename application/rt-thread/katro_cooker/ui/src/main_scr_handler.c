@@ -24,6 +24,8 @@ static const char *cooker_anim_imgs[16] = {
 
 TCM_DATA_DEFINE static lv_timer_t * main_scr_tmr = NULL;
 
+TCM_DATA_DEFINE static lv_timer_t * pause_check_tmr = NULL;
+
 TCM_DATA_DEFINE static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
 
 TCM_DATA_DEFINE static ui_cooker_ctx_t cooker_ui[UI_COOKER_NUM] = {0};
@@ -55,15 +57,40 @@ TCM_CODE_DEFINE static void main_scr_timer_handler(lv_timer_t * tmr)
 {
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
-        if (rt_mutex_take(cur_state_mtx[i], 10) == RT_EOK)
+        if (rt_mutex_take(cur_state_mtx[i], RT_WAITING_NO) == RT_EOK)
         {
             cooker_ui_state_set(&cur_cooker_state[i], i);
             rt_mutex_release(cur_state_mtx[i]);
         }
-        // cook_ui_msg_send();
     }
 
-    cooker_ui_data_notify();
+    // cooker_ui_data_notify();
+}
+
+static void main_scr_cooker_timing_check(lv_timer_t * tmr)
+{
+    int mask = 0;
+
+    for (int i = 0; i < UI_COOKER_NUM; i++)
+    {
+        if (rt_mutex_take(cur_state_mtx[i], 10) == RT_EOK)
+        {
+            if (cur_cooker_state[i].on_timing == 0)
+            {
+                mask++;
+            }
+        }
+    }
+    if (mask == UI_COOKER_NUM)
+    {
+        lv_timer_pause(tmr);
+        lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
+        main_scr_glb_pause = 0;
+        main_scr_running_cooker = 0;
+        rt_kprintf("clear global pause state.\r\n");
+    }
+
+    
 }
 
 
@@ -85,10 +112,12 @@ TCM_CODE_DEFINE static void cooker_set_idle(int ch)
         lv_obj_add_flag(cooker_ui[ch].state, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(cooker_ui[ch].timing, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(cooker_ui[ch].gear, LV_OBJ_FLAG_HIDDEN);
+
         if (--main_scr_running_cooker <= 0)
         {
             lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
             main_scr_glb_pause = 0;
+            main_scr_running_cooker = 0;
         }
     }
 }
@@ -118,6 +147,7 @@ TCM_CODE_DEFINE static void cooker_timing_handler(int ch, ui_cooker_ctx_t * ctx)
                 lv_label_set_text_fmt(ctx->gear, "%d", cooker_state.gear);
                 lv_obj_clear_flag(ctx->gear, LV_OBJ_FLAG_HIDDEN);
                 lv_obj_add_flag(ctx->state, LV_OBJ_FLAG_HIDDEN);
+                lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             }
             else
             {
@@ -138,7 +168,7 @@ TCM_CODE_DEFINE static void cooker_timing_handler(int ch, ui_cooker_ctx_t * ctx)
 
             lv_label_set_text_fmt(ctx->timing, "%02d:%02d", ctx->remain_hour, ctx->remain_minute);
         }
-        rt_kprintf("Cooker%d current second: %d\r\n", ch, ctx->cur_second);
+        // rt_kprintf("Cooker%d current second: %d\r\n", ch, ctx->cur_second);
     }
 
 }
@@ -219,6 +249,11 @@ static void pause_all_cooker_timer(int pause)
 }
 
 
+void pause_cooker_timer(int ch, int pause)
+{
+    pause ? lv_timer_pause(cooker_ui[ch].timer) : lv_timer_resume(cooker_ui[ch].timer);
+}
+
 TCM_CODE_DEFINE void main_screen_custom_unload_start(void) 
 {
     // lv_timer_pause(main_scr_tmr);
@@ -246,7 +281,9 @@ void main_screen_custom_created(void)
         cur_state_mtx[i] = rt_mutex_create(main_ui_mtx_name[i], RT_IPC_FLAG_PRIO);
     }
 
-    main_scr_tmr = lv_timer_create(main_scr_timer_handler, 100, NULL);
+    main_scr_tmr = lv_timer_create(main_scr_timer_handler, 200, NULL);
+    // pause_check_tmr = lv_timer_create(main_scr_cooker_timing_check, 50, NULL);
+    // lv_timer_pause(pause_check_tmr);
 
     cooker_ui[0].cont = scr->cooker1;
     cooker_ui[0].anim = scr->cooker1_anim;
@@ -298,6 +335,7 @@ void main_screen_custom_created(void)
 
 TCM_CODE_DEFINE void main_screen_custom_load_start(void) 
 {    
+    main_scr_running_cooker = 0;
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
         cooker_ui_state_get(&cur_cooker_state[i], i);
@@ -341,6 +379,7 @@ TCM_CODE_DEFINE void main_screen_custom_load_start(void)
                 {
                     lv_label_set_text_fmt(cooker_ui[i].timing, "%d:%02d", cur_cooker_state[i].hour, cur_cooker_state[i].minute);
                     lv_obj_clear_flag(cooker_ui[i].timing, LV_OBJ_FLAG_HIDDEN);
+                    // lv_timer_resume(pause_check_tmr);
                 }
 
                 lv_obj_clear_flag(cooker_ui[i].anim, LV_OBJ_FLAG_HIDDEN);

@@ -27,7 +27,7 @@ TCM_CODE_DEFINE void setting_timing_custom_load_start(void)
 
     cooker_ui_state_get(&cur_state, cur_channel);
 
-    // rt_kprintf("Start setting cooker%d timing.\r\n", cur_channel);
+    pause_cooker_timer(cur_channel, 1);
 
     lv_roller_set_selected(scr->roller_hour, cur_state.hour, LV_ANIM_OFF);
     lv_roller_set_selected(scr->roller_minute, cur_state.minute, LV_ANIM_OFF);
