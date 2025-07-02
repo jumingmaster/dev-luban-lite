@@ -59,6 +59,8 @@ TCM_CODE_DEFINE void setting_timing_cancel_cont_custom_clicked(void)
     
     cooker_ui_state_set(&cur_state, cur_channel);
 
+    reset_cooker_timer(cur_channel);
+
     lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_OVER_LEFT, 100, 0, false);
 }
 
@@ -86,6 +88,7 @@ TCM_CODE_DEFINE void setting_timing_confirm_cont_custom_clicked(void)
         cur_state.on_timing = 1;
         // lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
         // rt_kprintf("Selected Hour:%d, Minute:%d\r\n", cur_state.hour, cur_state.minute);
+        cur_state.total_seconds = cooker_timing_cal_total_sec(cur_state.hour, cur_state.minute);
     }
     // else
     // {
@@ -100,6 +103,8 @@ TCM_CODE_DEFINE void setting_timing_confirm_cont_custom_clicked(void)
     cooker_ui_state_set(&cur_state, cur_channel);
 
     setting_cooker_channel_set(cur_channel);
+
+    reset_cooker_timer(cur_channel);
 
     lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_OVER_RIGHT, 100, 0, false);
 }

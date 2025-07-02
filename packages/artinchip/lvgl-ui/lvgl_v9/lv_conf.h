@@ -29,7 +29,7 @@
 
     /*Enable/disable LV_LOG_TRACE in modules that produces a huge number of logs*/
 
-    #define LV_LOG_LEVEL            LV_LOG_LEVEL_ERROR
+    #define LV_LOG_LEVEL            LV_LOG_LEVEL_WARN
     #define LV_LOG_TRACE_MEM        0
     #define LV_LOG_TRACE_TIMER      0
     #define LV_LOG_TRACE_INDEV      0
@@ -37,7 +37,7 @@
     #define LV_LOG_TRACE_EVENT      0
     #define LV_LOG_TRACE_OBJ_CREATE 0
     #define LV_LOG_TRACE_LAYOUT     0
-    #define LV_LOG_TRACE_ANIM       0
+    #define LV_LOG_TRACE_ANIM       1
 
 #endif  /*LV_USE_LOG*/
 

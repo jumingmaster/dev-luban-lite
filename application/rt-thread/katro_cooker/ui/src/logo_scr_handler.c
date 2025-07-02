@@ -4,8 +4,6 @@ static void logo_anim_ready_cb(lv_anim_t * a)
 {
     lv_img_cache_invalidate_src(NULL);
     
-
-
     lv_scr_load_anim(main_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_BOTTOM, 100, 0, true);
 }
 

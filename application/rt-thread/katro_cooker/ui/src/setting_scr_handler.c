@@ -7,8 +7,8 @@ TCM_DATA_DEFINE static volatile int cur_channel = 0;
 static const char max_gear_str[24] = "Maximum Firepower";
 static const char thermos_str[32] = "Heating Temperature\nStill ";
 
-static const char max_gear_str_cn[24] = "最大火力";
-static const char thermos_str_cn[32] = "保温  ";
+// static const char max_gear_str_cn[24] = "最大火力";
+// static const char thermos_str_cn[32] = "保温  ";
 
 
 
@@ -125,6 +125,7 @@ TCM_CODE_DEFINE void setting_cook_gear_slider_custom_released(void)
         cur_state.on_timing = 0;
         cur_state.hour = 0;
         cur_state.minute = 0;
+        cur_state.total_seconds = 0;
         lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     }
     else
@@ -132,12 +133,13 @@ TCM_CODE_DEFINE void setting_cook_gear_slider_custom_released(void)
         cur_state.on_timing = 1;
         cur_state.hour = gear_timing_table[cur_state.gear];
         cur_state.minute = 0;
+        cur_state.total_seconds = cooker_timing_cal_total_sec(cur_state.hour, cur_state.minute);
         lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
         // rt_kprintf("setting_cook_gear_slider_custom_released");
     }
 
     update_main_scr_ui_data(&cur_state, cur_channel);
-
+    reset_cooker_timer(cur_channel);
 }
 
 TCM_CODE_DEFINE void setting_cook_min_label_custom_clicked(void) 
@@ -156,9 +158,11 @@ TCM_CODE_DEFINE void setting_cook_min_label_custom_clicked(void)
     cur_state.on_timing = 0;
     cur_state.hour = 0;
     cur_state.minute = 0;
+    cur_state.total_seconds = 0;
     lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     update_main_scr_ui_data(&cur_state, cur_channel);
+    reset_cooker_timer(cur_channel);
 }
 
 TCM_CODE_DEFINE void setting_cook_max_label_custom_clicked(void) 
@@ -177,8 +181,10 @@ TCM_CODE_DEFINE void setting_cook_max_label_custom_clicked(void)
     cur_state.on_timing = 1;
     cur_state.hour = gear_timing_table[cur_state.gear];
     cur_state.minute = 0;
+    cur_state.total_seconds = cooker_timing_cal_total_sec(cur_state.hour, cur_state.minute);
     lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
     update_main_scr_ui_data(&cur_state, cur_channel);
+    reset_cooker_timer(cur_channel);
 }
 
 
@@ -188,6 +194,7 @@ TCM_CODE_DEFINE void setting_cook_back_cont_custom_clicked(void)
     update_main_scr_ui_data(&cur_state, cur_channel);
     cooker_ui_state_set(&cur_state, cur_channel);
     // setting_timing_channel_set(cur_channel);
+    
     lv_scr_load_anim(main_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 100, 0, false);   
 }
 
@@ -207,7 +214,7 @@ TCM_CODE_DEFINE void setting_cook_thermos_cont_custom_clicked(void)
         cur_state.hour = gear_timing_table[cur_state.gear];
         cur_state.minute = 0;
         cur_state.on_timing = 1;
-        
+        cur_state.total_seconds = cooker_timing_cal_total_sec(cur_state.hour, cur_state.minute);
 
         lv_obj_add_flag(setting_cook_get(&ui_manager)->gear_slider, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(setting_cook_get(&ui_manager)->max_label, LV_OBJ_FLAG_HIDDEN);
@@ -224,7 +231,8 @@ TCM_CODE_DEFINE void setting_cook_thermos_cont_custom_clicked(void)
         cur_state.hour = 0;
         cur_state.minute = 0;
         cur_state.on_timing = 0;
-
+        cur_state.total_seconds = 0;
+        
         lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
         lv_obj_add_flag(setting_cook_get(&ui_manager)->func_label, LV_OBJ_FLAG_HIDDEN);
 
@@ -242,6 +250,7 @@ TCM_CODE_DEFINE void setting_cook_thermos_cont_custom_clicked(void)
 
     update_main_scr_ui_data(&cur_state, cur_channel);
     cooker_ui_state_set(&cur_state, cur_channel);
+    reset_cooker_timer(cur_channel);
 }
 
 TCM_CODE_DEFINE void setting_cook_timing_cont_custom_clicked(void) 
@@ -270,7 +279,7 @@ TCM_CODE_DEFINE void setting_cook_max_gear_cont_custom_clicked(void)
         cur_state.hour = 0;
         cur_state.minute = 5;
         cur_state.on_timing = 1;
-
+        cur_state.total_seconds = cooker_timing_cal_total_sec(cur_state.hour, cur_state.minute);
         lv_obj_add_flag(setting_cook_get(&ui_manager)->gear_slider, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(setting_cook_get(&ui_manager)->max_label, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(setting_cook_get(&ui_manager)->min_label, LV_OBJ_FLAG_HIDDEN);
@@ -303,5 +312,5 @@ TCM_CODE_DEFINE void setting_cook_max_gear_cont_custom_clicked(void)
 
     update_main_scr_ui_data(&cur_state, cur_channel);
     cooker_ui_state_set(&cur_state, cur_channel);
-
+    reset_cooker_timer(cur_channel);
 }

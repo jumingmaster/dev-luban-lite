@@ -66,7 +66,20 @@ TCM_CODE_DEFINE static void cook_ui_msg_send(void)
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
         resp[i].serial = i;
-        resp[i].gear = cooker_ui_state[i].on_max_gear ? 0x0A : cooker_ui_state[i].gear;
+
+        if (cooker_ui_state[i].on_max_gear)
+        {
+            resp[i].gear = 0x0A;
+        }
+        else if (cooker_ui_state[i].thermos)
+        {
+            resp[i].gear = 0x01;
+        }
+        else
+        {
+            resp[i].gear = cooker_ui_state[i].gear;
+        }
+
         resp[i].onoff = (cooker_ui_state[i].gear || cooker_ui_state[i].on_max_gear) ? 1 : 0;
         memset(tx_buffer, 0x00, sizeof(tx_buffer));
         memcpy(tx_buffer, &resp[i], 1);
