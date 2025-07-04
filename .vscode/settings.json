@@ -79,6 +79,7 @@
 		"usb_dc.h": "c",
 		"lv_port_indev.h": "c",
 		"app_common.h": "c",
-		"valarray": "c"
+		"valarray": "c",
+		"cooker_task.h": "c"
 	}
 }

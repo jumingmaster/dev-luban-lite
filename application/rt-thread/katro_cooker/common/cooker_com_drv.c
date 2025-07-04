@@ -153,11 +153,17 @@ int cooker_send_bytes(uint8_t * data, uint8_t length)
     return length;
 }
 
-int cooker_wait_data(void)
+int cooker_wait_data(uint8_t * data)
 {
-    int ret = 0;
-    int start_time = 0;
-    int offset = 0;
+    uint32_t sum = 0;
+    uint32_t ret = 0;
+    uint32_t start_time = 0;
+    uint32_t low_time = 0;
+    uint32_t high_time = 0;
+    uint32_t offset = 0;
+    uint32_t bit_off = 0;
+    uint32_t * p_data = (uint32_t * )data;
+
     rt_sem_take(rx_sio_sem, RT_WAITING_FOREVER);
 
     rt_device_control(rx_hw_tmr_dev, HWTIMER_CTRL_STOP, NULL);
@@ -207,11 +213,52 @@ int cooker_wait_data(void)
 
     for (int i = offset; i < 160; i++)
     {
-        
+        if (rx_sample_array[i] == 0)
+        {
+            low_time += 100;
+        }
+        else
+        {
+            high_time += 100;
+        }
+
+        start_time += 100;
+
+        if (start_time > 2000)
+        {
+            *(p_data) |= (low_time < 1000 ? 0 : 1) << (31 - bit_off++);
+
+            while (rx_sample_array[i] == 1)
+            {
+                i++;
+            }
+            start_time = 0;
+            low_time = 0;
+            high_time = 0;
+            continue;
+        }
     }
 
+    if (bit_off != 32)
+    {
+        rt_kprintf("接收失败，接收长度不足, bit_off = %d.\r\n", bit_off);
+        ret = -1;
+        goto __exit;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        sum += data[i];
+    }
+    sum = ~sum;
+
+    if (sum != data[3])
+    {
+        rt_kprintf("接收失败，校验和错误.\r\n");
+    }
 
 __exit:
     rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_ENABLE);
+    return ret;
 }
 

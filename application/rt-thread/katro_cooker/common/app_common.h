@@ -9,21 +9,30 @@
 #include "aic_core.h"
 #include "aic_drv.h"
 
-// 定义时间参数(微秒)
-#define FRAME_INTERVAL 100000  // 100ms
-#define START_MIN 3070         // 启动高电平最小3ms
-#define BIT1_HIGH 1565         // 1的高电平1.5ms
-#define BIT0_HIGH 565          // 0的高电平0.5ms
-#define LOW_MIN 565            // 低电平最小0.5ms
+typedef struct
+{
+    int onoff;
+    int resume;
+    int timing;
+    int gear;
+} cooker_t;
 
-#define COOKER_TX_PIN   GET_PIN(A, 4)
-#define COOKER_RX_PIN   GET_PIN(A, 5)
+typedef struct
+{
+    int fault;
+    int pot_state;
+    int pot_timeout;
+    int spec_pot;
+    int afterheat;
+    int pan_temp;
+    int igbt_temp;
+    int voltage;
+    int current;
+} cooker_hw_t;
 
-void cooker_drv_init(void);
 
-int cooker_read_bytes(uint8_t * data, uint8_t length);
 
-int cooker_send_bytes(uint8_t * data, uint8_t length);
+int cooker_ui_read_hw_data(int channel, cooker_hw_t * data);
 
 
 #endif

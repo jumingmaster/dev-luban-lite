@@ -1,4 +1,5 @@
 #include "app_ui_common.h"
+#include "app_common.h"
 #include "cooker_protocol.h"
 
 static const char *cooker_anim_imgs[16] = {
@@ -24,11 +25,13 @@ static const char *cooker_anim_imgs[16] = {
 
 TCM_DATA_DEFINE static lv_timer_t * main_scr_tmr = NULL;
 
-TCM_DATA_DEFINE static lv_timer_t * pause_check_tmr = NULL;
+// TCM_DATA_DEFINE static lv_timer_t * pause_check_tmr = NULL;
 
 TCM_DATA_DEFINE static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
 
 TCM_DATA_DEFINE static ui_cooker_ctx_t cooker_ui[UI_COOKER_NUM] = {0};
+
+static cooker_hw_t cur_cooker_hw_state[UI_COOKER_NUM] = {0};
 
 TCM_DATA_DEFINE static int main_scr_glb_pause = 0;
 
@@ -62,36 +65,38 @@ TCM_CODE_DEFINE static void main_scr_timer_handler(lv_timer_t * tmr)
             cooker_ui_state_set(&cur_cooker_state[i], i);
             rt_mutex_release(cur_state_mtx[i]);
         }
+
+        cooker_ui_read_hw_data(i, &cur_cooker_hw_state[i]);
     }
 
     cooker_ui_data_notify();
 }
 
-static void main_scr_cooker_timing_check(lv_timer_t * tmr)
-{
-    int mask = 0;
+// static void main_scr_cooker_timing_check(lv_timer_t * tmr)
+// {
+//     int mask = 0;
 
-    for (int i = 0; i < UI_COOKER_NUM; i++)
-    {
-        if (rt_mutex_take(cur_state_mtx[i], 10) == RT_EOK)
-        {
-            if (cur_cooker_state[i].on_timing == 0)
-            {
-                mask++;
-            }
-        }
-    }
-    if (mask == UI_COOKER_NUM)
-    {
-        lv_timer_pause(tmr);
-        lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
-        main_scr_glb_pause = 0;
-        main_scr_running_cooker = 0;
-        // rt_kprintf("clear global pause state.\r\n");
-    }
+//     for (int i = 0; i < UI_COOKER_NUM; i++)
+//     {
+//         if (rt_mutex_take(cur_state_mtx[i], 10) == RT_EOK)
+//         {
+//             if (cur_cooker_state[i].on_timing == 0)
+//             {
+//                 mask++;
+//             }
+//         }
+//     }
+//     if (mask == UI_COOKER_NUM)
+//     {
+//         lv_timer_pause(tmr);
+//         lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
+//         main_scr_glb_pause = 0;
+//         main_scr_running_cooker = 0;
+//         // rt_kprintf("clear global pause state.\r\n");
+//     }
 
     
-}
+// }
 
 
 TCM_CODE_DEFINE static void cooker_set_idle(int ch)
@@ -203,7 +208,7 @@ TCM_CODE_DEFINE static void stop_cooker_anim(int all, int ch)
     {
         for (int i = 0; i < UI_COOKER_NUM; i++)
         {
-            if (cur_cooker_state[i].fault || cur_cooker_state[i].gear || 
+            if (cur_cooker_hw_state[i].fault || cur_cooker_state[i].gear || 
                 cur_cooker_state[i].on_timing || cur_cooker_state[i].thermos || 
                 cur_cooker_state[i].on_max_gear)
             {
@@ -344,14 +349,14 @@ TCM_CODE_DEFINE void main_screen_custom_load_start(void)
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
 
-        if (cur_cooker_state[i].fault || cur_cooker_state[i].gear || 
+        if (cur_cooker_hw_state[i].fault || cur_cooker_state[i].gear || 
             cur_cooker_state[i].on_timing || cur_cooker_state[i].thermos || 
             cur_cooker_state[i].on_max_gear)
         {
             
             lv_obj_add_flag(cooker_ui[i].line, LV_OBJ_FLAG_HIDDEN);
 
-            if (cur_cooker_state[i].fault)
+            if (cur_cooker_hw_state[i].fault)
             {
 
             }

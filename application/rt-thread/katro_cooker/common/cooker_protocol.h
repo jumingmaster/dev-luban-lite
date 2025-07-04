@@ -12,6 +12,15 @@ enum
     COOKER_CHAN_4,
 };
 
+enum
+{
+    STATE_CH_DEBUG,
+    STATE_CH_PAN_TEMP,
+    STATE_CH_IGBT_TEMP,
+    STATE_CH_VOLTAGE,
+    STATE_CH_CURRENT,
+};
+
 #pragma pack(push, 1)
 typedef struct
 {
@@ -27,11 +36,6 @@ typedef struct
     uint8_t afterheat   :1;
     uint8_t pot_chan    :4;
 } cooker_state_t;
-
-typedef struct
-{
-    uint8_t comment;
-} cooker_pot_state_t;
 
 typedef struct
 {
