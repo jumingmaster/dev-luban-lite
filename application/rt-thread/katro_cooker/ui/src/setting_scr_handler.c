@@ -195,7 +195,7 @@ TCM_CODE_DEFINE void setting_cook_back_cont_custom_clicked(void)
     cooker_ui_state_set(&cur_state, cur_channel);
     // setting_timing_channel_set(cur_channel);
     
-    lv_scr_load_anim(main_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 100, 0, false);   
+    lv_scr_load_anim(main_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 150, 0, false);   
 }
 
 TCM_CODE_DEFINE void setting_cook_thermos_cont_custom_clicked(void) 

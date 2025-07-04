@@ -1,9 +1,9 @@
-#include "cooker_drv.h"
 #include "cooker_protocol.h"
 #include "app_ui_common.h"
 #include "cooker_task.h"
+#include "app_common.h"
 
-#define HAND_THREAD_PRIORITY         16 
+#define HAND_THREAD_PRIORITY         26
 #define HAND_THREAD_TIMESLICE        5
 
 static char cook_handler_stack[1024];
@@ -67,7 +67,11 @@ TCM_CODE_DEFINE static void cook_ui_msg_send(void)
     {
         resp[i].serial = i;
 
-        if (cooker_ui_state[i].on_max_gear)
+        if (cooker_ui_state[i].pause)
+        {
+            resp[i].gear = 0;
+        }
+        else if (cooker_ui_state[i].on_max_gear)
         {
             resp[i].gear = 0x0A;
         }
@@ -79,17 +83,11 @@ TCM_CODE_DEFINE static void cook_ui_msg_send(void)
         {
             resp[i].gear = cooker_ui_state[i].gear;
         }
-
         resp[i].onoff = (cooker_ui_state[i].gear || cooker_ui_state[i].on_max_gear) ? 1 : 0;
         memset(tx_buffer, 0x00, sizeof(tx_buffer));
         memcpy(tx_buffer, &resp[i], 1);
-        // cooker_send_bytes(tx_buffer, sizeof(tx_buffer));
-        // if (resp[i].gear)
-        // {
-        //     rt_kprintf("Cooker%d: gear = %d, onoff = %d\r\n", resp[i].serial, resp[i].gear, resp[i].onoff);
-        //     rt_kprintf("Cooker%d send: %02X %02X %02X %02X\r\n", i, tx_buffer[0], tx_buffer[1], tx_buffer[2], tx_buffer[3]);
-        // }
-        rt_thread_mdelay(5);
+        cooker_send_bytes(tx_buffer, sizeof(tx_buffer));
+        rt_thread_mdelay(100);
     }
 }
 
@@ -110,6 +108,8 @@ static void cook_handler_thread_entry(void *param)
 
 static int cook_handler_thread_init(void)
 {
+    cooker_drv_init();
+
     cooker_inst.mutex = rt_mutex_create("cooker_inst_mtx", RT_IPC_FLAG_PRIO);
     ui_sem = rt_sem_create("ui_sem", 0, RT_IPC_FLAG_PRIO);
 

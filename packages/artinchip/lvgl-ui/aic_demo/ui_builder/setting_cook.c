@@ -118,10 +118,11 @@ void setting_cook_create(ui_manager_t *ui)
 
     // Init scr->image_3
     scr->image_3 = lv_img_create(scr->back_cont);
+    lv_img_set_src(scr->image_3, LVGL_IMAGE_PATH(back_120x120.png));
     lv_img_set_pivot(scr->image_3, 50, 50);
     lv_img_set_angle(scr->image_3, 0);
     lv_obj_set_style_img_opa(scr->image_3, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_3, 70, 190);
+    lv_obj_set_pos(scr->image_3, 60, 190);
     lv_obj_add_flag(scr->image_3, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->image_3, LV_OBJ_FLAG_EVENT_BUBBLE);
 

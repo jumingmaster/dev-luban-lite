@@ -29,7 +29,7 @@
 
     /*Enable/disable LV_LOG_TRACE in modules that produces a huge number of logs*/
 
-    #define LV_LOG_LEVEL            LV_LOG_LEVEL_WARN
+    #define LV_LOG_LEVEL            LV_LOG_LEVEL_ERROR
     #define LV_LOG_TRACE_MEM        0
     #define LV_LOG_TRACE_TIMER      0
     #define LV_LOG_TRACE_INDEV      0
@@ -128,7 +128,11 @@
 #include "lv_conf_custom.h"
 #endif
 
+// #define LV_INV_BUF_SIZE 64
+
 // #define LV_MEM_SIZE (2048 * 1024)
 // #define LV_USE_STDLIB_MALLOC    LV_STDLIB_RTTHREAD
-
+// #define LV_USE_PROFILER 0
+// #define LV_USE_PROFILER_BUILTIN 0
+// #define LV_PROFILER_BUILTIN_BUF_SIZE    (256 * 1024)
 #endif // LV_CONF_H

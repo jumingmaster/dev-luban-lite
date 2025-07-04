@@ -25,6 +25,7 @@ typedef struct
     int         thermos;
     int         fault;
     int         on_merge;
+    int         pause;
     uint32_t    total_seconds;
 } ui_cooker_state_t;
 

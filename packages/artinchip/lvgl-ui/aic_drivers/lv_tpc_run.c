@@ -17,9 +17,9 @@
 #include "aic_osal.h"
 #include "../components/drivers/include/drivers/touch.h"
 
-#define THREAD_PRIORITY   15
+#define THREAD_PRIORITY   21
 #define THREAD_STACK_SIZE 4096
-#define THREAD_TIMESLICE  5
+#define THREAD_TIMESLICE  20
 
 static rt_thread_t  touch_thread = RT_NULL;
 static rt_sem_t     touch_sem = RT_NULL;
@@ -83,7 +83,7 @@ TCM_CODE_DEFINE static void touch_entry(void *parameter) /* touch panel control 
                 }
             }
         }
-        aicos_msleep(1);
+        aicos_msleep(10);
         // rt_device_control(dev, RT_TOUCH_CTRL_ENABLE_INT, RT_NULL);
     }
 }

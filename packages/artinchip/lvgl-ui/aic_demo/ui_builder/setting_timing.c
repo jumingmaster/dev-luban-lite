@@ -92,10 +92,11 @@ void setting_timing_create(ui_manager_t *ui)
 
     // Init scr->image_1
     scr->image_1 = lv_img_create(scr->cancel_cont);
+    lv_img_set_src(scr->image_1, LVGL_IMAGE_PATH(back_120x120.png));
     lv_img_set_pivot(scr->image_1, 50, 50);
     lv_img_set_angle(scr->image_1, 0);
     lv_obj_set_style_img_opa(scr->image_1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_1, 46, 310);
+    lv_obj_set_pos(scr->image_1, 40, 300);
     lv_obj_add_flag(scr->image_1, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->image_1, LV_OBJ_FLAG_EVENT_BUBBLE);
 
@@ -144,10 +145,11 @@ void setting_timing_create(ui_manager_t *ui)
 
     // Init scr->image_2
     scr->image_2 = lv_img_create(scr->confirm_cont);
+    lv_img_set_src(scr->image_2, LVGL_IMAGE_PATH(back_120x120.png));
     lv_img_set_pivot(scr->image_2, 50, 50);
     lv_img_set_angle(scr->image_2, 0);
     lv_obj_set_style_img_opa(scr->image_2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_2, 46, 310);
+    lv_obj_set_pos(scr->image_2, 40, 300);
     lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_EVENT_BUBBLE);
 

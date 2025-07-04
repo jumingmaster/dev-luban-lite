@@ -728,13 +728,13 @@
 #endif /*LV_USE_SYSMON*/
 
 /*1: Enable the runtime performance profiler*/
-#define LV_USE_PROFILER 0
+#define LV_USE_PROFILER 1
 #if LV_USE_PROFILER
     /*1: Enable the built-in profiler*/
     #define LV_USE_PROFILER_BUILTIN 1
     #if LV_USE_PROFILER_BUILTIN
         /*Default profiler trace buffer size*/
-        #define LV_PROFILER_BUILTIN_BUF_SIZE (16 * 1024)     /*[bytes]*/
+        #define LV_PROFILER_BUILTIN_BUF_SIZE (64 * 1024)     /*[bytes]*/
     #endif
 
     /*Header to include for the profiler*/
