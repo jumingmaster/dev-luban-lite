@@ -35,6 +35,7 @@ static struct rt_thread cook_com_rx_thread;
 
 
 static rt_sem_t ui_sem = RT_NULL;
+static rt_sem_t rx_sem = RT_NULL;
 static ui_cooker_state_t cooker_ui_state[UI_COOKER_NUM] = {0};
 
 static const char mtx_name[UI_COOKER_NUM][16] = {
@@ -60,16 +61,16 @@ static int list_cook_hw(int argc, char **argv)
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
         rt_mutex_take(cooker_inst.cooker_hw_mutex[i], RT_WAITING_FOREVER);
-        rt_kprintf("\r\n=====================\tCooker %d State\t=====================\r\n", i);
-        rt_kprintf("========\t故障码:%d 有无锅:%d 无锅超时%d 特殊锅面:%d\t========\r\n", cooker_inst.cooker_hw[i].fault,
+        rt_kprintf("\r\n=========================\tCooker %d State\t=========================\r\n", i);
+        rt_kprintf(    "===========\tFaultCode:%d Pot:%d Timeout:%d SpecPot:%d\t==============\r\n", cooker_inst.cooker_hw[i].fault,
                                                                             cooker_inst.cooker_hw[i].pot_state,
                                                                             cooker_inst.cooker_hw[i].pot_timeout,
                                                                             cooker_inst.cooker_hw[i].spec_pot);
-        rt_kprintf("========\t线盘温度:%d IGBT温度:%d 电压:%d 电流:%d\t========\r\n", cooker_inst.cooker_hw[i].pan_temp,
+        rt_kprintf(    "===========\tPanTemp:%d IGBT Temp:%d Voltage:%d Current:%d\t=========\r\n", cooker_inst.cooker_hw[i].pan_temp,
                                                                             cooker_inst.cooker_hw[i].igbt_temp,
                                                                             cooker_inst.cooker_hw[i].voltage,
                                                                             cooker_inst.cooker_hw[i].current);
-        rt_kprintf("=====================================================================\r\n", i);
+        rt_kprintf(    "=====================================================================\r\n", i);
         rt_mutex_release(cooker_inst.cooker_hw_mutex[i]);
     }
     return 0;
@@ -168,6 +169,7 @@ static void cook_com_tx_thread_entry(void *param)
             cooker_get_ui_msg();
             cook_ui_msg_send();
         }
+        // rt_thread_mdelay(0);
     }
 }
 
@@ -178,12 +180,16 @@ static void cook_com_rx_thread_entry(void *param)
 
     while (1)
     {
+        // rt_kprintf("start cooker_wait_idle\r\n");
+        cooker_wait_idle();
+        // rt_kprintf("start cooker_wait_data\r\n");
         ret = cooker_wait_data(rx_buffer);
         if (ret == 0)
         {
+            // rt_kprintf("RecvCooker: %02X %02X %02X %02X\r\n", rx_buffer[0], rx_buffer[1], rx_buffer[2], rx_buffer[3]);
             cooker_msg_handler(rx_buffer);
         }
-        rt_thread_mdelay(100);
+        rt_thread_mdelay(10);
     }
 }
 
@@ -196,13 +202,12 @@ static int cook_handler_thread_init(void)
 
     cooker_inst.mutex = rt_mutex_create("cooker_inst_mtx", RT_IPC_FLAG_PRIO);
     ui_sem = rt_sem_create("ui_sem", 0, RT_IPC_FLAG_PRIO);
-
+    rx_sem = rt_sem_create("com_rx_sem", 0, RT_IPC_FLAG_PRIO);
     for (int i = 0; i < 4; i++)
     {
         cooker_inst.cooker_mutex[i] = rt_mutex_create(mtx_name[i], RT_IPC_FLAG_PRIO);
         cooker_inst.cooker_hw_mutex[i] = rt_mutex_create(hw_mtx_name[i], RT_IPC_FLAG_PRIO);
     }
-
 
     rt_thread_init(&cook_com_tx_thread,
                     "cooker_com_tx",
@@ -273,13 +278,17 @@ int cooker_ui_read_hw_data(int channel, cooker_hw_t * data)
         return -1;
     }
 
-    rt_mutex_take(cooker_inst.cooker_hw_mutex[channel], RT_WAITING_FOREVER);
+    if (rt_mutex_take(cooker_inst.cooker_hw_mutex[channel], RT_WAITING_FOREVER) == RT_EOK)
+    {
 
-    *data = cooker_inst.cooker_hw[channel];
+        *data = cooker_inst.cooker_hw[channel];
 
-    rt_mutex_release(cooker_inst.cooker_hw_mutex[channel]);
+        rt_mutex_release(cooker_inst.cooker_hw_mutex[channel]);
 
-    return 0;
+        return 0;
+    }
+
+    return -1;
 }
 
 

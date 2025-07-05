@@ -25,7 +25,7 @@ static const char *cooker_anim_imgs[16] = {
 
 TCM_DATA_DEFINE static lv_timer_t * main_scr_tmr = NULL;
 
-// TCM_DATA_DEFINE static lv_timer_t * pause_check_tmr = NULL;
+TCM_DATA_DEFINE static lv_timer_t * cpu_temp_tmr = NULL;
 
 TCM_DATA_DEFINE static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
 
@@ -37,7 +37,7 @@ TCM_DATA_DEFINE static int main_scr_glb_pause = 0;
 
 TCM_DATA_DEFINE static int main_scr_running_cooker = 0;
 
-
+static lv_obj_t * cpu_temp_obj = NULL;
 
 
 
@@ -72,31 +72,16 @@ TCM_CODE_DEFINE static void main_scr_timer_handler(lv_timer_t * tmr)
     cooker_ui_data_notify();
 }
 
-// static void main_scr_cooker_timing_check(lv_timer_t * tmr)
-// {
-//     int mask = 0;
+static void cpu_temperature_sample(lv_timer_t * tmr)
+{
+    int temp = 0;
 
-//     for (int i = 0; i < UI_COOKER_NUM; i++)
-//     {
-//         if (rt_mutex_take(cur_state_mtx[i], 10) == RT_EOK)
-//         {
-//             if (cur_cooker_state[i].on_timing == 0)
-//             {
-//                 mask++;
-//             }
-//         }
-//     }
-//     if (mask == UI_COOKER_NUM)
-//     {
-//         lv_timer_pause(tmr);
-//         lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
-//         main_scr_glb_pause = 0;
-//         main_scr_running_cooker = 0;
-//         // rt_kprintf("clear global pause state.\r\n");
-//     }
-
-    
-// }
+    if (cpu_temp_get(&temp) == 0)
+    {
+        lv_label_set_text_fmt(cpu_temp_obj, "cpu temp:%3d.%d", 
+                                temp / 10, temp % 10);
+    }
+}
 
 
 TCM_CODE_DEFINE static void cooker_set_idle(int ch)
@@ -281,14 +266,17 @@ void main_screen_custom_created(void)
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
+    cpu_temp_obj = lv_sysmon_create(lv_layer_sys());
+    lv_obj_align(cpu_temp_obj, LV_ALIGN_BOTTOM_LEFT, 0, 0);
+
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
         cur_state_mtx[i] = rt_mutex_create(main_ui_mtx_name[i], RT_IPC_FLAG_PRIO);
     }
 
     main_scr_tmr = lv_timer_create(main_scr_timer_handler, 200, NULL);
-    // pause_check_tmr = lv_timer_create(main_scr_cooker_timing_check, 50, NULL);
-    // lv_timer_pause(pause_check_tmr);
+    cpu_temp_tmr = lv_timer_create(cpu_temperature_sample, 1000, NULL);
+
 
     cooker_ui[0].cont = scr->cooker1;
     cooker_ui[0].anim = scr->cooker1_anim;

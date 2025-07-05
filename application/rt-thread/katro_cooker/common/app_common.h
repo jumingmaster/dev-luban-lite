@@ -34,5 +34,6 @@ typedef struct
 
 int cooker_ui_read_hw_data(int channel, cooker_hw_t * data);
 
+int cpu_temp_get(int * temp);
 
 #endif

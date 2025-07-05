@@ -70,12 +70,12 @@ static void main_screen_dropline_released (lv_event_t *e) {
     main_screen_dropline_custom_released();
 }
 
-static void main_screen_dropline_pressing (lv_event_t *e) {
-    main_screen_dropline_custom_pressing();
-}
-
 static void main_screen_dropline_pressed (lv_event_t *e) {
     main_screen_dropline_custom_pressed();
+}
+
+static void main_screen_dropline_pressing (lv_event_t *e) {
+    main_screen_dropline_custom_pressing();
 }
 
 void __attribute__((weak)) main_screen_drop_merge_custom_clicked(void) {
@@ -173,7 +173,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker2_anim, (const void **)cooker2_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker2_anim, 2000);
+    lv_animimg_set_duration(scr->cooker2_anim, 1500);
     lv_animimg_set_repeat_count(scr->cooker2_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker2_anim);
     lv_obj_set_pos(scr->cooker2_anim, 0, 0);
@@ -280,7 +280,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker3_anim, (const void **)cooker3_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker3_anim, 2000);
+    lv_animimg_set_duration(scr->cooker3_anim, 1500);
     lv_animimg_set_repeat_count(scr->cooker3_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker3_anim);
     lv_obj_set_pos(scr->cooker3_anim, 0, 5);
@@ -387,7 +387,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker1_anim, (const void **)cooker1_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker1_anim, 2000);
+    lv_animimg_set_duration(scr->cooker1_anim, 1500);
     lv_animimg_set_repeat_count(scr->cooker1_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker1_anim);
     lv_obj_set_pos(scr->cooker1_anim, 0, 5);
@@ -494,7 +494,7 @@ void main_screen_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(16_400x345.png),
     };
     lv_animimg_set_src(scr->cooker4_anim, (const void **)cooker4_anim_imgs, 16);
-    lv_animimg_set_duration(scr->cooker4_anim, 2000);
+    lv_animimg_set_duration(scr->cooker4_anim, 1500);
     lv_animimg_set_repeat_count(scr->cooker4_anim, LV_ANIM_REPEAT_INFINITE);
     lv_animimg_start(scr->cooker4_anim);
     lv_obj_set_pos(scr->cooker4_anim, 0, 5);
@@ -593,8 +593,8 @@ void main_screen_create(ui_manager_t *ui)
 
     // Set event handler of scr->dropline
     lv_obj_add_event_cb(scr->dropline, main_screen_dropline_released, LV_EVENT_RELEASED, NULL);
-    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
     lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressed, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(scr->dropline, main_screen_dropline_pressing, LV_EVENT_PRESSING, NULL);
 
     // Init scr->drop_menu
     scr->drop_menu = lv_obj_create(scr->obj);
