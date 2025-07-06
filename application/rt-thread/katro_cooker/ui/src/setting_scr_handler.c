@@ -91,7 +91,7 @@ TCM_CODE_DEFINE void setting_cooker_channel_set(int ch)
 
 TCM_CODE_DEFINE void setting_cook_gear_slider_custom_value_changed(void) 
 {
-    char str[3] = {0};
+    // char str[3] = {0};
     
     setting_cook_t *scr = setting_cook_get(&ui_manager);
 
@@ -111,9 +111,9 @@ TCM_CODE_DEFINE void setting_cook_gear_slider_custom_value_changed(void)
         val = 0;
     }
 
-    snprintf(str, 3, "%d", val);
+    // snprintf(str, 3, "%d", val);
 
-    lv_label_set_text(scr->gear_label, str);
+    lv_label_set_text_fmt(scr->gear_label, "%d", val);
 
     cur_state.gear = val;
 }
@@ -179,7 +179,7 @@ TCM_CODE_DEFINE void setting_cook_max_label_custom_clicked(void)
     lv_label_set_text(scr->gear_label, "9");
     cur_state.gear = 9;
     cur_state.on_timing = 1;
-    cur_state.hour = gear_timing_table[cur_state.gear];
+    cur_state.hour = gear_timing_table[9];
     cur_state.minute = 0;
     cur_state.total_seconds = cooker_timing_cal_total_sec(cur_state.hour, cur_state.minute);
     lv_obj_set_style_border_width(setting_cook_get(&ui_manager)->timing_cont, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -296,7 +296,7 @@ TCM_CODE_DEFINE void setting_cook_max_gear_cont_custom_clicked(void)
             cur_state.gear = 9;
         }
 
-        cur_state.hour = 2;
+        cur_state.hour = gear_timing_table[cur_state.gear];
         cur_state.minute = 0;
         lv_slider_set_value(setting_cook_get(&ui_manager)->gear_slider, cur_state.gear, LV_ANIM_OFF);
         lv_obj_clear_flag(setting_cook_get(&ui_manager)->gear_slider, LV_OBJ_FLAG_HIDDEN);
