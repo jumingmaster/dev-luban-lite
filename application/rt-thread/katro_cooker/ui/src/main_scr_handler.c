@@ -368,7 +368,7 @@ TCM_CODE_DEFINE void main_screen_custom_load_start(void)
                     lv_obj_clear_flag(cooker_ui[i].gear, LV_OBJ_FLAG_HIDDEN);
                     lv_obj_add_flag(cooker_ui[i].state, LV_OBJ_FLAG_HIDDEN);
                 }
-                if (cur_cooker_state[i].on_timing)
+                if (cur_cooker_state[i].on_timing && !cur_cooker_state[i].on_max_gear)
                 {
                     lv_label_set_text_fmt(cooker_ui[i].timing, "%d:%02d", cur_cooker_state[i].hour, cur_cooker_state[i].minute);
                     lv_obj_clear_flag(cooker_ui[i].timing, LV_OBJ_FLAG_HIDDEN);
