@@ -82,5 +82,6 @@
 		"valarray": "c",
 		"cooker_task.h": "c",
 		"pin.h": "c"
-	}
+	},
+	"cmake.sourceDirectory": "C:/Users/jumin/Desktop/dev-luban-lite/packages/artinchip/mpp/middle_media/audio_decoder"
 }
