@@ -17,3 +17,8 @@ void about_screen_custom_created(void)
                                                                         LL_VERSION, LL_SUBVERSION, LL_REVISION, 
                                                                         boot_arg.image_version, __DATE__, __TIME__);
 }
+
+void about_screen_about_back_custom_clicked(void)
+{
+    lv_scr_load_anim(main_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, false);
+}

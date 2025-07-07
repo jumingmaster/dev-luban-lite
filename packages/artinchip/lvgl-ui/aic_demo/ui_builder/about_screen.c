@@ -35,6 +35,18 @@ void about_screen_create(ui_manager_t *ui)
     lv_obj_set_style_bg_color(scr->obj, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    // Init scr->about_text
+    scr->about_text = lv_label_create(scr->obj);
+    lv_label_set_text(scr->about_text, "");
+    lv_label_set_long_mode(scr->about_text, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->about_text, 160, 160);
+    lv_obj_set_size(scr->about_text, 868, 466);
+
+    // Set style of scr->about_text
+    lv_obj_set_style_text_font(scr->about_text, fs_fzltxhjw_30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->about_text, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(scr->about_text, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     // Init scr->about_back
     scr->about_back = lv_img_create(scr->obj);
     lv_img_set_src(scr->about_back, LVGL_IMAGE_PATH(back_135x135.png));
@@ -47,17 +59,16 @@ void about_screen_create(ui_manager_t *ui)
     // Set event handler of scr->about_back
     lv_obj_add_event_cb(scr->about_back, about_screen_about_back_clicked, LV_EVENT_CLICKED, NULL);
 
-    // Init scr->about_text
-    scr->about_text = lv_label_create(scr->obj);
-    lv_label_set_text(scr->about_text, "");
-    lv_label_set_long_mode(scr->about_text, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(scr->about_text, 240, 200);
-    lv_obj_set_size(scr->about_text, 720, 480);
+    // Init scr->label_45
+    scr->label_45 = lv_label_create(scr->obj);
+    lv_label_set_text(scr->label_45, "About");
+    lv_label_set_long_mode(scr->label_45, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->label_45, 168, 28);
+    lv_obj_set_size(scr->label_45, 750, 117);
 
-    // Set style of scr->about_text
-    lv_obj_set_style_text_font(scr->about_text, fs_fzltxhjw_40, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(scr->about_text, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(scr->about_text, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
+    // Set style of scr->label_45
+    lv_obj_set_style_text_font(scr->label_45, fs_fzltxhjw_95, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->label_45, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
 
     about_screen_custom_created();
 }

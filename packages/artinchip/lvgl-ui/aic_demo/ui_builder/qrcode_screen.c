@@ -32,14 +32,6 @@ void qrcode_screen_create(ui_manager_t *ui)
     lv_obj_set_style_bg_color(scr->obj, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    // Init scr->qrcode
-    scr->qrcode = lv_img_create(scr->obj);
-    lv_img_set_src(scr->qrcode, LVGL_IMAGE_PATH(qr_page.png));
-    lv_img_set_pivot(scr->qrcode, 50, 50);
-    lv_img_set_angle(scr->qrcode, 0);
-    lv_obj_set_style_img_opa(scr->qrcode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->qrcode, 240, 120);
-
     // Init scr->qr_back
     scr->qr_back = lv_img_create(scr->obj);
     lv_img_set_src(scr->qr_back, LVGL_IMAGE_PATH(back_135x135.png));
@@ -51,6 +43,14 @@ void qrcode_screen_create(ui_manager_t *ui)
 
     // Set event handler of scr->qr_back
     lv_obj_add_event_cb(scr->qr_back, qrcode_screen_qr_back_clicked, LV_EVENT_CLICKED, NULL);
+
+    // Init scr->qrcode
+    scr->qrcode = lv_img_create(scr->obj);
+    lv_img_set_src(scr->qrcode, LVGL_IMAGE_PATH(qr_page_q95.jpeg));
+    lv_img_set_pivot(scr->qrcode, 50, 50);
+    lv_img_set_angle(scr->qrcode, 0);
+    lv_obj_set_style_img_opa(scr->qrcode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->qrcode, 240, 120);
 
 
 }

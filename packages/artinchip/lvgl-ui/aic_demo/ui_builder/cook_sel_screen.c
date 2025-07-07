@@ -9,11 +9,11 @@
 #include "aic_ui.h"
 #include "ui_util.h"
 
-void __attribute__((weak)) cook_sel_screen_choose_back_custom_clicked(void) {
+void __attribute__((weak)) cook_sel_screen_coil_back_custom_clicked(void) {
 }
 
-static void cook_sel_screen_choose_back_clicked (lv_event_t *e) {
-    cook_sel_screen_choose_back_custom_clicked();
+static void cook_sel_screen_coil_back_clicked (lv_event_t *e) {
+    cook_sel_screen_coil_back_custom_clicked();
 }
 
 
@@ -32,88 +32,28 @@ void cook_sel_screen_create(ui_manager_t *ui)
     lv_obj_set_style_bg_color(scr->obj, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    // Init scr->image_2
-    scr->image_2 = lv_img_create(scr->obj);
-    lv_img_set_src(scr->image_2, LVGL_IMAGE_PATH(normal_sel_340x242.png));
-    lv_img_set_pivot(scr->image_2, 50, 50);
-    lv_img_set_angle(scr->image_2, 0);
-    lv_obj_set_style_img_opa(scr->image_2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_2, 738, 445);
-    lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_CLICKABLE);
+    // Init scr->coil_back
+    scr->coil_back = lv_img_create(scr->obj);
+    lv_img_set_src(scr->coil_back, LVGL_IMAGE_PATH(back_135x135.png));
+    lv_img_set_pivot(scr->coil_back, 50, 50);
+    lv_img_set_angle(scr->coil_back, 0);
+    lv_obj_set_style_img_opa(scr->coil_back, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->coil_back, 22, 22);
+    lv_obj_add_flag(scr->coil_back, LV_OBJ_FLAG_CLICKABLE);
 
-    // Init scr->image_5
-    scr->image_5 = lv_img_create(scr->obj);
-    lv_img_set_src(scr->image_5, LVGL_IMAGE_PATH(merge_sel_345x520.png));
-    lv_img_set_pivot(scr->image_5, 50, 50);
-    lv_img_set_angle(scr->image_5, 0);
-    lv_obj_set_style_img_opa(scr->image_5, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_5, 200, 175);
-    lv_obj_add_flag(scr->image_5, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(scr->image_5, LV_OBJ_FLAG_CLICKABLE);
+    // Set event handler of scr->coil_back
+    lv_obj_add_event_cb(scr->coil_back, cook_sel_screen_coil_back_clicked, LV_EVENT_CLICKED, NULL);
 
-    // Init scr->image_7
-    scr->image_7 = lv_img_create(scr->obj);
-    lv_img_set_src(scr->image_7, LVGL_IMAGE_PATH(normal_sel_340x242.png));
-    lv_img_set_pivot(scr->image_7, 50, 50);
-    lv_img_set_angle(scr->image_7, 0);
-    lv_obj_set_style_img_opa(scr->image_7, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_7, 738, 175);
-    lv_obj_add_flag(scr->image_7, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(scr->image_7, LV_OBJ_FLAG_CLICKABLE);
+    // Init scr->label_39
+    scr->label_39 = lv_label_create(scr->obj);
+    lv_label_set_text(scr->label_39, "Choose the coil");
+    lv_label_set_long_mode(scr->label_39, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->label_39, 168, 28);
+    lv_obj_set_size(scr->label_39, 750, 117);
 
-    // Init scr->choose_back
-    scr->choose_back = lv_img_create(scr->obj);
-    lv_img_set_src(scr->choose_back, LVGL_IMAGE_PATH(back_135x135.png));
-    lv_img_set_pivot(scr->choose_back, 50, 50);
-    lv_img_set_angle(scr->choose_back, 0);
-    lv_obj_set_style_img_opa(scr->choose_back, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->choose_back, 22, 22);
-    lv_obj_add_flag(scr->choose_back, LV_OBJ_FLAG_CLICKABLE);
-
-    // Set event handler of scr->choose_back
-    lv_obj_add_event_cb(scr->choose_back, cook_sel_screen_choose_back_clicked, LV_EVENT_CLICKED, NULL);
-
-    // Init scr->back_label
-    scr->back_label = lv_label_create(scr->obj);
-    lv_label_set_text(scr->back_label, "Choose the coil");
-    lv_label_set_long_mode(scr->back_label, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(scr->back_label, 140, 28);
-    lv_obj_set_size(scr->back_label, 772, 96);
-
-    // Set style of scr->back_label
-    lv_obj_set_style_text_font(scr->back_label, fs_fzltxhjw_95, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(scr->back_label, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    // Init scr->image_10
-    scr->image_10 = lv_img_create(scr->obj);
-    lv_img_set_src(scr->image_10, LVGL_IMAGE_PATH(merge_sel_345x525.png));
-    lv_img_set_pivot(scr->image_10, 50, 50);
-    lv_img_set_angle(scr->image_10, 0);
-    lv_obj_set_style_img_opa(scr->image_10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_10, 738, 175);
-    lv_obj_add_flag(scr->image_10, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(scr->image_10, LV_OBJ_FLAG_CLICKABLE);
-
-    // Init scr->image_11
-    scr->image_11 = lv_img_create(scr->obj);
-    lv_img_set_src(scr->image_11, LVGL_IMAGE_PATH(normal_sel_340x242.png));
-    lv_img_set_pivot(scr->image_11, 50, 50);
-    lv_img_set_angle(scr->image_11, 0);
-    lv_obj_set_style_img_opa(scr->image_11, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_11, 200, 445);
-    lv_obj_add_flag(scr->image_11, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(scr->image_11, LV_OBJ_FLAG_CLICKABLE);
-
-    // Init scr->image_12
-    scr->image_12 = lv_img_create(scr->obj);
-    lv_img_set_src(scr->image_12, LVGL_IMAGE_PATH(normal_sel_340x242.png));
-    lv_img_set_pivot(scr->image_12, 50, 50);
-    lv_img_set_angle(scr->image_12, 0);
-    lv_obj_set_style_img_opa(scr->image_12, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->image_12, 200, 175);
-    lv_obj_add_flag(scr->image_12, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_add_flag(scr->image_12, LV_OBJ_FLAG_CLICKABLE);
+    // Set style of scr->label_39
+    lv_obj_set_style_text_font(scr->label_39, fs_fzltxhjw_95, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->label_39, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
 
 
 }

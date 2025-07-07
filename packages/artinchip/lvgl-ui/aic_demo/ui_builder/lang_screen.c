@@ -9,14 +9,18 @@
 #include "aic_ui.h"
 #include "ui_util.h"
 
-void __attribute__((weak)) lang_screen_custom_created(void) {
+void __attribute__((weak)) lang_screen_eng_cont_custom_clicked(void) {
 }
 
-void __attribute__((weak)) lang_screen_cn_img_custom_clicked(void) {
+static void lang_screen_eng_cont_clicked (lv_event_t *e) {
+    lang_screen_eng_cont_custom_clicked();
 }
 
-static void lang_screen_cn_img_clicked (lv_event_t *e) {
-    lang_screen_cn_img_custom_clicked();
+void __attribute__((weak)) lang_screen_cn_cont_custom_clicked(void) {
+}
+
+static void lang_screen_cn_cont_clicked (lv_event_t *e) {
+    lang_screen_cn_cont_custom_clicked();
 }
 
 void __attribute__((weak)) lang_screen_lang_back_custom_clicked(void) {
@@ -24,13 +28,6 @@ void __attribute__((weak)) lang_screen_lang_back_custom_clicked(void) {
 
 static void lang_screen_lang_back_clicked (lv_event_t *e) {
     lang_screen_lang_back_custom_clicked();
-}
-
-void __attribute__((weak)) lang_screen_eng_img_custom_clicked(void) {
-}
-
-static void lang_screen_eng_img_clicked (lv_event_t *e) {
-    lang_screen_eng_img_custom_clicked();
 }
 
 
@@ -49,17 +46,121 @@ void lang_screen_create(ui_manager_t *ui)
     lv_obj_set_style_bg_color(scr->obj, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(scr->obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    // Init scr->lang_cont
+    scr->lang_cont = lv_obj_create(scr->obj);
+    lv_obj_set_pos(scr->lang_cont, 20, 170);
+    lv_obj_set_size(scr->lang_cont, 1240, 520);
+    lv_obj_set_scrollbar_mode(scr->lang_cont, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_add_flag(scr->lang_cont, LV_OBJ_FLAG_SCROLLABLE);
+
+    // Set style of scr->lang_cont
+    lv_obj_set_style_bg_color(scr->lang_cont, lv_color_hex(0xeff8f5), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(scr->lang_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Init scr->eng_cont
+    scr->eng_cont = lv_obj_create(scr->lang_cont);
+    lv_obj_set_pos(scr->eng_cont, 0, 0);
+    lv_obj_set_size(scr->eng_cont, 455, 520);
+    lv_obj_set_scrollbar_mode(scr->eng_cont, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_add_flag(scr->eng_cont, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->eng_cont, LV_OBJ_FLAG_EVENT_BUBBLE);
+
+    // Set style of scr->eng_cont
+    lv_obj_set_style_bg_color(scr->eng_cont, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(scr->eng_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Set event handler of scr->eng_cont
+    lv_obj_add_event_cb(scr->eng_cont, lang_screen_eng_cont_clicked, LV_EVENT_CLICKED, NULL);
+
+    // Init scr->eng_img
+    scr->eng_img = lv_img_create(scr->eng_cont);
+    lv_img_set_src(scr->eng_img, LVGL_IMAGE_PATH(English_q95_455x520.jpeg));
+    lv_img_set_pivot(scr->eng_img, 50, 50);
+    lv_img_set_angle(scr->eng_img, 0);
+    lv_obj_set_style_img_opa(scr->eng_img, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->eng_img, 0, 0);
+    lv_obj_add_flag(scr->eng_img, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->eng_img, LV_OBJ_FLAG_EVENT_BUBBLE);
+
+    // Init scr->eng_label
+    scr->eng_label = lv_label_create(scr->eng_cont);
+    lv_label_set_text(scr->eng_label, "English");
+    lv_label_set_long_mode(scr->eng_label, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->eng_label, 16, 433);
+    lv_obj_set_size(scr->eng_label, 228, 69);
+    lv_obj_add_flag(scr->eng_label, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->eng_label, LV_OBJ_FLAG_EVENT_BUBBLE);
+
+    // Set style of scr->eng_label
+    lv_obj_set_style_text_font(scr->eng_label, fs_fzltxhjw_70, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->eng_label, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Init scr->cn_cont
+    scr->cn_cont = lv_obj_create(scr->lang_cont);
+    lv_obj_set_pos(scr->cn_cont, 455, 0);
+    lv_obj_set_size(scr->cn_cont, 455, 520);
+    lv_obj_set_scrollbar_mode(scr->cn_cont, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_add_flag(scr->cn_cont, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cn_cont, LV_OBJ_FLAG_EVENT_BUBBLE);
+
+    // Set style of scr->cn_cont
+    lv_obj_set_style_bg_color(scr->cn_cont, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(scr->cn_cont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Set event handler of scr->cn_cont
+    lv_obj_add_event_cb(scr->cn_cont, lang_screen_cn_cont_clicked, LV_EVENT_CLICKED, NULL);
+
     // Init scr->cn_img
-    scr->cn_img = lv_img_create(scr->obj);
-    lv_img_set_src(scr->cn_img, LVGL_IMAGE_PATH(Chinese_450x525.png));
+    scr->cn_img = lv_img_create(scr->cn_cont);
+    lv_img_set_src(scr->cn_img, LVGL_IMAGE_PATH(Chinese_q95_455x520.jpeg));
     lv_img_set_pivot(scr->cn_img, 50, 50);
     lv_img_set_angle(scr->cn_img, 0);
     lv_obj_set_style_img_opa(scr->cn_img, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->cn_img, 485, 172);
+    lv_obj_set_pos(scr->cn_img, 0, 0);
     lv_obj_add_flag(scr->cn_img, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cn_img, LV_OBJ_FLAG_EVENT_BUBBLE);
 
-    // Set event handler of scr->cn_img
-    lv_obj_add_event_cb(scr->cn_img, lang_screen_cn_img_clicked, LV_EVENT_CLICKED, NULL);
+    // Init scr->cn_label
+    scr->cn_label = lv_label_create(scr->cn_cont);
+    lv_label_set_text(scr->cn_label, "Chinese");
+    lv_label_set_long_mode(scr->cn_label, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->cn_label, 16, 433);
+    lv_obj_set_size(scr->cn_label, 310, 69);
+    lv_obj_add_flag(scr->cn_label, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->cn_label, LV_OBJ_FLAG_EVENT_BUBBLE);
+
+    // Set style of scr->cn_label
+    lv_obj_set_style_text_font(scr->cn_label, fs_fzltxhjw_70, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->cn_label, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    // Init scr->label_38
+    scr->label_38 = lv_label_create(scr->obj);
+    lv_label_set_text(scr->label_38, "LANGUAGE");
+    lv_label_set_long_mode(scr->label_38, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(scr->label_38, 168, 28);
+    lv_obj_set_size(scr->label_38, 608, 117);
+
+    // Set style of scr->label_38
+    lv_obj_set_style_text_font(scr->label_38, fs_fzltxhjw_95, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(scr->label_38, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // Init scr->lang_back
     scr->lang_back = lv_img_create(scr->obj);
@@ -73,55 +174,5 @@ void lang_screen_create(ui_manager_t *ui)
     // Set event handler of scr->lang_back
     lv_obj_add_event_cb(scr->lang_back, lang_screen_lang_back_clicked, LV_EVENT_CLICKED, NULL);
 
-    // Init scr->eng_img
-    scr->eng_img = lv_img_create(scr->obj);
-    lv_img_set_src(scr->eng_img, LVGL_IMAGE_PATH(English_450x525.png));
-    lv_img_set_pivot(scr->eng_img, 50, 50);
-    lv_img_set_angle(scr->eng_img, 0);
-    lv_obj_set_style_img_opa(scr->eng_img, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_pos(scr->eng_img, 28, 172);
-    lv_obj_add_flag(scr->eng_img, LV_OBJ_FLAG_CLICKABLE);
 
-    // Set event handler of scr->eng_img
-    lv_obj_add_event_cb(scr->eng_img, lang_screen_eng_img_clicked, LV_EVENT_CLICKED, NULL);
-
-    // Init scr->label_6
-    scr->label_6 = lv_label_create(scr->obj);
-    lv_label_set_text(scr->label_6, "LANGUAGE");
-    lv_label_set_long_mode(scr->label_6, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(scr->label_6, 168, 26);
-    lv_obj_set_size(scr->label_6, 704, 94);
-
-    // Set style of scr->label_6
-    lv_obj_set_style_text_font(scr->label_6, fs_fzltxhjw_95, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(scr->label_6, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(scr->label_6, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    // Init scr->eng_label
-    scr->eng_label = lv_label_create(scr->obj);
-    lv_label_set_text(scr->eng_label, "English");
-    lv_label_set_long_mode(scr->eng_label, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(scr->eng_label, 39, 603);
-    lv_obj_set_size(scr->eng_label, 252, 72);
-    lv_obj_add_flag(scr->eng_label, LV_OBJ_FLAG_CLICKABLE);
-    lv_obj_add_flag(scr->eng_label, LV_OBJ_FLAG_EVENT_BUBBLE);
-
-    // Set style of scr->eng_label
-    lv_obj_set_style_text_font(scr->eng_label, fs_fzltxhjw_70, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(scr->eng_label, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    // Init scr->cn_label
-    scr->cn_label = lv_label_create(scr->obj);
-    lv_label_set_text(scr->cn_label, "Chinese");
-    lv_label_set_long_mode(scr->cn_label, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(scr->cn_label, 515, 603);
-    lv_obj_set_size(scr->cn_label, 289, 76);
-    lv_obj_add_flag(scr->cn_label, LV_OBJ_FLAG_CLICKABLE);
-    lv_obj_add_flag(scr->cn_label, LV_OBJ_FLAG_EVENT_BUBBLE);
-
-    // Set style of scr->cn_label
-    lv_obj_set_style_text_font(scr->cn_label, fs_fzltxhjw_70, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(scr->cn_label, lv_color_hex(0xffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    lang_screen_custom_created();
 }

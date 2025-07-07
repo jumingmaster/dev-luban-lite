@@ -3,22 +3,41 @@
 #include "cooker_protocol.h"
 
 static const char *cooker_anim_imgs[16] = {
-    LVGL_IMAGE_PATH(1_410x325.png),
-    LVGL_IMAGE_PATH(2_410x325.png),
-    LVGL_IMAGE_PATH(3_410x325.png),
-    LVGL_IMAGE_PATH(4_410x325.png),
-    LVGL_IMAGE_PATH(5_410x325.png),
-    LVGL_IMAGE_PATH(6_410x325.png),
-    LVGL_IMAGE_PATH(7_410x325.png),
-    LVGL_IMAGE_PATH(8_410x325.png),
-    LVGL_IMAGE_PATH(9_410x325.png),
-    LVGL_IMAGE_PATH(10_410x325.png),
-    LVGL_IMAGE_PATH(11_410x325.png),
-    LVGL_IMAGE_PATH(12_410x325.png),
-    LVGL_IMAGE_PATH(13_410x325.png),
-    LVGL_IMAGE_PATH(14_410x325.png),
-    LVGL_IMAGE_PATH(15_410x325.png),
-    LVGL_IMAGE_PATH(16_410x325.png),
+    LVGL_IMAGE_PATH(1.png),
+    LVGL_IMAGE_PATH(2.png),
+    LVGL_IMAGE_PATH(3.png),
+    LVGL_IMAGE_PATH(4_410x322.png),
+    LVGL_IMAGE_PATH(5.png),
+    LVGL_IMAGE_PATH(6.png),
+    LVGL_IMAGE_PATH(7.png),
+    LVGL_IMAGE_PATH(8.png),
+    LVGL_IMAGE_PATH(9.png),
+    LVGL_IMAGE_PATH(10.png),
+    LVGL_IMAGE_PATH(11.png),
+    LVGL_IMAGE_PATH(12_410x322.png),
+    LVGL_IMAGE_PATH(13.png),
+    LVGL_IMAGE_PATH(14.png),
+    LVGL_IMAGE_PATH(15.png),
+    LVGL_IMAGE_PATH(16.png),
+};
+
+static const char *merge_anim_imgs[16] = {
+    LVGL_IMAGE_PATH(merge1_410x660.png),
+    LVGL_IMAGE_PATH(merge2_410x660.png),
+    LVGL_IMAGE_PATH(merge3_410x660.png),
+    LVGL_IMAGE_PATH(merge4_410x660.png),
+    LVGL_IMAGE_PATH(merge5_410x660.png),
+    LVGL_IMAGE_PATH(merge6_410x660.png),
+    LVGL_IMAGE_PATH(merge7_410x660.png),
+    LVGL_IMAGE_PATH(merge8_410x660.png),
+    LVGL_IMAGE_PATH(merge9_410x660.png),
+    LVGL_IMAGE_PATH(merge10_410x660.png),
+    LVGL_IMAGE_PATH(merge11_410x660.png),
+    LVGL_IMAGE_PATH(merge12_410x660.png),
+    LVGL_IMAGE_PATH(merge13_410x660.png),
+    LVGL_IMAGE_PATH(merge14_410x660.png),
+    LVGL_IMAGE_PATH(merge15_410x660.png),
+    LVGL_IMAGE_PATH(merge16_410x660.png),
 };
 
 
@@ -86,29 +105,22 @@ static void cpu_temperature_sample(lv_timer_t * tmr)
 
  static void cooker_set_idle(int ch)
 {
-    if (cur_cooker_state[ch].on_merge)
-    {
-        
-    }
-    else
-    {
-        cur_cooker_state[ch].hour = 0;
-        cur_cooker_state[ch].minute = 0;
-        cur_cooker_state[ch].on_timing = 0;
-        cur_cooker_state[ch].total_seconds = 0;
-        cur_cooker_state[ch].gear = 0;
-        lv_obj_clear_flag(cooker_ui[ch].line, LV_OBJ_FLAG_HIDDEN);
-        lv_obj_add_flag(cooker_ui[ch].anim, LV_OBJ_FLAG_HIDDEN);
-        lv_obj_add_flag(cooker_ui[ch].state, LV_OBJ_FLAG_HIDDEN);
-        lv_obj_add_flag(cooker_ui[ch].timing, LV_OBJ_FLAG_HIDDEN);
-        lv_obj_add_flag(cooker_ui[ch].gear, LV_OBJ_FLAG_HIDDEN);
+    cur_cooker_state[ch].hour = 0;
+    cur_cooker_state[ch].minute = 0;
+    cur_cooker_state[ch].on_timing = 0;
+    cur_cooker_state[ch].total_seconds = 0;
+    cur_cooker_state[ch].gear = 0;
+    lv_obj_clear_flag(cooker_ui[ch].line, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(cooker_ui[ch].anim, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(cooker_ui[ch].state, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(cooker_ui[ch].timing, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(cooker_ui[ch].gear, LV_OBJ_FLAG_HIDDEN);
 
-        if (--main_scr_running_cooker <= 0)
-        {
-            lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
-            main_scr_glb_pause = 0;
-            main_scr_running_cooker = 0;
-        }
+    if (--main_scr_running_cooker <= 0)
+    {
+        lv_obj_add_flag(main_screen_get(&ui_manager)->global_pause, LV_OBJ_FLAG_HIDDEN);
+        main_scr_glb_pause = 0;
+        main_scr_running_cooker = 0;
     }
 }
 
@@ -247,6 +259,8 @@ static void cooker_single_to_merge(int ch)
     {
         cooker_set_idle(0);
         cooker_set_idle(1);
+        // pause_cooker_timer(0, 1);
+        pause_cooker_timer(1, 1);
         lv_obj_add_flag(scr->cooker1, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(scr->cooker2, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(scr->merge_cooker1, LV_OBJ_FLAG_HIDDEN);
@@ -256,6 +270,8 @@ static void cooker_single_to_merge(int ch)
     {
         cooker_set_idle(2);
         cooker_set_idle(3);
+        // pause_cooker_timer(2, 1);
+        pause_cooker_timer(3, 1);
         lv_obj_add_flag(scr->cooker3, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(scr->cooker4, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(scr->merge_cooker2, LV_OBJ_FLAG_HIDDEN);
@@ -270,7 +286,7 @@ static void cooker_merge_to_single(int ch)
     if (ch == 0)
     {
         cooker_set_idle(0);
-        cooker_set_idle(1);
+        pause_cooker_timer(1, 0);
         lv_obj_clear_flag(scr->cooker1, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(scr->cooker2, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(scr->merge_cooker1, LV_OBJ_FLAG_HIDDEN);
@@ -279,7 +295,7 @@ static void cooker_merge_to_single(int ch)
     else
     {
         cooker_set_idle(2);
-        cooker_set_idle(3);
+        pause_cooker_timer(2, 0);
         lv_obj_clear_flag(scr->cooker3, LV_OBJ_FLAG_HIDDEN);
         lv_obj_clear_flag(scr->cooker4, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(scr->merge_cooker2, LV_OBJ_FLAG_HIDDEN);
@@ -332,10 +348,6 @@ void main_screen_custom_created(void)
     cooker_ui[0].line = scr->cooker1_line;
     cooker_ui[0].state = scr->cooker1_state;
     cooker_ui[0].timing = scr->cooker1_timing;
-    // cooker_ui[0].timer = lv_timer_create_basic();
-    // lv_timer_set_cb(cooker_ui[0].timer, cooker_timer_handler);
-    // lv_timer_set_period(cooker_ui[0].timer, 1000);
-    // lv_timer_set_repeat_count(cooker_ui[0].timer, -1);
     cooker_ui[0].timer = lv_timer_create(cooker_timer_handler, 1000, NULL);
 
     cooker_ui[1].cont = scr->cooker2;
@@ -344,10 +356,6 @@ void main_screen_custom_created(void)
     cooker_ui[1].line = scr->cooker2_line;
     cooker_ui[1].state = scr->cooker2_state;
     cooker_ui[1].timing = scr->cooker2_timing;
-    // cooker_ui[1].timer = lv_timer_create_basic();
-    // lv_timer_set_cb(cooker_ui[1].timer, cooker_timer_handler);
-    // lv_timer_set_period(cooker_ui[1].timer, 1000);
-    // lv_timer_set_repeat_count(cooker_ui[1].timer, -1);
     cooker_ui[1].timer = lv_timer_create(cooker_timer_handler, 1000, NULL);
 
     cooker_ui[2].cont = scr->cooker3;
@@ -356,9 +364,6 @@ void main_screen_custom_created(void)
     cooker_ui[2].line = scr->cooker3_line;
     cooker_ui[2].state = scr->cooker3_state;
     cooker_ui[2].timing = scr->cooker3_timing;
-    // cooker_ui[2].timer = lv_timer_create_basic();
-    // lv_timer_set_cb(cooker_ui[2].timer, cooker_timer_handler);
-    // lv_timer_set_period(cooker_ui[2].timer, 1000);
     cooker_ui[2].timer = lv_timer_create(cooker_timer_handler, 1000, NULL);
 
     cooker_ui[3].cont = scr->cooker4;
@@ -367,9 +372,6 @@ void main_screen_custom_created(void)
     cooker_ui[3].line = scr->cooker4_line;
     cooker_ui[3].state = scr->cooker4_state;
     cooker_ui[3].timing = scr->cooker4_timing;
-    // cooker_ui[3].timer = lv_timer_create_basic();
-    // lv_timer_set_cb(cooker_ui[3].timer, cooker_timer_handler);
-    // lv_timer_set_period(cooker_ui[3].timer, 1000);
     cooker_ui[3].timer = lv_timer_create(cooker_timer_handler, 1000, NULL);
 }
 
@@ -394,20 +396,21 @@ void main_screen_custom_created(void)
 
             if (cur_cooker_hw_state[i].fault)
             {
-
+                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(Fault.png));
+                    lv_obj_clear_flag(cooker_ui[i].state, LV_OBJ_FLAG_HIDDEN);
             }
             else
             {
                 if (cur_cooker_state[i].on_max_gear)
                 {
                     lv_obj_add_flag(cooker_ui[i].gear, LV_OBJ_FLAG_HIDDEN);
-                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(max_gear_150x150.png));
+                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(max_gear_156x156.png));
                     lv_obj_clear_flag(cooker_ui[i].state, LV_OBJ_FLAG_HIDDEN);
                 }
                 else if (cur_cooker_state[i].thermos)
                 {
                     lv_obj_add_flag(cooker_ui[i].gear, LV_OBJ_FLAG_HIDDEN);
-                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(thermos_150x150.png));
+                    lv_img_set_src(cooker_ui[i].state, LVGL_IMAGE_PATH(thermos_156x156.png));
                     lv_obj_clear_flag(cooker_ui[i].state, LV_OBJ_FLAG_HIDDEN);
                 }
                 else if (cur_cooker_state[i].gear > 0)
@@ -482,7 +485,10 @@ void main_screen_custom_created(void)
 }
 
 
-
+void main_screen_drop_about_custom_clicked(void) 
+{
+    lv_scr_load_anim(about_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
+}
 
 void main_screen_drop_lang_custom_clicked(void) 
 {
@@ -632,12 +638,12 @@ void main_screen_wnd_back_custom_clicked(void)
     }
     if (cur_cooker_state[2].on_merge)
     {
-        lv_obj_add_flag(main_screen_get(&ui_manager)->merge_cooker1, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_add_flag(main_screen_get(&ui_manager)->merge_cooker2, LV_OBJ_FLAG_CLICKABLE);
     }
     else
     {
-        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker1, LV_OBJ_FLAG_CLICKABLE);
-        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker2, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker3, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker4, LV_OBJ_FLAG_CLICKABLE);
     }
 
     lv_obj_add_flag(main_screen_get(&ui_manager)->dropline, LV_OBJ_FLAG_CLICKABLE);
@@ -665,5 +671,19 @@ void main_screen_group2_img_custom_clicked(void)
     {
         cooker_single_to_merge(1);
     }
+}
+
+void main_screen_merge_cooker1_custom_clicked(void) 
+{
+    setting_cooker_channel_set(0);
+
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
+}
+
+void main_screen_merge_cooker2_custom_clicked(void) 
+{
+    setting_cooker_channel_set(2);
+
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
 }
 

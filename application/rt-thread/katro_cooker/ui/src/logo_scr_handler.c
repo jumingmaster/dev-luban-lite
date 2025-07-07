@@ -20,6 +20,7 @@ void logo_scr_custom_created(void)
     cook_screen_create(&ui_manager);
     about_screen_create(&ui_manager);
     qrcode_screen_create(&ui_manager);
+    cook_sel_screen_create(&ui_manager);
 }
 
 

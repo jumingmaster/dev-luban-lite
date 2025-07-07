@@ -10,9 +10,9 @@
 #include "ui_util.h"
 
 
-void test_screen_create(ui_manager_t *ui)
+void img_screen_create(ui_manager_t *ui)
 {
-    test_screen_t *scr = test_screen_get(ui);
+    img_screen_t *scr = img_screen_get(ui);
 
     if (!ui->auto_del && scr->obj)
         return;
@@ -32,6 +32,17 @@ void test_screen_create(ui_manager_t *ui)
     lv_img_set_angle(scr->image_1, 0);
     lv_obj_set_style_img_opa(scr->image_1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(scr->image_1, 182, 226);
+
+    // Init scr->image_2
+    scr->image_2 = lv_img_create(scr->obj);
+    lv_img_set_src(scr->image_2, LVGL_IMAGE_PATH(aferheat.png));
+    lv_img_set_pivot(scr->image_2, 50, 50);
+    lv_img_set_angle(scr->image_2, 0);
+    lv_obj_set_style_img_opa(scr->image_2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_pos(scr->image_2, 603, 136);
+    lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_flag(scr->image_2, LV_OBJ_FLAG_EVENT_BUBBLE);
 
 
 }

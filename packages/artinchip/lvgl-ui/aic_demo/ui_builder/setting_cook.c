@@ -69,12 +69,12 @@ void __attribute__((weak)) setting_cook_gear_slider_custom_value_changed(void) {
 void __attribute__((weak)) setting_cook_gear_slider_custom_released(void) {
 }
 
-static void setting_cook_gear_slider_value_changed (lv_event_t *e) {
-    setting_cook_gear_slider_custom_value_changed();
-}
-
 static void setting_cook_gear_slider_released (lv_event_t *e) {
     setting_cook_gear_slider_custom_released();
+}
+
+static void setting_cook_gear_slider_value_changed (lv_event_t *e) {
+    setting_cook_gear_slider_custom_value_changed();
 }
 
 
@@ -270,8 +270,8 @@ void setting_cook_create(ui_manager_t *ui)
     lv_obj_set_style_bg_opa(scr->gear_slider, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
 
     // Set event handler of scr->gear_slider
-    lv_obj_add_event_cb(scr->gear_slider, setting_cook_gear_slider_value_changed, LV_EVENT_VALUE_CHANGED, NULL);
     lv_obj_add_event_cb(scr->gear_slider, setting_cook_gear_slider_released, LV_EVENT_RELEASED, NULL);
+    lv_obj_add_event_cb(scr->gear_slider, setting_cook_gear_slider_value_changed, LV_EVENT_VALUE_CHANGED, NULL);
 
     // Init scr->func_label
     scr->func_label = lv_label_create(scr->obj);

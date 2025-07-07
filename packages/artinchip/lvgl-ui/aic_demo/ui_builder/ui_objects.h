@@ -22,46 +22,46 @@ typedef struct {
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *cooker2;
-    lv_obj_t *cooker2_anim;
-    lv_obj_t *cooker2_line;
-    lv_obj_t *cooker2_gear;
-    lv_obj_t *cooker2_timing;
-    lv_obj_t *cooker2_state;
-    lv_obj_t *cooker3;
-    lv_obj_t *cooker3_anim;
-    lv_obj_t *cooker3_line;
-    lv_obj_t *cooker3_state;
-    lv_obj_t *cooker3_timing;
-    lv_obj_t *cooker3_gear;
     lv_obj_t *cooker1;
-    lv_obj_t *cooker1_anim;
     lv_obj_t *cooker1_line;
     lv_obj_t *cooker1_state;
     lv_obj_t *cooker1_timing;
     lv_obj_t *cooker1_gear;
+    lv_obj_t *cooker1_anim;
+    lv_obj_t *cooker2;
+    lv_obj_t *cooker2_line;
+    lv_obj_t *cooker2_gear;
+    lv_obj_t *cooker2_timing;
+    lv_obj_t *cooker2_state;
+    lv_obj_t *cooker2_anim;
+    lv_obj_t *cooker3;
+    lv_obj_t *cooker3_line;
+    lv_obj_t *cooker3_state;
+    lv_obj_t *cooker3_timing;
+    lv_obj_t *cooker3_gear;
+    lv_obj_t *cooker3_anim;
     lv_obj_t *cooker4;
-    lv_obj_t *cooker4_anim;
     lv_obj_t *cooker4_line;
     lv_obj_t *cooker4_state;
     lv_obj_t *cooker4_timing;
     lv_obj_t *cooker4_gear;
-    lv_obj_t *global_pause;
+    lv_obj_t *cooker4_anim;
     lv_obj_t *merge_cooker1;
     lv_obj_t *merge_cooker1_line;
-    lv_obj_t *merge1_anim;
-    lv_obj_t *merge1_state;
-    lv_obj_t *merge1_gear;
     lv_obj_t *merge1_timing;
+    lv_obj_t *merge1_gear;
+    lv_obj_t *merge1_state;
+    lv_obj_t *merge1_anim;
     lv_obj_t *merge_cooker2;
     lv_obj_t *merge_cooker2_line;
-    lv_obj_t *merge2_anim;
-    lv_obj_t *merge2_state;
-    lv_obj_t *merge2_gear;
     lv_obj_t *merge2_timing;
+    lv_obj_t *merge2_gear;
+    lv_obj_t *merge2_state;
+    lv_obj_t *merge2_anim;
+    lv_obj_t *global_pause;
     lv_obj_t *merge_wnd;
-    lv_obj_t *group2_img;
     lv_obj_t *group1_img;
+    lv_obj_t *group2_img;
     lv_obj_t *wnd_back;
     lv_obj_t *dropline;
     lv_obj_t *drop_menu;
@@ -105,60 +105,65 @@ typedef struct {
 typedef struct {
     lv_obj_t *obj;
     lv_obj_t *image_1;
-} test_screen_t;
+    lv_obj_t *image_2;
+} img_screen_t;
 
 typedef struct {
     lv_obj_t *obj;
     lv_obj_t *cook_cont;
-    lv_obj_t *cook5_img;
-    lv_obj_t *cook4_img;
-    lv_obj_t *cook3_img;
-    lv_obj_t *cook2_img;
+    lv_obj_t *rec1_cont;
     lv_obj_t *cook1_img;
     lv_obj_t *cook1_label;
+    lv_obj_t *rec2_cont;
+    lv_obj_t *cook2_img;
     lv_obj_t *cook2_label;
+    lv_obj_t *rec3_cont;
+    lv_obj_t *cook3_image;
     lv_obj_t *cook3_label;
+    lv_obj_t *rec4_cont;
+    lv_obj_t *cook4_image;
     lv_obj_t *cook4_label;
+    lv_obj_t *rec5_cont;
+    lv_obj_t *rec5_image;
     lv_obj_t *cook5_label;
-    lv_obj_t *cook6_img;
+    lv_obj_t *rec6_cont;
+    lv_obj_t *cook6_image;
     lv_obj_t *cook6_label;
     lv_obj_t *cook_back;
-    lv_obj_t *label_13;
+    lv_obj_t *label_7;
 } cook_screen_t;
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *cn_img;
-    lv_obj_t *lang_back;
+    lv_obj_t *lang_cont;
+    lv_obj_t *eng_cont;
     lv_obj_t *eng_img;
-    lv_obj_t *label_6;
     lv_obj_t *eng_label;
+    lv_obj_t *cn_cont;
+    lv_obj_t *cn_img;
     lv_obj_t *cn_label;
+    lv_obj_t *label_38;
+    lv_obj_t *lang_back;
 } lang_screen_t;
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *qrcode;
     lv_obj_t *qr_back;
+    lv_obj_t *qrcode;
 } qrcode_screen_t;
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *about_back;
-    lv_obj_t *about_text;
-} about_screen_t;
+    lv_obj_t *coil_back;
+    lv_obj_t *label_39;
+} cook_sel_screen_t;
 
 typedef struct {
     lv_obj_t *obj;
-    lv_obj_t *image_2;
-    lv_obj_t *image_5;
-    lv_obj_t *image_7;
-    lv_obj_t *choose_back;
-    lv_obj_t *back_label;
-    lv_obj_t *image_10;
-    lv_obj_t *image_11;
-    lv_obj_t *image_12;
-} cook_sel_screen_t;
+    lv_obj_t *about_text;
+    lv_obj_t *about_back;
+    lv_obj_t *label_45;
+} about_screen_t;
 
 
 typedef struct {
@@ -167,12 +172,12 @@ typedef struct {
     main_screen_t main_screen;
     setting_cook_t setting_cook;
     setting_timing_t setting_timing;
-    test_screen_t test_screen;
+    img_screen_t img_screen;
     cook_screen_t cook_screen;
     lang_screen_t lang_screen;
     qrcode_screen_t qrcode_screen;
-    about_screen_t about_screen;
     cook_sel_screen_t cook_sel_screen;
+    about_screen_t about_screen;
 
 } ui_manager_t;
 
@@ -202,9 +207,9 @@ static inline setting_timing_t *setting_timing_get(ui_manager_t *ui)
     return &ui->setting_timing;
 }
 
-static inline test_screen_t *test_screen_get(ui_manager_t *ui)
+static inline img_screen_t *img_screen_get(ui_manager_t *ui)
 {
-    return &ui->test_screen;
+    return &ui->img_screen;
 }
 
 static inline cook_screen_t *cook_screen_get(ui_manager_t *ui)
@@ -222,14 +227,14 @@ static inline qrcode_screen_t *qrcode_screen_get(ui_manager_t *ui)
     return &ui->qrcode_screen;
 }
 
-static inline about_screen_t *about_screen_get(ui_manager_t *ui)
-{
-    return &ui->about_screen;
-}
-
 static inline cook_sel_screen_t *cook_sel_screen_get(ui_manager_t *ui)
 {
     return &ui->cook_sel_screen;
+}
+
+static inline about_screen_t *about_screen_get(ui_manager_t *ui)
+{
+    return &ui->about_screen;
 }
 
 
@@ -237,23 +242,23 @@ void logo_scr_create(ui_manager_t *ui);
 void main_screen_create(ui_manager_t *ui);
 void setting_cook_create(ui_manager_t *ui);
 void setting_timing_create(ui_manager_t *ui);
-void test_screen_create(ui_manager_t *ui);
+void img_screen_create(ui_manager_t *ui);
 void cook_screen_create(ui_manager_t *ui);
 void lang_screen_create(ui_manager_t *ui);
 void qrcode_screen_create(ui_manager_t *ui);
-void about_screen_create(ui_manager_t *ui);
 void cook_sel_screen_create(ui_manager_t *ui);
+void about_screen_create(ui_manager_t *ui);
 
-extern lv_font_t *fs_fzltxhjw_120;
 extern lv_font_t *fs_fzltxhjw_50;
-extern lv_font_t *fs_fzltxhjw_95;
+extern lv_font_t *fs_fzltxhjw_120;
 extern lv_font_t *fs_fzltxhjw_150;
 extern lv_font_t *fs_fzltxhjw_250;
 extern lv_font_t *fs_fzltxhjw_75;
 extern lv_font_t *fs_fzltxhjw_60;
 extern lv_font_t *fs_fzltxhjw_80;
 extern lv_font_t *fs_fzltxhjw_70;
-extern lv_font_t *fs_fzltxhjw_40;
+extern lv_font_t *fs_fzltxhjw_95;
+extern lv_font_t *fs_fzltxhjw_30;
 
 
 extern ui_manager_t ui_manager;
