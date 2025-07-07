@@ -61,7 +61,7 @@ TCM_CODE_DEFINE void setting_timing_cancel_cont_custom_clicked(void)
 
     reset_cooker_timer(cur_channel);
 
-    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 150, 0, false);
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 300, 0, false);
 }
 
 TCM_CODE_DEFINE void setting_timing_confirm_cont_custom_clicked(void) 
@@ -106,5 +106,5 @@ TCM_CODE_DEFINE void setting_timing_confirm_cont_custom_clicked(void)
 
     reset_cooker_timer(cur_channel);
 
-    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 150, 0, false);
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_BOTTOM, 300, 0, false);
 }

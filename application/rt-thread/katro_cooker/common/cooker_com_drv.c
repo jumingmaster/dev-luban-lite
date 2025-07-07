@@ -88,7 +88,7 @@ static void rx_sio_irq(void * arg)
     rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_DISABLE);
 
 
-    rt_hwtimerval_t timeout_s = {.usec = 50};
+    rt_hwtimerval_t timeout_s = {.usec = 100};
     rx_sample_inx = 0;
     idle_time = 0;
 
@@ -219,11 +219,11 @@ int cooker_wait_data(uint8_t * data)
     rt_pin_irq_enable(drv_pin_get("PA.5"), PIN_IRQ_DISABLE);
     rt_device_control(rx_hw_tmr_dev, HWTIMER_CTRL_STOP, NULL);
 
-    for (int i = 0; i < 70; i++, offset++)
+    for (int i = 0; i < 35; i++, offset++)
     {
         if (rx_sample_array[i] == 0)
         {
-            start_time += 50;
+            start_time += 100;
         }
         else
         {
@@ -238,11 +238,11 @@ int cooker_wait_data(uint8_t * data)
     }
     
 
-    for (int i = offset; i < 100; i++, offset++)
+    for (int i = offset; i < 50; i++, offset++)
     {
         if (rx_sample_array[i] == 1)
         {
-            start_time += 50;
+            start_time += 100;
         }
         else
         {
@@ -263,9 +263,9 @@ int cooker_wait_data(uint8_t * data)
     {
         if (rx_sample_array[i] == 0)
         {
-            low_time += 50;
+            low_time += 100;
         }
-        start_time += 50;
+        start_time += 100;
         if (start_time >= 1500)
         {
             *p_data |= (low_time > 1000 ? 1 : 0) << (bit_off);

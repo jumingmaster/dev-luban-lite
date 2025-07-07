@@ -3,39 +3,39 @@
 #include "cooker_protocol.h"
 
 static const char *cooker_anim_imgs[16] = {
-    LVGL_IMAGE_PATH(1_400x345.png),
-    LVGL_IMAGE_PATH(2_400x345.png),
-    LVGL_IMAGE_PATH(3_400x345.png),
-    LVGL_IMAGE_PATH(4_400x345.png),
-    LVGL_IMAGE_PATH(5_400x345.png),
-    LVGL_IMAGE_PATH(6_400x345.png),
-    LVGL_IMAGE_PATH(7_400x345.png),
-    LVGL_IMAGE_PATH(8_400x345.png),
-    LVGL_IMAGE_PATH(9_400x345.png),
-    LVGL_IMAGE_PATH(10_400x345.png),
-    LVGL_IMAGE_PATH(11_400x345.png),
-    LVGL_IMAGE_PATH(12_400x345.png),
-    LVGL_IMAGE_PATH(13_400x345.png),
-    LVGL_IMAGE_PATH(14_400x345.png),
-    LVGL_IMAGE_PATH(15_400x345.png),
-    LVGL_IMAGE_PATH(16_400x345.png),
+    LVGL_IMAGE_PATH(1_410x325.png),
+    LVGL_IMAGE_PATH(2_410x325.png),
+    LVGL_IMAGE_PATH(3_410x325.png),
+    LVGL_IMAGE_PATH(4_410x325.png),
+    LVGL_IMAGE_PATH(5_410x325.png),
+    LVGL_IMAGE_PATH(6_410x325.png),
+    LVGL_IMAGE_PATH(7_410x325.png),
+    LVGL_IMAGE_PATH(8_410x325.png),
+    LVGL_IMAGE_PATH(9_410x325.png),
+    LVGL_IMAGE_PATH(10_410x325.png),
+    LVGL_IMAGE_PATH(11_410x325.png),
+    LVGL_IMAGE_PATH(12_410x325.png),
+    LVGL_IMAGE_PATH(13_410x325.png),
+    LVGL_IMAGE_PATH(14_410x325.png),
+    LVGL_IMAGE_PATH(15_410x325.png),
+    LVGL_IMAGE_PATH(16_410x325.png),
 };
 
 
 
-TCM_DATA_DEFINE static lv_timer_t * main_scr_tmr = NULL;
+static lv_timer_t * main_scr_tmr = NULL;
 
-TCM_DATA_DEFINE static lv_timer_t * cpu_temp_tmr = NULL;
+static lv_timer_t * cpu_temp_tmr = NULL;
 
-TCM_DATA_DEFINE static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
+static ui_cooker_state_t cur_cooker_state[UI_COOKER_NUM] = {0};
 
-TCM_DATA_DEFINE static ui_cooker_ctx_t cooker_ui[UI_COOKER_NUM] = {0};
+static ui_cooker_ctx_t cooker_ui[UI_COOKER_NUM] = {0};
 
 static cooker_hw_t cur_cooker_hw_state[UI_COOKER_NUM] = {0};
 
-TCM_DATA_DEFINE static int main_scr_glb_pause = 0;
+static int main_scr_glb_pause = 0;
 
-TCM_DATA_DEFINE static int main_scr_running_cooker = 0;
+static int main_scr_running_cooker = 0;
 
 static lv_obj_t * cpu_temp_obj = NULL;
 
@@ -56,7 +56,7 @@ static const int gear_timing_table[] = {
 };
 
 
-TCM_CODE_DEFINE static void main_scr_timer_handler(lv_timer_t * tmr)
+static void main_scr_timer_handler(lv_timer_t * tmr)
 {
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
@@ -84,11 +84,11 @@ static void cpu_temperature_sample(lv_timer_t * tmr)
 }
 
 
-TCM_CODE_DEFINE static void cooker_set_idle(int ch)
+ static void cooker_set_idle(int ch)
 {
     if (cur_cooker_state[ch].on_merge)
     {
-
+        
     }
     else
     {
@@ -114,7 +114,7 @@ TCM_CODE_DEFINE static void cooker_set_idle(int ch)
 
 
 
-TCM_CODE_DEFINE static void cooker_timing_handler(int ch, ui_cooker_ctx_t * ctx)
+ static void cooker_timing_handler(int ch, ui_cooker_ctx_t * ctx)
 {
     ui_cooker_state_t cooker_state = {0};
 
@@ -164,7 +164,7 @@ TCM_CODE_DEFINE static void cooker_timing_handler(int ch, ui_cooker_ctx_t * ctx)
 }
 
 
-TCM_CODE_DEFINE static void cooker_timer_handler(lv_timer_t * tmr)
+ static void cooker_timer_handler(lv_timer_t * tmr)
 {
     for (int i = 0; i < UI_COOKER_NUM; i++)
     {
@@ -176,7 +176,7 @@ TCM_CODE_DEFINE static void cooker_timer_handler(lv_timer_t * tmr)
 }
 
 
-TCM_CODE_DEFINE void update_main_scr_ui_data(const ui_cooker_state_t * state, int num)
+ void update_main_scr_ui_data(const ui_cooker_state_t * state, int num)
 {
     if (rt_mutex_take(cur_state_mtx[num], RT_WAITING_FOREVER) == RT_EOK)
     {
@@ -187,7 +187,7 @@ TCM_CODE_DEFINE void update_main_scr_ui_data(const ui_cooker_state_t * state, in
 
 
 
-TCM_CODE_DEFINE static void stop_cooker_anim(int all, int ch)
+ static void stop_cooker_anim(int all, int ch)
 {
     if (all)
     {
@@ -209,7 +209,7 @@ TCM_CODE_DEFINE static void stop_cooker_anim(int all, int ch)
     }
 }
 
-TCM_CODE_DEFINE static void start_cooker_anim(int all, int ch)
+ static void start_cooker_anim(int all, int ch)
 {
     if (all)
     {
@@ -239,6 +239,54 @@ static void pause_all_cooker_timer(int pause)
     }
 }
 
+static void cooker_single_to_merge(int ch)
+{
+    main_screen_t * scr = main_screen_get(&ui_manager);
+
+    if (ch == 0)
+    {
+        cooker_set_idle(0);
+        cooker_set_idle(1);
+        lv_obj_add_flag(scr->cooker1, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(scr->cooker2, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(scr->merge_cooker1, LV_OBJ_FLAG_HIDDEN);
+        cur_cooker_state[0].on_merge = 1;
+    }
+    else
+    {
+        cooker_set_idle(2);
+        cooker_set_idle(3);
+        lv_obj_add_flag(scr->cooker3, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(scr->cooker4, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(scr->merge_cooker2, LV_OBJ_FLAG_HIDDEN);
+        cur_cooker_state[2].on_merge = 1;
+    }
+}
+
+static void cooker_merge_to_single(int ch)
+{
+    main_screen_t * scr = main_screen_get(&ui_manager);
+
+    if (ch == 0)
+    {
+        cooker_set_idle(0);
+        cooker_set_idle(1);
+        lv_obj_clear_flag(scr->cooker1, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(scr->cooker2, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(scr->merge_cooker1, LV_OBJ_FLAG_HIDDEN);
+        cur_cooker_state[0].on_merge = 0;
+    }
+    else
+    {
+        cooker_set_idle(2);
+        cooker_set_idle(3);
+        lv_obj_clear_flag(scr->cooker3, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_clear_flag(scr->cooker4, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(scr->merge_cooker2, LV_OBJ_FLAG_HIDDEN);
+        cur_cooker_state[2].on_merge = 0;
+    }
+}
+
 
 void pause_cooker_timer(int ch, int pause)
 {
@@ -246,13 +294,13 @@ void pause_cooker_timer(int ch, int pause)
     cur_cooker_state[ch].pause = pause;
 }
 
-TCM_CODE_DEFINE void main_screen_custom_unload_start(void) 
+ void main_screen_custom_unload_start(void) 
 {
     // lv_timer_pause(main_scr_tmr);
 }
 
 
-TCM_CODE_DEFINE void reset_cooker_timer(int ch)
+ void reset_cooker_timer(int ch)
 {
     lv_timer_pause(cooker_ui[ch].timer);
     cooker_ui[ch].remain_hour = cur_cooker_state[ch].hour;
@@ -326,7 +374,7 @@ void main_screen_custom_created(void)
 }
 
 
-TCM_CODE_DEFINE void main_screen_custom_load_start(void) 
+ void main_screen_custom_load_start(void) 
 {    
     main_scr_running_cooker = 0;
     for (int i = 0; i < UI_COOKER_NUM; i++)
@@ -434,7 +482,55 @@ TCM_CODE_DEFINE void main_screen_custom_load_start(void)
 }
 
 
-TCM_CODE_DEFINE void main_screen_global_pause_custom_clicked(void) 
+
+
+void main_screen_drop_lang_custom_clicked(void) 
+{
+    lv_scr_load_anim(lang_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
+}
+
+
+void main_screen_drop_cook_custom_clicked(void) 
+{
+    lv_scr_load_anim(cook_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
+}
+
+void main_screen_drop_qrcode_custom_clicked(void) 
+{
+    lv_scr_load_anim(qrcode_screen_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
+}
+
+void main_screen_drop_merge_custom_clicked(void) 
+{
+    if (cur_cooker_state[0].on_merge)
+    {
+        lv_obj_clear_flag(main_screen_get(&ui_manager)->merge_cooker1, LV_OBJ_FLAG_CLICKABLE);
+    }
+    else
+    {
+        lv_obj_clear_flag(main_screen_get(&ui_manager)->cooker1, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_clear_flag(main_screen_get(&ui_manager)->cooker2, LV_OBJ_FLAG_CLICKABLE);
+    }
+    if (cur_cooker_state[2].on_merge)
+    {
+        lv_obj_clear_flag(main_screen_get(&ui_manager)->merge_cooker2, LV_OBJ_FLAG_CLICKABLE);
+    }
+    else
+    {
+        lv_obj_clear_flag(main_screen_get(&ui_manager)->cooker3, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_clear_flag(main_screen_get(&ui_manager)->cooker4, LV_OBJ_FLAG_CLICKABLE);
+    }
+
+
+    lv_obj_clear_flag(main_screen_get(&ui_manager)->dropline, LV_OBJ_FLAG_CLICKABLE);
+
+    drop_menu_return(main_screen_get(&ui_manager)->obj, main_screen_get(&ui_manager)->dropline, 
+                        main_screen_get(&ui_manager)->drop_menu, drop_window_up);
+
+}
+
+
+ void main_screen_global_pause_custom_clicked(void) 
 {
     main_scr_glb_pause = main_scr_glb_pause ? 0 : 1;
 
@@ -455,7 +551,7 @@ TCM_CODE_DEFINE void main_screen_global_pause_custom_clicked(void)
 }
 
 
-TCM_CODE_DEFINE void main_screen_dropline_custom_pressed(void)
+ void main_screen_dropline_custom_pressed(void)
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
@@ -467,7 +563,7 @@ TCM_CODE_DEFINE void main_screen_dropline_custom_pressed(void)
     drop_menu_start(scr->dropline, scr->drop_menu);
 }
 
-TCM_CODE_DEFINE void main_screen_dropline_custom_pressing(void) 
+ void main_screen_dropline_custom_pressing(void) 
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
@@ -480,7 +576,7 @@ TCM_CODE_DEFINE void main_screen_dropline_custom_pressing(void)
 }
 
 
-TCM_CODE_DEFINE void main_screen_dropline_custom_released(void) 
+ void main_screen_dropline_custom_released(void) 
 {
     main_screen_t *scr = main_screen_get(&ui_manager);
 
@@ -493,69 +589,81 @@ TCM_CODE_DEFINE void main_screen_dropline_custom_released(void)
 }
 
 
-TCM_CODE_DEFINE void main_screen_cooker1_custom_clicked(void) 
+ void main_screen_cooker1_custom_clicked(void) 
 {
-    // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
-
-    // setting_cook_create(&ui_manager);
-    
     setting_cooker_channel_set(0);
 
-    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 150, 0, false);
-
-    // if (cur_scr && lv_obj_is_valid(cur_scr))
-    // {
-    //     // lv_obj_clean(cur_scr);
-    //     lv_obj_del_async(cur_scr);
-    // }
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
 }
 
-TCM_CODE_DEFINE void main_screen_cooker2_custom_clicked(void) 
+ void main_screen_cooker2_custom_clicked(void) 
 {
-    // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
-
-    // setting_cook_create(&ui_manager);
-
     setting_cooker_channel_set(1);
 
-    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 150, 0, false);
-
-    // if (cur_scr && lv_obj_is_valid(cur_scr))
-    // {
-    //     // lv_obj_clean(cur_scr);
-    //     lv_obj_del_async(cur_scr);
-    // }
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
 }
 
-TCM_CODE_DEFINE void main_screen_cooker3_custom_clicked(void) 
+ void main_screen_cooker3_custom_clicked(void) 
 {
-    // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
-
-    // setting_cook_create(&ui_manager);
     setting_cooker_channel_set(2);
 
-    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 150, 0, false);
-
-    // if (cur_scr && lv_obj_is_valid(cur_scr))
-    // {
-    //     // lv_obj_clean(cur_scr);
-    //     lv_obj_del_async(cur_scr);
-    // }
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
 }
 
-TCM_CODE_DEFINE void main_screen_cooker4_custom_clicked(void) 
+ void main_screen_cooker4_custom_clicked(void) 
 {
-    // lv_obj_t * cur_scr = main_screen_get(&ui_manager)->obj;
-
-    // setting_cook_create(&ui_manager);
     setting_cooker_channel_set(3);
 
-    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 150, 0, false);
+    lv_scr_load_anim(setting_cook_get(&ui_manager)->obj, LV_SCR_LOAD_ANIM_MOVE_LEFT, 300, 0, false);
+}
 
-    // if (cur_scr && lv_obj_is_valid(cur_scr))
-    // {
-    //     // lv_obj_clean(cur_scr);
-    //     lv_obj_del_async(cur_scr);
-    // }
+void main_screen_wnd_back_custom_clicked(void) 
+{
+    drop_window_down();
+
+    if (cur_cooker_state[0].on_merge)
+    {
+        lv_obj_add_flag(main_screen_get(&ui_manager)->merge_cooker1, LV_OBJ_FLAG_CLICKABLE);
+    }
+    else
+    {
+        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker1, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker2, LV_OBJ_FLAG_CLICKABLE);
+    }
+    if (cur_cooker_state[2].on_merge)
+    {
+        lv_obj_add_flag(main_screen_get(&ui_manager)->merge_cooker1, LV_OBJ_FLAG_CLICKABLE);
+    }
+    else
+    {
+        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker1, LV_OBJ_FLAG_CLICKABLE);
+        lv_obj_add_flag(main_screen_get(&ui_manager)->cooker2, LV_OBJ_FLAG_CLICKABLE);
+    }
+
+    lv_obj_add_flag(main_screen_get(&ui_manager)->dropline, LV_OBJ_FLAG_CLICKABLE);
+}
+
+void main_screen_group1_img_custom_clicked(void) 
+{
+    if (cur_cooker_state[0].on_merge)
+    {
+        cooker_merge_to_single(0);
+    }
+    else
+    {
+        cooker_single_to_merge(0);
+    }
+}
+
+void main_screen_group2_img_custom_clicked(void) 
+{
+    if (cur_cooker_state[2].on_merge)
+    {
+        cooker_merge_to_single(1);
+    }
+    else
+    {
+        cooker_single_to_merge(1);
+    }
 }
 

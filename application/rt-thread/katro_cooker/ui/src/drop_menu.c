@@ -6,6 +6,7 @@ TCM_DATA_DEFINE static volatile int dropped = 0;
 
 TCM_DATA_DEFINE static lv_obj_t * parent = NULL;
 
+static void (*drop_cb)(void) = NULL;
 
 TCM_CODE_DEFINE static void anim_y_cb(void * var, int32_t v)
 {
@@ -19,6 +20,12 @@ TCM_CODE_DEFINE static void anim_line_completed_cb(lv_anim_t * a)
     {
         lv_obj_set_parent(a->var, parent);
         // lv_obj_invalidate(lv_scr_act());
+    }
+
+    if (drop_cb)
+    {
+        drop_cb();
+        drop_cb = NULL;
     }
 }
 
@@ -126,3 +133,69 @@ TCM_CODE_DEFINE void drop_menu_released_handler(lv_obj_t * main_scr, lv_obj_t * 
 
 
 
+
+void drop_menu_return(lv_obj_t * main_scr, lv_obj_t * line, lv_obj_t * menu, void (*ext_cb)(void))
+{
+    lv_point_t point = {0};
+    lv_anim_t roll_back_menu = {0};
+    lv_anim_t roll_back_line = {0};
+    int32_t line_end = 0;
+    int32_t menu_end = 0;
+
+    lv_indev_get_point(lv_indev_get_act(), &point);
+
+    lv_anim_init(&roll_back_menu);
+    lv_anim_init(&roll_back_line);
+
+    lv_anim_set_var(&roll_back_menu, menu);
+    lv_anim_set_var(&roll_back_line, line);
+
+    lv_anim_set_duration(&roll_back_menu, DROP_MENU_ANIM_TIME);
+    lv_anim_set_duration(&roll_back_line, DROP_MENU_ANIM_TIME);
+
+    lv_anim_set_repeat_count(&roll_back_menu, 0);
+    lv_anim_set_repeat_count(&roll_back_line, 0);
+
+    lv_anim_set_exec_cb(&roll_back_menu, anim_y_cb);
+    lv_anim_set_exec_cb(&roll_back_line, anim_y_cb);
+
+    line_end = 0;
+    menu_end = -LV_VER_RES;
+    lv_anim_set_path_cb(&roll_back_line, lv_anim_path_linear);
+    lv_anim_set_path_cb(&roll_back_menu, lv_anim_path_linear);
+    parent = main_scr;
+    drop_cb = ext_cb;
+    lv_anim_set_completed_cb(&roll_back_line, anim_line_completed_cb);
+    lv_anim_set_values(&roll_back_menu, lv_obj_get_y(menu), menu_end);
+    lv_anim_set_values(&roll_back_line, lv_obj_get_y(line), line_end);
+    lv_anim_start(&roll_back_menu);
+    lv_anim_start(&roll_back_line);
+}
+
+
+void drop_window_up(void)
+{
+    lv_anim_t wnd_anim = {0};
+    lv_anim_init(&wnd_anim);
+    lv_anim_set_var(&wnd_anim, main_screen_get(&ui_manager)->merge_wnd);
+    lv_anim_set_duration(&wnd_anim, DROP_MENU_ANIM_TIME);
+    lv_anim_set_repeat_count(&wnd_anim, 0);
+    lv_anim_set_exec_cb(&wnd_anim, anim_y_cb);
+    lv_anim_set_path_cb(&wnd_anim, lv_anim_path_linear);
+    lv_anim_set_values(&wnd_anim, 720, 160);
+    lv_anim_start(&wnd_anim);
+}
+
+
+void drop_window_down(void)
+{
+    lv_anim_t wnd_anim = {0};
+    lv_anim_init(&wnd_anim);
+    lv_anim_set_var(&wnd_anim, main_screen_get(&ui_manager)->merge_wnd);
+    lv_anim_set_duration(&wnd_anim, DROP_MENU_ANIM_TIME);
+    lv_anim_set_repeat_count(&wnd_anim, 0);
+    lv_anim_set_exec_cb(&wnd_anim, anim_y_cb);
+    lv_anim_set_path_cb(&wnd_anim, lv_anim_path_linear);
+    lv_anim_set_values(&wnd_anim, 160, 720);
+    lv_anim_start(&wnd_anim);
+}
