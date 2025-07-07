@@ -37,7 +37,7 @@
     #define LV_LOG_TRACE_EVENT      0
     #define LV_LOG_TRACE_OBJ_CREATE 0
     #define LV_LOG_TRACE_LAYOUT     0
-    #define LV_LOG_TRACE_ANIM       1
+    #define LV_LOG_TRACE_ANIM       0
 
 #endif  /*LV_USE_LOG*/
 

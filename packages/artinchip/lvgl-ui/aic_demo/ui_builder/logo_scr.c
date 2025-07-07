@@ -44,9 +44,7 @@ void logo_scr_create(ui_manager_t *ui)
         LVGL_IMAGE_PATH(LOGO (9).png),
         LVGL_IMAGE_PATH(LOGO (10).png),
     };
-
     logo_scr_custom_created();
-    
     lv_animimg_set_src(scr->logo_amni, (const void **)logo_amni_imgs, 10);
     lv_animimg_set_duration(scr->logo_amni, 1000);
     lv_animimg_set_repeat_count(scr->logo_amni, 3);
