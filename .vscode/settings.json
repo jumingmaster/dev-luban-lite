@@ -81,7 +81,15 @@
 		"app_common.h": "c",
 		"valarray": "c",
 		"cooker_task.h": "c",
-		"pin.h": "c"
+		"pin.h": "c",
+		"algorithm": "c",
+		"forward_list": "c",
+		"list": "c",
+		"xhash": "c",
+		"xtree": "c",
+		"slist": "c",
+		"bitset": "c",
+		"ranges": "c"
 	},
 	"cmake.sourceDirectory": "C:/Users/jumin/Desktop/dev-luban-lite/packages/artinchip/mpp/middle_media/audio_decoder"
 }
